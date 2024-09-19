@@ -18,7 +18,11 @@ aiot robot
   - type()
   - 파이썬에서의 변수 클래스의 객체 관계
   - 연산자, 연산자 오버라이딩
-- 2장
+- 2 교시
   - print, 함수 읽는 법, sep, end
-- 3장
+- 3 교시
   - str class, indexing, slicing, len
+- 4 교시
+  - 복합대입연산자
+  - input
+  - str format, f-string
