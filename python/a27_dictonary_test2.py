@@ -14,6 +14,19 @@ def main():
     print(f'name: {dictionary["name"]}')
     print(f"ingredient[1]: {dictionary['ingredient'][1]}")
 
+    key = input("키를 입력해 주세요>")
+    if key in dictionary:
+        print(f"value : {dictionary[key]}")
+    else:
+        print("그 키는 dictionary 에 없습니다.")
+
+    #제거
+    del dictionary["ingredient"]
+    print("--"*10)
+    print(dictionary)
+    re = dictionary.pop("name")
+    print(dictionary, re)
+
     # valueerror
     dict_test = { 1: "123"}
     print(dict_test[1])
