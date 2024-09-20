@@ -10,7 +10,8 @@ def main():
     }
 
     for key, value in character.items():
-        if isinstance(character[key], dict):
+        # if isinstance(character[key], dict):
+        if issubclass(type(character[key]), dict):
             for key in value:
                 print(f"{key} : {value[key]}")
         elif isinstance(character[key], list):
