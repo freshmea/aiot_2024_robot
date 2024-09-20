@@ -1,12 +1,17 @@
 # aiot_2024_robot
+
+
 aiot robot
 
 ## 구글 슬라이드 링크
+
 [클릭](https://docs.google.com/presentation/d/1LHXvZnWKbSJLpbeop8mL-gTkLUKbxCPuk6moOfNLY-s/edit#slide=id.p)
 
 
 ---
+
 ## 2024_9_19
+
 ---
 
 
@@ -26,3 +31,21 @@ aiot robot
   - 복합대입연산자
   - input
   - str format, f-string
+
+---
+
+## 2024_9_20
+
+---
+
+
+- 1교시
+  - 리스트
+  - 책 교부
+- 2교시
+  - range for 문
+- 3교시
+  - dictionary, for 문
+- 4교시
+  - while, list method, dictionary method
+  - list comprehension, enumerate, 삼항연산자
