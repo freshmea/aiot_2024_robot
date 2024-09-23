@@ -20,9 +20,9 @@ def main():
     li1 = [1, 2, 3, 4, 5]
     print(list(map(power, li1)))
     print(list(filter(under_3, li1)))
-    
+
     print(list(map(lambda x : x * x, li1)))
     print(list(filter(lambda x : x < 3, li1)))
-    
+
 if __name__ == "__main__":
     main()
