@@ -1,4 +1,6 @@
 class Student:
+    count = 0
+    students = []
     def __init__(self, name, korean, math, english, science):
         self.name =  name
         self.korean =  korean
@@ -7,6 +9,8 @@ class Student:
         self.science =  science
         self.sum = self.get_sum()
         self.average = self.get_average()
+        Student.count += 1
+        Student.students.append(self)
 
     def get_sum(self):
         return self.korean + self.math + self.english + self.science
@@ -41,28 +45,27 @@ class Student:
     def __le__(self, value):
         return self.sum  <= value.sum
 
+    @classmethod
+    def print_students(cls):
+        print("------- 학생목록 ------")
+        print(f"총 학생수: {cls.count}")
+        print("이름\t총점\t평균")
+        for student in cls.students:
+            print(student)
+        print("------- ------ ------")
+
+
 def main():
-    students = [
-        Student("윤인성", 87,98, 88, 95),
-        Student("연하진", 92, 78, 76, 83),
-        Student("구지연", 76,68, 94, 84),
-        Student("나선주", 98, 96, 75, 79),
-        Student("윤아린", 67, 83, 99, 91),
-        Student("윤명원", 74, 91, 69, 95),
-    ]
+    Student("윤인성", 87, 98, 88, 95)
+    Student("연하진", 92, 78, 76, 83)
+    Student("구지연", 76, 68, 94, 84)
+    Student("나선주", 98, 96, 75, 79)
+    Student("윤아린", 67, 83, 99, 91)
+    Student("윤명원", 74, 91, 69, 95)
 
-    print("이름\t총점\t평균")
-    for student in students:
-        print(student.to_string())
-        print(student)
+    Student.print_students()
 
-    student_a = Student("윤인성", 87, 98, 88, 95)
-    student_b = Student("연하진", 84, 98, 96, 90)
-    print(f"student_a == student_b : {student_a == student_b}")
-    print(f"student_a is student_b : {student_a is student_b}")
-    print(f"student_a != student_b : {student_a != student_b}")
-    print(student_a.sum)
-    print(student_a < 350 )
+
 
 if __name__ == "__main__":
     main()
