@@ -16,6 +16,7 @@ def main():
     b = Test("b name")
     del a
     c = Test("c name")
+    print(b, c)
 
 if __name__ == "__main__":
     main()

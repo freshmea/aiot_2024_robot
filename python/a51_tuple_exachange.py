@@ -1,7 +1,7 @@
 def main():
     a, b = 10, 20
     print(f"a: {a}, b: {b}")
-    # C 
+    # C
     # temp = a
     # a = b
     # b = temp

@@ -4,7 +4,7 @@ class Parent:
         print("Parent 클래스의 __init__() 메소드가 호출 됨")
 
     def test(self, *args, **kwargs):
-        print("Parent 클래스의 test() 메소드 입니다.", *args)
+        print("Parent 클래스의 test() 메소드 입니다.", *args, **kwargs)
 
 class Child(Parent):
     def __init__(self):
