@@ -1,19 +1,16 @@
 # aiot_2024_robot
 
-
 aiot robot
 
 ## 구글 슬라이드 링크
 
 [클릭](https://docs.google.com/presentation/d/1LHXvZnWKbSJLpbeop8mL-gTkLUKbxCPuk6moOfNLY-s/edit#slide=id.p)
 
-
 ---
 
 ## 2024_9_19
 
 ---
-
 
 - python 설치
 - python version 확인
@@ -31,13 +28,19 @@ aiot robot
   - 복합대입연산자
   - input
   - str format, f-string
+- 5 교시
+  - 불리언 자료형
+  - if condition
+- 6 교시
+  - datetime module
+- 7 교시
+  - 예시 -- 계절 구하기, 홀수 짝수 구하기, 학점
 
 ---
 
 ## 2024_9_20
 
 ---
-
 
 - 1교시
   - 리스트
@@ -49,3 +52,57 @@ aiot robot
 - 4교시
   - while, list method, dictionary method
   - list comprehension, enumerate, 삼항연산자
+- 5교시
+  - 함수 정의 및 기본 구조
+- 6교시
+  - 함수의 인자 (postional-argument, default-argument, keyword-argument, variable-length-argument, keyword-variable-length-argument)
+  - 함수의 반환값(return, 및 tuple)
+- 7교시
+  - 예외 처리 try, except, else, finally
+  - 사용자 정의 예외처리, raise
+
+---
+
+## 2024_09_23
+
+---
+
+- 1교시
+  - 클래스 개념
+- 2교시
+  - data 로 처리
+  - 간단한 클래스 만들기
+  - dataclass 데코레이터
+- 3교시
+  - method 추가
+  - special method 추가 (비교 연산자 및 str, expr)
+- 4교시
+  - 클래스 변수 활용
+  - 클래스메소드 classmethod 데코레이터
+  - 다중 상속 및 mro
+- 5교시
+  - private 설정
+  - property 데코레이터 getter, setter
+- 6교시
+  - tuple exchange
+  - 재귀함수 만들기
+  - lru_cache 데코레이터
+- 7교시
+  - 람다함수
+  - 파일 처리
+  - 제너레이터
+  - 램덤 모듈
+
+---
+
+## 2024_09_24
+
+---
+
+- 1교시
+  - 복습
+  - module 개념 실습
+- 2교시
+  - package 개념 실습
+  - import 및 __init__py 실습
+- 3교시
