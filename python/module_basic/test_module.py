@@ -23,7 +23,7 @@ class Rectangle:
     def get_area(self):
         """this method is return area value"""
         return self.width * self.height
-    
+
 def main():
     print("test_module.py 의 __name__")
     print(__name__)
