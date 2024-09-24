@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
 
 
 def main():
@@ -16,9 +17,12 @@ def main():
     print()
     print(model.coef_)
 
-    # df_2 = pd.read_csv("/home/aa/aiot_2024_robot/artificial_intelligence/data/housing_predict.tab", delimiter="\t")
-    # fitted = model.predict(df_2[feature])
-    # print(fitted)
+    df_2 = pd.read_csv("/home/aa/aiot_2024_robot/artificial_intelligence/data/iris_predict.tab", delimiter="\t")
+    predicted = model.predict(df_2[feature])
+    print(predicted)
+
+    cm = confusion_matrix(df_2['iris'], predicted)
+    print(cm)
 
 
 if __name__ == "__main__":
