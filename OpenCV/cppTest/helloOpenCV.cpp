@@ -19,6 +19,11 @@ int main()
     cv::imshow("image", img);
     std::cout << "Hello OpenCV" << std::endl;
     cv::imwrite("lena.jpg", img);
-    cv::waitKey(0);
+    int key;
+    while (key != 'x')
+    {
+        key = cv::waitKey(0);
+        std::cout << key << std::endl;
+    }
     return 0;
 }
