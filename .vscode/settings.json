@@ -5,6 +5,7 @@
         "*.repos": "yaml",
         "*.world": "xml",
         "*.xacro": "xml",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }
