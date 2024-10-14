@@ -15,7 +15,8 @@ int main()
     Mat img5(400, 640, CV_8UC1, Scalar(0));
     Mat img6(400, 640, CV_8UC1, Scalar(255));
 
-    imshow("img1", img1);
+    // imshow("img1", img1);
+    cout << img1 << endl;
     imshow("img2", img2);
     imshow("img3", img3);
     imshow("img4", img4);
