@@ -152,6 +152,9 @@ aiot robot
   - waitKeyEx 함수
   - 마우스 콜백 함수
 - 3교시
+  - python 마우스 콜백 함수
+  - 대비 함수 (histogram, histogram equalization, stretching)
+  - bitwise 연산
 - 4교시
 - 5교시
 - 6교시
