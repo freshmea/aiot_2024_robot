@@ -149,6 +149,8 @@ aiot robot
   - 밝기 조절 ( + , add 함수)
   - saturate_cast
 - 2교시
+  - waitKeyEx 함수
+  - 마우스 콜백 함수
 - 3교시
 - 4교시
 - 5교시
