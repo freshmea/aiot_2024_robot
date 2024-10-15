@@ -1,0 +1,13 @@
+{
+    "name": "Jane",
+    "age": 10,
+    "point": [ 100, 200 ],
+    "v": [ 74, 98, 29 ],
+    "mat1": {
+        "type_id": "opencv-matrix",
+        "rows": 2,
+        "cols": 2,
+        "dt": "i",
+        "data": [ 1, 2, 3, 4 ]
+    }
+}
