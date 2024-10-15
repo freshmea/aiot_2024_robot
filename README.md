@@ -106,3 +106,51 @@ aiot robot
   - package 개념 실습
   - import 및 __init__py 실습
 - 3교시
+
+---
+
+## 2024_10_14
+
+---
+
+- 1교시
+  - OpenCV 설치 ( cpp 설치, python 설치)
+  - OpenCV 기본 사용법
+  - make, cmake 사용법
+- 2교시
+  - 기본 함수
+  - imread, imshow, waitKey, destroyAllWindows
+  - VideoCapture, VideoWriter
+- 3교시
+  - 기본 클래스
+  - Point_ 클래스
+  - Size_ 클래스
+- 4교시
+  - Rect_ 클래스
+  - Scalar_ 클래스
+  - Mat_ 클래스
+- 5교시
+  - draw 함수
+  - line, rectangle, circle, ellipse, putText
+  - freetype 사용법 (한글폰트)
+- 6교시
+  - python과 c++의 차이점
+- 7교시
+  - python draw 함수 실습
+
+---
+
+## 2024_10_15
+
+---
+
+- 1교시
+  - 복습
+  - 밝기 조절 ( + , add 함수)
+  - saturate_cast
+- 2교시
+- 3교시
+- 4교시
+- 5교시
+- 6교시
+- 7교시
