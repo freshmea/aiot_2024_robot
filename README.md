@@ -156,6 +156,15 @@ aiot robot
   - 대비 함수 (histogram, histogram equalization, stretching)
   - bitwise 연산
 - 4교시
+  - blur 함수
+  - gaussian blur 함수
+  - median blur 함수
 - 5교시
+  - warpAffine 함수
+  - perspective transform
+  - perspective transform 실습
 - 6교시
+  - 미분 필터
+  - canny edge detection
 - 7교시
+  - hough line transform
