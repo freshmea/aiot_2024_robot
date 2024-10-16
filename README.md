@@ -168,3 +168,14 @@ aiot robot
   - canny edge detection
 - 7교시
   - hough line transform
+
+---
+
+## 2024_10_15
+
+---
+
+- 1교시
+  - houghlineP 실습
+  - trackbar 실습
+  - 
