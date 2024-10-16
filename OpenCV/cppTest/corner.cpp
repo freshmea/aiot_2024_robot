@@ -10,15 +10,24 @@ int main()
 {
     Mat src = imread(folder + "building.jpg", IMREAD_GRAYSCALE);
 
-    vector<KeyPoint> keypoints;
-    FAST(src, keypoints, 60, true);
-    cout << keypoints.size() << endl;
-    for (auto keypoint : keypoints)
+    // vector<KeyPoint> keypoints;
+    // FAST(src, keypoints, 60, true);
+    // cout << keypoints.size() << endl;
+    // for (auto keypoint : keypoints)
+    // {
+    //     Point pt(keypoint.pt.x, keypoint.pt.y);
+    //     circle(src, pt, 10, Scalar(0), -1);
+    // }
+    vector<Point2f> corners;
+    goodFeaturesToTrack(src, corners, 100, 0.01, 10);
+    cout << corners.size() << endl;
+    for (auto pta : corners)
     {
-        Point pt(keypoint.pt.x, keypoint.pt.y);
+        Point pt(pta.x, pta.y);
         circle(src, pt, 10, Scalar(0), -1);
     }
-    imshow("src", src);
+
+        imshow("src", src);
     waitKey();
 
     return 0;
