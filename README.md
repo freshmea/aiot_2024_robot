@@ -178,4 +178,19 @@ aiot robot
 - 1교시
   - houghlineP 실습
   - trackbar 실습
-  - 
+- 2교시
+  - color space 변환
+  - inrange 함수
+- 3교시
+  - 이진화 함수 threshold, adaptiveThreshold
+  - 모폴로지 연산
+- 4교시
+  - 템플릿 매칭
+  - 캐스캐이드 검출
+  - Hog 알고리즘
+- 5교시
+  - QR code 실습 ( cpp, python) cpp 코드 오브젝트 링크 오류
+  - AruCo 실습
+- 6교시
+- 7교시
+- 
