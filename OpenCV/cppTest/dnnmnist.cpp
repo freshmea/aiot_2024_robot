@@ -7,7 +7,6 @@ using namespace cv::dnn;
 using namespace std;
 String folder = "/home/aa/aiot_2024_robot/OpenCV/cppTest/data/";
 
-Ptr<KNearest> train_knn();
 void on_mouse(int event, int x, int y, int flags, void *data);
 
 int main()
@@ -21,47 +20,17 @@ int main()
 
     imshow("img", img);
     waitKey();
-    Mat img_resize, img_float, img_flatten, res;
+    Mat blob = blobFromImage(img, 1 / 255.f, Size(28, 28));
+    net.setInput(blob);
+    Mat prob = net.forward();
 
-    resize(img, img_resize, Size(20, 20), 0, 0, INTER_AREA);
-    img_resize.convertTo(img_float, CV_32F);
-    img_flatten = img_float.reshape(1, 1);
+    double maxVal;
+    Point maxLoc;
+    minMaxLoc(prob, NULL, &maxVal, NULL, &maxLoc);
+    int digit = maxLoc.x;
 
-    knn->findNearest(img_flatten, 3, res);
-    cout << cvRound(res.at<float>(0, 0)) << endl;
+    cout << digit << " (" << maxVal * 100 << "% )" << endl;
     return 0;
-}
-
-Ptr<KNearest> train_knn()
-{
-    Mat digits = imread(folder + "digits.png", IMREAD_GRAYSCALE);
-
-    Mat train_images(5000, 400, CV_32F);
-    Mat train_labels(5000, 1, CV_32S);
-    int idx = 0;
-    for (int j = 0; j < 50; j++)
-    {
-        for (int i = 0; i < 100; i++)
-        {
-            Mat roi, roi_float, roi_flatten;
-            roi = digits(Rect(i * 20, j * 20, 20, 20));
-            cout << i << j << endl;
-            roi.convertTo(roi_float, CV_32F);
-            roi_flatten = roi_float.reshape(1, 1);
-
-            // 평탄화된 이미지를 train_images에 복사
-            roi_flatten.copyTo(train_images.row(idx));
-
-            // 레이블 할당
-            train_labels.at<int>(idx, 0) = j / 5;
-
-            idx++;
-        }
-    }
-
-    Ptr<KNearest> knn = KNearest::create();
-    knn->train(train_images, ROW_SAMPLE, train_labels);
-    return knn;
 }
 
 void on_mouse(int event, int x, int y, int flags, void *data)
