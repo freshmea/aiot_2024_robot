@@ -23,7 +23,8 @@ setup(
             "hello = simple_ros.hello:main",
             "hello_class = simple_ros.hello_class:main",
             "hello_sub = simple_ros.hello_sub:main",
-            "hello_pub = simple_ros.hello_pub:main"
+            "hello_pub = simple_ros.hello_pub:main",
+            "time_pub = simple_ros.time_pub:main"
             ],
     },
 )
