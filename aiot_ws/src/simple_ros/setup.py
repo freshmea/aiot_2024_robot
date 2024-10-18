@@ -21,7 +21,9 @@ setup(
     entry_points={
         'console_scripts': [
             "hello = simple_ros.hello:main",
-            "hello_class = simple_ros.hello_class:main"
+            "hello_class = simple_ros.hello_class:main",
+            "hello_sub = simple_ros.hello_sub:main",
+            "hello_pub = simple_ros.hello_pub:main"
             ],
     },
 )
