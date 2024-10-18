@@ -4,7 +4,7 @@ alias re='ros2 topic echo'
 alias rn='ros2 node list'
 
 alias cw='cd ~/{여기}_ws' # 본인의 워크 스페이스
-alias cs='cd ~/{여기}_ws/src' # 보인의 워크 스페이스
+alias cs='cd ~/{여기}_ws/src' # 본인의 워크 스페이스
 alias cb='colcon build --symlink-install'
 alias cbp='colcon build --symlink-install --packages-select'
 alias sb='source ~/.bashrc'
