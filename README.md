@@ -171,7 +171,7 @@ aiot robot
 
 ---
 
-## 2024_10_15
+## 2024_10_16
 
 ---
 
@@ -192,5 +192,39 @@ aiot robot
   - QR code 실습 ( cpp, python) cpp 코드 오브젝트 링크 오류
   - AruCo 실습
 - 6교시
+  - OpenCV 머신러닝
 - 7교시
-- 
+  - 필기체 인식 0~9 knn
+
+---
+
+## 2024_10_17
+
+---
+
+- 1교시
+  - 필기체 인식 0~9 knn 2
+- 2교시
+  - OpenCV 딥러닝
+  - 필기체 인시 0~9 cnn
+  - 이미지 분류
+- 3교시
+  - ROS2 개념
+- 4교시
+  - ROS2 설치
+- 5교시
+  - ROS2 cli 실습
+    - ros2 run, ros2 launch, ros2 topic, ros2 node, ros2 param, ros2 service, ros2 action
+- 6교시
+  - ROS2 rqt 실습
+    - rqt_graph, rqt_plot, rqt_image_view, rqt_console, rqt_logger_level
+    - 
+- 7교시
+  - pkg 만들기 
+    - ro2 pkg create
+  - node 작성 python 
+---
+
+## 2024_10_18
+
+---

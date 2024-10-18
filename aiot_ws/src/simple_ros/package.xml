@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>simpleRos</name>
+  <name>simple_ros</name>
   <version>0.0.0</version>
-  <description>SimpleRos demo</description>
+  <description>Simple_ros demo</description>
   <maintainer email="freshmea@naver.com">choisugil</maintainer>
   <license>Apache 2.0</license>
 
