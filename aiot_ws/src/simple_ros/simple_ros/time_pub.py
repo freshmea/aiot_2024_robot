@@ -1,4 +1,5 @@
 import rclpy
+from rclpy.clock import Clock, ClockType
 from rclpy.node import Node
 from rclpy.qos import (
     QoSDurabilityPolicy,
@@ -18,7 +19,9 @@ class Time_pub(Node):
                                       depth=10)
         self.create_timer(1, self.print_hello)
         self.pub = self.create_publisher(Header, "time", self.qos_profile)
-        self.clock = self.get_clock()
+        # self.clock = self.get_clock()
+        # ROS_TIME, STEADY_TIME, SYSTEM_TIME
+        self.clock = Clock(clock_type=ClockType.ROS_TIME)
 
     def print_hello(self):
         msg = Header()
