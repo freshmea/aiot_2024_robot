@@ -12,11 +12,9 @@ from std_msgs.msg import String
 class Hello_pub(Node):
     def __init__(self):
         super().__init__("hello_pub")
-        self.qos_profile = QoSProfile()
-        self.qos_profile.history = QoSHistoryPolicy.KEEP_ALL
-        self.qos_profile.history = QoSReliabilityPolicy.RELIABLE
-        self.qos_profile.history = QoSDurabilityPolicy.TRANSIENT_LOCAL
-        
+        self.qos_profile = QoSProfile(history=QoSHistoryPolicy.KEEP_ALL,
+                                      reliability=QoSReliabilityPolicy.RELIABLE,
+                                      durability=QoSDurabilityPolicy.TRANSIENT_LOCAL)
         self.create_timer(1, self.print_hello)
         self.pub = self.create_publisher(String, "send", self.qos_profile)
         self.number = 0
