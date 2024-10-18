@@ -222,9 +222,21 @@ aiot robot
 - 7교시
   - pkg 만들기 
     - ro2 pkg create
-  - node 작성 python 
+  - node 작성 python
+
 ---
 
 ## 2024_10_18
 
 ---
+
+- 1교시
+  - node 작성 기본 코드
+  - rclpy.init, rclpy.spin
+  - Node 클래스
+- 2교시
+  - alias 설정
+  - easyinstall deprecated 에러
+    - pip3 install setuptools==58.2.0
+- 3교시
+  - 

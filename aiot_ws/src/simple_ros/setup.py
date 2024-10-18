@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "hello = simple_ros.hello:main"
+            "hello = simple_ros.hello:main",
+            "hello_class = simple_ros.hello_class:main"
             ],
     },
 )
