@@ -25,6 +25,7 @@ class Move_turtle(Node):
         self.twist = Twist()
         self.pose = Pose()
         self.color = Color()
+        self.phase = 0
 
     def twist_pub(self):
         self.pub.publish(self.twist)
@@ -39,22 +40,43 @@ class Move_turtle(Node):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
         # self.twist.linear.x += 0.001
         # self.twist.angular.z = 1.0
-        
-        if self.pose.x < 8:
-            if -0.01 < self.pose.theta < 0.01:
-                self.twist.linear.x = 0.2
-                self.twist.angular.z = 0.0
-            else:
+        if self.phase == 0:
+            if self.pose.theta < 0:
                 self.twist.linear.x = 0.0
                 self.twist.angular.z = 1.0
-        elif self.pose.y < 8:
-            if self.pose.theta > 3.141592/2:
-                self.twist.linear.x = 0.2
+            elif self.pose.x < 8:
+                self.twist.linear.x = 0.6
                 self.twist.angular.z = 0.0
             else:
+                self.phase = 1
+        elif self.phase == 1:
+            if self.pose.theta < 3.141592/2:
                 self.twist.linear.x = 0.0
                 self.twist.angular.z = 1.0
-
+            elif self.pose.y < 8:
+                self.twist.linear.x = 0.6
+                self.twist.angular.z = 0.0
+            else:
+                self.phase = 2
+        elif self.phase == 2:
+            if self.pose.theta < 3.0:
+                self.twist.linear.x = 0.0
+                self.twist.angular.z = 1.0
+            elif self.pose.x > 2:
+                self.twist.linear.x = 0.6
+                self.twist.angular.z = 0.0
+            else:
+                self.phase = 3
+                self.get_logger().info("phase 3")
+        elif self.phase == 3:
+            if  not -3.341592/2 < self.pose.theta < -3.141592/2:
+                self.twist.linear.x = 0.0
+                self.twist.angular.z = 1.0
+            elif self.pose.y > 2:
+                self.twist.linear.x = 0.6
+                self.twist.angular.z = 0.0
+            else:
+                self.phase = 0
 
 def main():
     rclpy.init()
