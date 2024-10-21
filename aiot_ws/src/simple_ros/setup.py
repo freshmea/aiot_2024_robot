@@ -28,7 +28,8 @@ setup(
             "hello_class = simple_ros.hello_class:main",
             "hello_sub = simple_ros.hello_sub:main",
             "hello_pub = simple_ros.hello_pub:main",
-            "time_pub = simple_ros.time_pub:main"
+            "time_pub = simple_ros.time_pub:main",
+            "move_turtle = simple_ros.move_turtle:main"
             ],
     },
 )
