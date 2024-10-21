@@ -23,7 +23,7 @@ class Hello_pub(Node):
         msg = String()
         msg.data = f"hello, ros2! nice to meet you! + {self.number}"
         self.pub.publish(msg)
-        print(msg.data)
+        self.get_logger().info(msg.data)
         self.number += 1
 
 def main():

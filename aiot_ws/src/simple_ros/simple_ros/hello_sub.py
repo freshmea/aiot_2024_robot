@@ -19,7 +19,7 @@ class Hello_sub(Node):
         self.create_subscription(String, "send", self.sub_callback, self.qos_profile)
 
     def sub_callback(self, msg: String):
-        print(msg.data)
+        self.get_logger().info(msg.data)
 
 def main():
     rclpy.init()
