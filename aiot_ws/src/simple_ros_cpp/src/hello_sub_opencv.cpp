@@ -28,8 +28,10 @@ private:
     {
         // cout << msg->data << endl;
         RCLCPP_INFO(get_logger(), msg->data.c_str());
+        _img = Scalar(255);
         putText(_img, msg->data.c_str(), Point(50, 50), FONT_HERSHEY_PLAIN, 1, Scalar(0), 2);
         imshow("img", _img);
+        waitKey(30);
     }
 };
 
