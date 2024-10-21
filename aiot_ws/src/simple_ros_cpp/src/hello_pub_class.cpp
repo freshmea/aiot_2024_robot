@@ -1,34 +1,20 @@
-#include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
-#include <chrono>
-#include <iostream>
+#include "simple_ros_cpp/hello_pub_class.hpp"
 
-using namespace std;
-using namespace std::chrono_literals;
-
-class HellowPublisher : public rclcpp::Node
+HellowPublisher::HellowPublisher()
+    : Node("hello"), _count(0)
 {
-public:
-    HellowPublisher()
-        : Node("hello"), _count(0)
-    {
-        _pub = this->create_publisher<std_msgs::msg::String>("message", 10);
-        _timer = this->create_wall_timer(1s, std::bind(&HellowPublisher::printHello, this));
-    }
+    _pub = this->create_publisher<std_msgs::msg::String>("message", 10);
+    _timer = this->create_wall_timer(1s, std::bind(&HellowPublisher::printHello, this));
+}
 
-private:
-    int _count;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _pub;
-    rclcpp::TimerBase::SharedPtr _timer;
-    void printHello()
-    {
-        auto msg = std_msgs::msg::String();
-        msg.data = "Hello, World!!!!! " + to_string(_count);
-        _pub->publish(msg);
-        cout << "Hello, World!!!!! " << _count << endl;
-        _count++;
-    }
-};
+void HellowPublisher::printHello()
+{
+    auto msg = std_msgs::msg::String();
+    msg.data = "Hello, World!!!!! " + to_string(_count);
+    _pub->publish(msg);
+    cout << "Hello, World!!!!! " << _count << endl;
+    _count++;
+}
 
 int main()
 {

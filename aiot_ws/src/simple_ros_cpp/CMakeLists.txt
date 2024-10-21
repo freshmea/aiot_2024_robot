@@ -10,6 +10,9 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
+# include directories
+include_directories(include)
+
 
 add_executable(hello_pub src/hello_pub.cpp)
 ament_target_dependencies(hello_pub rclcpp)
