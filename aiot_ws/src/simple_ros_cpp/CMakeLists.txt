@@ -13,11 +13,10 @@ find_package(std_msgs REQUIRED)
 # include directories
 include_directories(include)
 
-
 add_executable(hello_pub src/hello_pub.cpp)
 ament_target_dependencies(hello_pub rclcpp)
 
-add_executable(hello_pub_class src/hello_pub_class.cpp)
+add_executable(hello_pub_class src/hello_pub_class.cpp src/hello_pub_class_method.cpp)
 ament_target_dependencies(hello_pub_class rclcpp std_msgs)
 
 add_executable(hello_pub_lambda src/hello_pub_lambda.cpp)

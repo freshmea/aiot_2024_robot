@@ -19,5 +19,4 @@ private:
     rclcpp::TimerBase::SharedPtr _timer;
     void printHello();
 };
-
 #endif // __HELLO_PUB_CLASS_HPP__
