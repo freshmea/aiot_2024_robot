@@ -37,8 +37,23 @@ class Move_turtle(Node):
     
     def update(self):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
-        self.twist.linear.x += 0.001
-        self.twist.angular.z = 1.0
+        # self.twist.linear.x += 0.001
+        # self.twist.angular.z = 1.0
+        
+        if self.pose.x < 8:
+            if -0.01 < self.pose.theta < 0.01:
+                self.twist.linear.x = 0.2
+                self.twist.angular.z = 0.0
+            else:
+                self.twist.linear.x = 0.0
+                self.twist.angular.z = 1.0
+        elif self.pose.y < 8:
+            if self.pose.theta > 3.141592/2:
+                self.twist.linear.x = 0.2
+                self.twist.angular.z = 0.0
+            else:
+                self.twist.linear.x = 0.0
+                self.twist.angular.z = 1.0
 
 
 def main():
