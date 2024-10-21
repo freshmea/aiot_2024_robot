@@ -12,7 +12,7 @@ public:
     HellowSubscriber()
         : Node("hello_sub")
     {
-        _sub = this->create_subscription<std_msgs::msg::String>(
+        _sub = create_subscription<std_msgs::msg::String>(
             "message",
             10,
             std::bind(&HellowSubscriber::sub_callback, this, std::placeholders::_1));
@@ -23,7 +23,8 @@ private:
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr _sub;
     void sub_callback(const std_msgs::msg::String::SharedPtr msg)
     {
-        cout << msg->data << endl;
+        // cout << msg->data << endl;
+        RCLCPP_INFO(get_logger(), msg->data.c_str());
     }
 };
 
