@@ -14,10 +14,13 @@ find_package(std_msgs REQUIRED)
 add_executable(hello_pub src/hello_pub.cpp)
 ament_target_dependencies(hello_pub rclcpp)
 
+add_executable(hello_pub_class src/hello_pub_class.cpp)
+ament_target_dependencies(hello_pub_class rclcpp std_msgs)
+
 add_executable(hello_pub_lambda src/hello_pub_lambda.cpp)
 ament_target_dependencies(hello_pub_lambda rclcpp std_msgs)
 
-install(TARGETS hello_pub hello_pub_lambda DESTINATION lib/${PROJECT_NAME})
+install(TARGETS hello_pub hello_pub_lambda hello_pub_class DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
