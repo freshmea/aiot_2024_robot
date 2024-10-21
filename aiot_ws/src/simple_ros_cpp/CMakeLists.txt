@@ -10,9 +10,14 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
-add_executable(hello_pub src/hello_pub.cpp)
 
-install(TARGETS hello_pub DESTINATION lib/${PROJECT_NAME})
+add_executable(hello_pub src/hello_pub.cpp)
+ament_target_dependencies(hello_pub rclcpp)
+
+add_executable(hello_pub_lambda src/hello_pub_lambda.cpp)
+ament_target_dependencies(hello_pub_lambda rclcpp)
+
+install(TARGETS hello_pub hello_pub_lambda DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
