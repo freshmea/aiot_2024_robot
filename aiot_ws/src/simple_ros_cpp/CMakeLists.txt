@@ -15,7 +15,7 @@ add_executable(hello_pub src/hello_pub.cpp)
 ament_target_dependencies(hello_pub rclcpp)
 
 add_executable(hello_pub_lambda src/hello_pub_lambda.cpp)
-ament_target_dependencies(hello_pub_lambda rclcpp)
+ament_target_dependencies(hello_pub_lambda rclcpp std_msgs)
 
 install(TARGETS hello_pub hello_pub_lambda DESTINATION lib/${PROJECT_NAME})
 
