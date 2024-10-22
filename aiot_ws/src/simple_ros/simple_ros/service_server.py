@@ -7,7 +7,7 @@ from std_srvs.srv import SetBool
 
 class Service_server(Node):
     def __init__(self):
-        super().__init__("hello_pub")
+        super().__init__("service_server")
         self.create_service(SetBool, "setBool", self.setBool_callback)
         self.bool = bool()
 

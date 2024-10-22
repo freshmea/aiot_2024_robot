@@ -19,12 +19,22 @@ private:
     typedef std::shared_ptr<std_srvs::srv::SetBool::Request> BRequest;
     typedef std::shared_ptr<std_srvs::srv::SetBool::Response> BResponse;
     rclcpp::Service<std_srvs::srv::SetBool>::SharedPtr _server;
+    bool _bool;
     void service_callback(const BRequest request, BResponse response)
     {
         std::string str = request->data ? std::string("true") : std::string("false");
         RCLCPP_INFO(get_logger(), str.c_str());
-        response->message = "sucess";
-        response->success = true;
+        if (request->data != _bool)
+        {
+            _bool = !_bool;
+            response->success = true;
+            response->message = str + " setting success!!";
+        }
+        else
+        {
+            response->success = false;
+            response->message = str + " setting fail!!";
+        }
     }
 };
 

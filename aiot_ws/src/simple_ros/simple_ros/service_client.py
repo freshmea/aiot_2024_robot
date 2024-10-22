@@ -5,7 +5,7 @@ from std_srvs.srv import SetBool
 
 class Service_client(Node):
     def __init__(self):
-        super().__init__("hello_pub")
+        super().__init__("service_client")
         self.client = self.create_client(SetBool, "setBool")
         while not self.client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info("service not available")

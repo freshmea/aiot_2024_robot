@@ -40,6 +40,9 @@ ament_target_dependencies(move_turtle rclcpp geometry_msgs turtlesim)
 add_executable(service_server src/service_server.cpp)
 ament_target_dependencies(service_server rclcpp std_srvs)
 
+add_executable(service_client src/service_client.cpp)
+ament_target_dependencies(service_client rclcpp std_srvs)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -48,6 +51,7 @@ install(TARGETS
   hello_sub_opencv
   move_turtle
   service_server
+  service_client
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
