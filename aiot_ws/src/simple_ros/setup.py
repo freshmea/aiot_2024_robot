@@ -33,7 +33,8 @@ setup(
             "move_turtle_time = simple_ros.move_turtle_time:main",
             "service_server = simple_ros.service_server:main",
             "service_client = simple_ros.service_client:main",
-            "user_int_pub = simple_ros.user_int_pub:main"
+            "user_int_pub = simple_ros.user_int_pub:main",
+            "service_server_int = simple_ros.service_server_int:main",
             ],
     },
 )

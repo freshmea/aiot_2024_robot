@@ -12,6 +12,7 @@ find_package(builtin_interfaces REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/UserInt.msg"
+  "srv/AddAndOdd.srv"
   DEPENDENCIES builtin_interfaces
 )
 

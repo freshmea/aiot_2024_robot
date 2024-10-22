@@ -286,9 +286,16 @@ aiot robot
 - 1교시
   - cpp 로 moveTurtle.cpp 작성 (simple_ros_cpp)
 - 2교시
-  - 
+  - interface 설명 (topic, service, action) 차이
 - 3교시
+  - python service server 작성, service client 작성
+  - 동기방식의 service 에서 비동기 방식으로 코드 작성하기 call_async
 - 4교시
+  - cpp service server 작성
 - 5교시
+  - cpp serivce client 작성
 - 6교시
+  - user interce 작성 topic UserInt class (user_interface 패키지)
+    - package.xml, CMakeLists.txt 수정
+  - user_int_pub 노드 작성 (simple_ros 패키지)
 - 7교시

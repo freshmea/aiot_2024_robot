@@ -1,0 +1,7 @@
+builtin_interfaces/Time stamp
+int32 inta
+int32 intb
+---
+builtin_interfaces/Time stamp
+int32 sum
+string odd
