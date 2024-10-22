@@ -4,7 +4,7 @@
 #include <iostream>
 #include <random>
 
-using namespace std;
+// using namespace std;
 using namespace std::chrono_literals;
 
 class ServiceClient : public rclcpp::Node
@@ -25,21 +25,18 @@ public:
     }
 
 private:
-    // std::random_device rd;
-    // std::mt19937 gen(rd());
-    // std::uniform_int_distribution<int> dis(5, 20);
     rclcpp::Client<user_interface::srv::AddAndOdd>::SharedPtr _client;
     std::shared_ptr<user_interface::srv::AddAndOdd::Request> _request;
     rclcpp::TimerBase::SharedPtr _send_timer;
     rclcpp::TimerBase::SharedPtr _update_timer;
+    std::random_device rd;
     bool _bool;
     void send_request()
     {
-        // _request <- data
-        // _request->inta = dis(gen);
-        // _request->intb = dis(gen);
-        _request->inta = 14;
-        _request->intb = 9;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<int> dis(5, 20);
+        _request->inta = dis(gen);
+        _request->intb = dis(gen);
 
         auto future = _client->async_send_request(_request,
                                                   std::bind(&ServiceClient::done_callback,
