@@ -25,8 +25,6 @@ public:
     }
 
 private:
-    typedef std::shared_ptr<std_srvs::srv::SetBool::Request> BRequest;
-    typedef std::shared_ptr<std_srvs::srv::SetBool::Response> BResponse;
     rclcpp::Client<std_srvs::srv::SetBool>::SharedPtr _client;
     std::shared_ptr<std_srvs::srv::SetBool::Request> _request;
     rclcpp::TimerBase::SharedPtr _send_timer;
