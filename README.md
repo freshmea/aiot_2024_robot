@@ -218,9 +218,8 @@ aiot robot
 - 6교시
   - ROS2 rqt 실습
     - rqt_graph, rqt_plot, rqt_image_view, rqt_console, rqt_logger_level
-    - 
 - 7교시
-  - pkg 만들기 
+  - pkg 만들기
     - ro2 pkg create
   - node 작성 python
 
@@ -239,4 +238,41 @@ aiot robot
   - easyinstall deprecated 에러
     - pip3 install setuptools==58.2.0
 - 3교시
-  - 
+  - publisher 만들기
+  - class 구조화 하기
+- 4교시
+  - subscription 코드 만들기
+- 5교시
+  - QoS 코드 설정
+  - 시간 인터페이스 Header 사용하기
+- 6교시
+  - [과제]homework 패키지 만들기
+
+---
+
+## 2024_10_21
+
+---
+
+- 1교시
+  - ros2 cpp 패키지 만들기 simple_ros_cpp
+- 2교시
+  - CMakeLists.txt 작성
+  - .vscode/c_cpp_properties.json 수정
+  - ros2 cpp publisher 만들기
+- 3교시
+  - cpp publisher 콜백함수를 lambda 함수로 만들기
+  - class 구조화 하기.
+- 4교시
+  - cpp 분할 컴파일 및 include 추가
+  - launch 파일 작성 및 적용(python cpp)
+  - cout 대신 RCLCPP_INFO 사용하기
+  - print 대신 self.get_logger().info 사용하기
+- 5교시
+  - ros2 cpp subscriber 만들기
+  - 외부 라이브러리를 ros2 에서 사용하기 (opencv 글자 표시)
+- 6교시
+  - moveTurtle.py 기본 코드 작성
+  - 사각형 그리기 코드
+- 7교시
+  - [과제]cpp 로 같은 코드 작성
