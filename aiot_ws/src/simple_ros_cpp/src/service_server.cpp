@@ -21,7 +21,8 @@ private:
     rclcpp::Service<std_srvs::srv::SetBool>::SharedPtr _server;
     void service_callback(const BRequest request, BResponse response)
     {
-        RCLCPP_INFO(get_logger(), "incoming service");
+        std::string str = request->data ? std::string("true") : std::string("false");
+        RCLCPP_INFO(get_logger(), str.c_str());
         response->message = "sucess";
         response->success = true;
     }
