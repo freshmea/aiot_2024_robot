@@ -13,6 +13,7 @@ find_package(OpenCV REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(std_srvs REQUIRED)
+find_package(user_interface REQUIRED)
 
 # include directories
 include_directories(include)
@@ -43,6 +44,9 @@ ament_target_dependencies(service_server rclcpp std_srvs)
 add_executable(service_client src/service_client.cpp)
 ament_target_dependencies(service_client rclcpp std_srvs)
 
+add_executable(service_client_int src/service_client_int.cpp)
+ament_target_dependencies(service_client_int rclcpp user_interface)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -52,6 +56,7 @@ install(TARGETS
   move_turtle
   service_server
   service_client
+  service_client_int
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
