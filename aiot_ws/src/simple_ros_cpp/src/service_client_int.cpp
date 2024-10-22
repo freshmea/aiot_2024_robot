@@ -33,8 +33,8 @@ private:
     bool _bool;
     void send_request()
     {
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<int> dis(5, 20);
+        static std::mt19937 gen(rd());
+        static std::uniform_int_distribution<int> dis(5, 20);
         _request->inta = dis(gen);
         _request->intb = dis(gen);
 
