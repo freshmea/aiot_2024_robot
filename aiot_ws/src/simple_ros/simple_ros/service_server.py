@@ -10,7 +10,7 @@ class Service_server(Node):
         self.bool = bool()
 
     def setBool_callback(self, request : SetBool.Request, response : SetBool.Response):
-        self.get_logger().info(request.data)
+        self.get_logger().info(f"{request.data}")
         if request.data != bool():
             self.bool = not self.bool
             response.success = True
