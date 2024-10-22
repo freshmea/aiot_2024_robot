@@ -12,7 +12,7 @@ public:
     ServiceServer()
         : Node("service_server")
     {
-        _server = create_service<std_srvs::srv::SetBool>("setBool", ServiceServer::service_callback);
+        _server = create_service<std_srvs::srv::SetBool>("setBool", std::bind(&ServiceServer::service_callback, this, std::placeholders::_1, std::placeholders::_2));
     }
 
 private:

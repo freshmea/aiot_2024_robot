@@ -47,7 +47,7 @@ install(TARGETS
   hello_sub
   hello_sub_opencv
   move_turtle
-  serivce_server
+  service_server
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
