@@ -12,13 +12,13 @@ public:
     ServiceServer()
         : Node("service_server")
     {
-        _server = create_service<user_interface::srv::AddAndOdd>("setBool", std::bind(&ServiceServer::service_callback, this, std::placeholders::_1, std::placeholders::_2));
+        _server = create_service<std_srvs::srv::SetBool>("setBool", std::bind(&ServiceServer::service_callback, this, std::placeholders::_1, std::placeholders::_2));
     }
 
 private:
-    typedef std::shared_ptr<user_interface::srv::AddAndOdd::Request> BRequest;
-    typedef std::shared_ptr<user_interface::srv::AddAndOdd::Response> BResponse;
-    rclcpp::Service<user_interface::srv::AddAndOdd>::SharedPtr _server;
+    typedef std::shared_ptr<std_srvs::srv::SetBool::Request> BRequest;
+    typedef std::shared_ptr<std_srvs::srv::SetBool::Response> BResponse;
+    rclcpp::Service<std_srvs::srv::SetBool>::SharedPtr _server;
     bool _bool;
     void service_callback(const BRequest request, BResponse response)
     {

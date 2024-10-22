@@ -1,8 +1,8 @@
-#include "random.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "user_interface/srv/add_and_odd.hpp"
 #include <chrono>
 #include <iostream>
+#include <random>
 
 using namespace std;
 using namespace std::chrono_literals;
@@ -25,6 +25,9 @@ public:
     }
 
 private:
+    // std::random_device rd;
+    // std::mt19937 gen(rd());
+    // std::uniform_int_distribution<int> dis(5, 20);
     rclcpp::Client<user_interface::srv::AddAndOdd>::SharedPtr _client;
     std::shared_ptr<user_interface::srv::AddAndOdd::Request> _request;
     rclcpp::TimerBase::SharedPtr _send_timer;
@@ -33,8 +36,10 @@ private:
     void send_request()
     {
         // _request <- data
-        _request->inta = 10;
-        _request->intb = 8;
+        // _request->inta = dis(gen);
+        // _request->intb = dis(gen);
+        _request->inta = 14;
+        _request->intb = 9;
 
         auto future = _client->async_send_request(_request,
                                                   std::bind(&ServiceClient::done_callback,
@@ -44,8 +49,8 @@ private:
     void done_callback(rclcpp::Client<user_interface::srv::AddAndOdd>::SharedFuture future)
     {
         auto response = future.get();
-        RCLCPP_INFO(get_logger(), "%f", response->stamp.sec);
-        RCLCPP_INFO(get_logger(), "%f", response->stamp.nanosec);
+        RCLCPP_INFO(get_logger(), "%d", response->stamp.sec);
+        RCLCPP_INFO(get_logger(), "%d", response->stamp.nanosec);
         RCLCPP_INFO(get_logger(), "%d", response->sum);
         RCLCPP_INFO(get_logger(), response->odd.c_str());
     }
