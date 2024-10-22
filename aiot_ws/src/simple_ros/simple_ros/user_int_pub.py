@@ -12,6 +12,7 @@ class User_int_pub(Node):
 
     def print_hello(self):
         msg = UserInt()
+        msg.stamp = self.get_clock().now().to_msg()
         msg.user_int = 5
         msg.user_int2 = 6
         msg.user_int3 = 7

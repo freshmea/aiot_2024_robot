@@ -10,7 +10,10 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME} "msg/UserInt.msg")
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/UserInt.msg"
+  DEPENDENCIES builtin_interfaces
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
