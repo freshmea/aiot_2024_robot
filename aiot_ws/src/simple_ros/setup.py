@@ -30,7 +30,8 @@ setup(
             "hello_pub = simple_ros.hello_pub:main",
             "time_pub = simple_ros.time_pub:main",
             "move_turtle = simple_ros.move_turtle:main",
-            "move_turtle_time = simple_ros.move_turtle_time:main"
+            "move_turtle_time = simple_ros.move_turtle_time:main",
+            "service_server = simple_ros.service_server:main"
             ],
     },
 )
