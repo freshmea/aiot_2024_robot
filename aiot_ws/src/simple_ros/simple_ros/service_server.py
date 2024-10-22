@@ -1,3 +1,5 @@
+import time
+
 import rclpy
 from rclpy.node import Node
 from std_srvs.srv import SetBool
@@ -19,6 +21,7 @@ class Service_server(Node):
         else:
             response.success = False
             response.message = f"{self.bool} setting fail"
+        time.sleep(5)
         return response
 
 def main():
