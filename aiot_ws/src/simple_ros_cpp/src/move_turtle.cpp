@@ -26,22 +26,37 @@ public:
             qos_profile,
             std::bind(&MoveTurtle::color_sub_callback, this, std::placeholders::_1));
         _pub = create_publisher<geometry_msgs::msg::Twist>("turtle1/cmd_vel", qos_profile);
+        _twist_pub_timer = create_wall_timer(100ms, std::bind(&MoveTurtle::twist_pub, this));
+        // _update_timer = create_wall_timer(std::chrono::milliseconds(17),...)
+        _update_timer = create_wall_timer(17ms, std::bind(&MoveTurtle::update, this));
     }
 
 private:
     int _count;
     turtlesim::msg::Pose _pose;
     turtlesim::msg::Color _color;
+    geometry_msgs::msg::Twist _twist;
     rclcpp::Subscription<turtlesim::msg::Pose>::SharedPtr _pose_sub;
     rclcpp::Subscription<turtlesim::msg::Color>::SharedPtr _color_sub;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr _pub;
+    rclcpp::TimerBase::SharedPtr _twist_pub_timer;
+    rclcpp::TimerBase::SharedPtr _update_timer;
     void pose_sub_callback(const turtlesim::msg::Pose::SharedPtr msg)
     {
         _pose = *msg;
     }
-    void color_sub_callback(const turtlesim::msg::Pose::SharedPtr msg)
+    void color_sub_callback(const turtlesim::msg::Color::SharedPtr msg)
     {
         _color = *msg;
+    }
+    void twist_pub()
+    {
+        _pub->publish(_twist);
+    }
+    void update()
+    {
+        _twist.linear.x += 0.006;
+        _twist.angular.z = 1.0;
     }
 };
 
