@@ -3,30 +3,33 @@ import time
 import rclpy
 from rclpy.action import ActionServer
 from rclpy.node import Node
+from user_interface.action import Fibonacci
 
 
-class Service_server(Node):
+class Action_server(Node):
     def __init__(self):
-        super().__init__("service_server")
-        self.create_service(SetBool, "setBool", self.setBool_callback)
-        self.bool = bool()
+        super().__init__("action_server")
+        self.action_server = ActionServer(self, Fibonacci, "fibonacci", self.execute_callback)
 
-    def setBool_callback(self, request : SetBool.Request, response : SetBool.Response):
-        self.get_logger().info(f"{request.data}")
-        self.get_logger().info(f"{self.bool}")
-        if request.data != self.bool:
-            self.bool = not self.bool
-            response.success = True
-            response.message = f"{self.bool} setting sucess"
-        else:
-            response.success = False
-            response.message = f"{self.bool} setting fail"
-        time.sleep(5)
-        return response
+    def execute_callback(self, goal_handle):
+        self.get_logger().info(goal_handle.request.step)
+        feedback_msg = Fibonacci.Feedback()
+        feedback_msg.temp_seq = [0, 1]
+        result = Fibonacci.Result()
+        
+        for i in range(1, goal_handle.request.step):
+            feedback_msg.temp_seq.append(
+                feedback_msg.temp_seq[i]+feedback_msg.temp_seq[i-1])
+            goal_handle.publish_feedback(feedback_msg)
+        time.sleep(1)
+        
+        goal_handle.succeed()
+        result.seq = feedback_msg.temp_seq
+        return result
 
 def main():
     rclpy.init()
-    node = Service_server()
+    node = Action_server()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:

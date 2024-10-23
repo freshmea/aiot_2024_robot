@@ -1,5 +1,5 @@
-int32 step
+int64 step
 ---
-int32[] seq
+int64[] seq
 ---
-int32[] temp_seq
+int64[] temp_seq
