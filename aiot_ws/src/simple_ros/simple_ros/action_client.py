@@ -2,7 +2,7 @@ import sys
 
 import rclpy
 from action_msgs.msg import GoalStatus
-from rclpy.action import ActionClient, GoalResponse
+from rclpy.action import ActionClient
 from rclpy.action.client import ClientGoalHandle
 from rclpy.node import Node
 from rclpy.task import Future
@@ -26,7 +26,7 @@ class Action_client(Node):
         self.future.add_done_callback(self.goal_response_callback)
 
     def goal_response_callback(self, future : Future):
-        goal_handle : ClientGoalHandle = future.result()
+        goal_handle : ClientGoalHandle = future.result() # type: ignore
         if not goal_handle.accepted:
             self.get_logger().info("Goal rejected!!!")
             return
@@ -36,7 +36,7 @@ class Action_client(Node):
         self.get_logger().info("end response callback!!!")
 
     def get_result_callback(self, future : Future):
-        result : Fibonacci_GetResult_Response = future.result()
+        result : Fibonacci_GetResult_Response = future.result() # type: ignore
         if result.status == GoalStatus.STATUS_SUCCEEDED:
             self.get_logger().info(f"result: {result.result.seq}")
         if result.status == GoalStatus.STATUS_ABORTED:
