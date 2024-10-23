@@ -7,7 +7,7 @@ from rclpy.parameter import Parameter
 class Simple_parameter(Node):
     def __init__(self):
         super().__init__("hello_pub")
-        mpara = self.declare_parameter('my_para', '내가 만든 파라미터')
+        self.declare_parameter('my_para', '내가 만든 파라미터')
         self.add_on_set_parameters_callback(self.parameter_callback)
         self.my_para = self.get_parameter('my_para').get_parameter_value().string_value
         self.create_timer(1, self.print_parameter)
