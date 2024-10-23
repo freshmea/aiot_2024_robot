@@ -18,7 +18,6 @@ class Simple_parameter(Node):
     def parameter_callback(self, parameters : list[Parameter]):
         for parameter in parameters:
             if parameter.name == 'my_para':
-                # self.my_para = self.get_parameter('my_para').get_parameter_value().string_value
                 # self.my_para = parameter.get_parameter_value().string_value
                 self.my_para = parameter.value
         return SetParametersResult(successful=True)
