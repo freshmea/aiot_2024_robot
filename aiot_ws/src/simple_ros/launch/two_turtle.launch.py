@@ -21,7 +21,7 @@ def generate_launch_description():
              executable="turtlesim_node",
              parameters=[param_dir]
              ),
-        ExecuteProcess(cmd=[['ros2 service call ','turtle1', '/spawn ', 'turtlesim/srv/Spawn ', '"{x: 2, y: 2, theta: 0.2}"' ]]),
+        ExecuteProcess(cmd=[['ros2 service call ', '/spawn ', 'turtlesim/srv/Spawn ', '"{x: 2, y: 2, theta: 0.2}"' ]], shell=True),
         Node(package="simple_ros",
              executable="move_turtle",
              parameters=[param_dir]
