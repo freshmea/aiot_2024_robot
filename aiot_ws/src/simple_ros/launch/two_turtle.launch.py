@@ -32,6 +32,4 @@ def generate_launch_description():
              parameters=[param_dir],
              namespace="turtle2",
              ),
-        
-
         ])
