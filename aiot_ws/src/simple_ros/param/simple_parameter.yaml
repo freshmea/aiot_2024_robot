@@ -1,0 +1,8 @@
+/simple_parameter:
+  ros__parameters:
+    my_para: "내가 만든 파라미터"
+    node_name: simple_parameter
+    number1: 123
+    number2: 3.141592
+    use_sim_time: false
+
