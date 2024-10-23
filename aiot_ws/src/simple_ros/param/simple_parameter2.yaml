@@ -1,0 +1,8 @@
+/simple_parameter:
+  ros__parameters:
+    my_para: "2 번 런치에서 정한 파라미터"
+    node_name: simple_parameter
+    number1: 789
+    number2: 2.123
+    use_sim_time: false
+
