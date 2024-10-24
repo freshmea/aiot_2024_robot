@@ -299,3 +299,20 @@ aiot robot
     - package.xml, CMakeLists.txt 수정
   - user_int_pub 노드 작성 (simple_ros 패키지)
 - 7교시
+
+---
+
+## 2024_10_23
+
+---
+
+- 1교시
+  - abc
+- 2교시
+- 3교시
+- 4교시
+- 5교시
+- 6교시
+- 7교시
+
+- 서로 다른 노드에서 파라미터 변경하기.
