@@ -46,10 +46,21 @@ private:
     }
     void execute(const std::shared_ptr<GoalHandleFibonacci> goal_handle)
     {
-        RCLCPP_INFO(get_logger(), "Executing goal");
+        rclcpp::Rate loop_rate(1);
         const auto goal = goal_handle->get_goal();
         RCLCPP_INFO(get_logger(), "Executing goal %ld", goal->step);
+        auto feedback = std::make_shared<Fibonacci::Feedback>();
+        feedback->temp_seq.push_back(0);
+        feedback->temp_seq.push_back(1);
         auto result = std::make_shared<Fibonacci::Result>();
+
+        for (int i = 1; (i < goal->step); i++)
+        {
+            feedback->temp_seq.push_back(feedback->temp_seq[i] + feedback->temp_seq[i - 1]);
+            goal_handle->publish_feedback(feedback);
+            loop_rate.sleep();
+        }
+        result->seq = feedback->temp_seq;
         goal_handle->succeed(result);
     }
 };
