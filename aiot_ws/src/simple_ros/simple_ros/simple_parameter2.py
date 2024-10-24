@@ -12,6 +12,7 @@ class Simple_parameter(Node):
             self.get_logger().info("server is not available!!")
         self.create_timer(1, self.print_parameter)
         self.count = 0
+        self.declare_parameter('number1', 0)
 
     def print_parameter(self):
         self.count += 1
@@ -25,7 +26,7 @@ class Simple_parameter(Node):
         req.parameters = [param]
         future = self.client.call_async(req)
         future.add_done_callback(self.done_callback)
-
+    
     def done_callback(self, future):
         response = future.result()
         self.get_logger().info(f"{response.results}")
