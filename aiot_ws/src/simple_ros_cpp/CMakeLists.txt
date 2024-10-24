@@ -55,6 +55,9 @@ ament_target_dependencies(simple_parameter rclcpp rcl_interfaces)
 add_executable(action_server src/action_server.cpp)
 ament_target_dependencies(action_server rclcpp user_interface rclcpp_action)
 
+add_executable(action_client src/action_client.cpp)
+ament_target_dependencies(action_client rclcpp user_interface rclcpp_action)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -67,6 +70,7 @@ install(TARGETS
   service_client_int
   simple_parameter
   action_server
+  action_client
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
