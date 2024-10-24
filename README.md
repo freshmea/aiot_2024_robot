@@ -307,12 +307,35 @@ aiot robot
 ---
 
 - 1교시
-  - abc
+  - 파라미터 적용 노드 작성
+- 2교시:
+  - 런치 파일 작성
+  - 런치 파일에서 파라미터 사용
+  - cli 에서 파라미터 파일(yaml) 적용
+  - namespace 적용
+- 4교시
+  - 런치 파일로 터틀심노드 사용
+- 5교시
+  - action interface  추가( user_interface )
+  - action server 작성(Fibonacci 코드)
+- 6교시
+  - action client 작성(Fibonacci 코드)
+- 7교시
+  - action client 작성(python type hint 추가)
+
+---
+
+## 2024_10_24
+
+---
+
+- 1교시
+  - simple_parameter2 노드에서 simple_parameter 노드 의 파라미터 변경하기 (service 코드)
 - 2교시
+  - 파라미터 추가 설명 : 런치에서 여러노드의 파라미터 관리
+  - action_server cpp 작성
 - 3교시
 - 4교시
 - 5교시
 - 6교시
 - 7교시
-
-- 서로 다른 노드에서 파라미터 변경하기.
