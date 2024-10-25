@@ -1,5 +1,9 @@
+import time
+
 import rclpy
+from rclpy.action import ActionServer
 from rclpy.node import Node
+from user_interface.action import ArithmeticChecker
 from user_interface.msg import ArithmeticArgument
 from user_interface.srv import ArithmeticOperator
 
@@ -23,6 +27,11 @@ class Calculator(Node):
             "arithmetic_operator",
             self.service_callback
             )
+        self.action_server = ActionServer(
+            self,
+            ArithmeticChecker,
+            'arithmetic_checker',
+            self.execute_callback)
 
     def sub_callback(self, msg: ArithmeticArgument):
         self.argument_a = msg.argument_a
@@ -45,6 +54,25 @@ class Calculator(Node):
         self.update_formula()
         response.arithmetic_result = self.argument_result
         return response
+
+    def execute_callback(self, goal_handle):
+        # tt = ArithmeticChecker.Goal()
+        self.get_logger().info(f"{goal_handle.request.goal_sum}")
+        feedback_msg = ArithmeticChecker.Feedback()
+        feedback_msg.formula = []
+        result = ArithmeticChecker.Result()
+        sum_temp = 0
+
+        while sum_temp < goal_handle.request.goal_sum:
+            feedback_msg.formula.append(self.argument_formula)
+            goal_handle.publish_feedback(feedback_msg)
+            sum_temp += self.argument_result
+            time.sleep(1)
+
+        goal_handle.succeed()
+        result.total_sum = sum_temp
+        result.all_formula = feedback_msg.formula
+        return result
 
     def update_formula(self):
         if self.argument_operator == '+':
