@@ -23,4 +23,7 @@ def generate_launch_description():
         Node(package="arith",
              executable="calculator",
              parameters=[param_dir]),
+        Node(package="arith",
+             executable="operator",
+             parameters=[param_dir]),
         ])
