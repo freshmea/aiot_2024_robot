@@ -23,7 +23,7 @@ class Operator(Node):
 
     def done_callback(self, future):
         result : ArithmeticOperator.Response = future.result()
-        self.get_logger().info(result.arithmetic_result)
+        self.get_logger().info(f"{result.arithmetic_result}")
 
 def main():
     rclpy.init()
