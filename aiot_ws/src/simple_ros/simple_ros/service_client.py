@@ -11,7 +11,7 @@ class Service_client(Node):
             self.get_logger().info("service not available")
         self.request = SetBool.Request()
         self.create_timer(0.1, self.update)
-        # self.create_timer(3, self.send_request)
+        # self.create_timer(3, self.send_reqarithmetic_resultuest)
         self.send_request()
 
     def send_request(self):

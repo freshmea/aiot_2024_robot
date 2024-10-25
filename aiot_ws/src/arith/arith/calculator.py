@@ -31,7 +31,7 @@ class Calculator(Node):
         self.get_logger().info(f"Argument_a : {self.argument_a}")
         self.get_logger().info(f"Argument_b : {self.argument_b}")
         self.update_formula()
-        
+
     def service_callback(self, request : ArithmeticOperator.Request, response: ArithmeticOperator.Response):
 
         if request.arithmetic_operator == ArithmeticOperator.Request.PLUS:

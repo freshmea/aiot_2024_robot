@@ -1,5 +1,4 @@
 import random
-import time
 
 import rclpy
 from rclpy.node import Node
@@ -21,9 +20,9 @@ class Operator(Node):
         request.arithmetic_operator = random.randint(1,4)
         self.future = self.client.call_async(request)
         self.future.add_done_callback(self.done_callback)
-    
-    def done_callback(self, future:Future):
-        result : ArithmeticOperator.Response= future.result() #type: ignore
+
+    def done_callback(self, future):
+        result : ArithmeticOperator.Response = future.result()
         self.get_logger().info(result.arithmetic_result)
 
 def main():
