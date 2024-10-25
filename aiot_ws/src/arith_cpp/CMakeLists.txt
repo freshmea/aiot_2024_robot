@@ -8,7 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(rclcpp_actoin REQUIRED)
+find_package(rclcpp_action REQUIRED)
 find_package(user_interface REQUIRED)
 
 include_directories(indluce)
@@ -23,7 +23,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME})
 
 # install directories
-install(DERECTORY
+install(DIRECTORY
   launch
   param
   DESTINATION share/${PROJECT_NAME})
