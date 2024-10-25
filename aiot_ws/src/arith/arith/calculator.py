@@ -57,7 +57,7 @@ class Calculator(Node):
             try:
                 self.argument_result = self.argument_a / self.argument_b
             except ZeroDivisionError:
-                self.argument_result = 0
+                self.argument_result = 0.0
         self.argument_formula = f"{self.argument_result} = {self.argument_a} {self.argument_operator} {self.argument_b}"
         self.get_logger().info(self.argument_formula)
 
