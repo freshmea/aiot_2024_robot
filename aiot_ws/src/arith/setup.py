@@ -27,7 +27,8 @@ setup(
         'console_scripts': [
             'argument = arith.argument:main',
             'calculator = arith.calculator:main',
-            'operator = arith.operator:main'
+            'operator = arith.operator:main',
+            'checker = arith.checker:main'
         ],
     },
 )
