@@ -17,7 +17,7 @@ class Operator(Node):
         self.client = self.create_client(ArithmeticOperator, "arithmetic_operator")
         while not self.client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info("service is not available!")
-        self.create_timer(self.service_time, self.send_request)
+        self.timer = self.create_timer(self.service_time, self.send_request)
 
     def send_request(self):
         request = ArithmeticOperator.Request()
@@ -32,7 +32,8 @@ class Operator(Node):
     def update_parameter(self, params: list[Parameter]):
         for param in params:
             if param.name == 'service_time':
-                self.service_time = param.value #type: ignore
+                self.service_time = param.get_parameter_value().integer_value
+                self.timer.timer_period_ns = self.service_time * 1_000_000_000
         return SetParametersResult(successful=True)
 
 def main():
