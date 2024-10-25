@@ -26,7 +26,8 @@ setup(
     entry_points={
         'console_scripts': [
             'argument = arith.argument:main',
-            'calculator = arith.calculator:main'
+            'calculator = arith.calculator:main',
+            'operator = arith.operator:main'
         ],
     },
 )
