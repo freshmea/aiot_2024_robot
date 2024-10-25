@@ -20,6 +20,7 @@ class Argument(Node):
 
     def pub(self):
         msg = ArithmeticArgument()
+        msg.stamp = self.get_clock().now().to_msg()
         msg.argument_a = float(random.randint(self.min, self.max))
         msg.argument_b = float(random.randint(self.min, self.max))
         self.get_logger().info(f"Argument_a : {msg.argument_a}")
@@ -34,8 +35,8 @@ class Argument(Node):
                 self.max = param.value #type: ignore
         return SetParametersResult(successful=True)
 
-def main():
-    rclpy.init()
+def main(args = None):
+    rclpy.init(args = args)
     node = Argument()
     try:
         rclpy.spin(node)
