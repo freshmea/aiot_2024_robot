@@ -2,7 +2,7 @@ import time
 
 import rclpy
 from rclpy.action import ActionServer
-from rclpy.callback_groups import MutuallyExclusiveCallbackGroup, ReentrantCallbackGroup
+from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.node import Node
 from user_interface.action import ArithmeticChecker
@@ -18,7 +18,7 @@ class Calculator(Node):
         self.argument_formula = ''
         self.argument_result = 0.0
         self.argument_operator = '+'
-        self.reentrant_group = MutuallyExclusiveCallbackGroup()
+        self.reentrant_group = ReentrantCallbackGroup()
 
         self.create_subscription(
             ArithmeticArgument,
