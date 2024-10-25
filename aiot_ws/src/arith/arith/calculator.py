@@ -1,10 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from user_interface.msg import ArithmeticArgument
-
-from aiot_ws.build.user_interface.ament_cmake_python.user_interface.user_interface.srv._arithmetic_operator import (
-    ArithmeticOperator,
-)
+from user_interface.srv import ArithmeticOperator
 
 
 class Calculator(Node):
@@ -22,7 +19,7 @@ class Calculator(Node):
             self.sub_callback, 10
             )
         self.service_server = self.create_service(
-            ArithmeticArgument,
+            ArithmeticOperator,
             "arithmetic_operator",
             self.service_callback
             )
@@ -62,6 +59,7 @@ class Calculator(Node):
             except ZeroDivisionError:
                 self.argument_result = 0
         self.argument_formula = f"{self.argument_result} = {self.argument_a} {self.argument_operator} {self.argument_b}"
+        self.get_logger().info(self.argument_formula)
 
 def main():
     rclpy.init()
