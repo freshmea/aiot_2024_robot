@@ -2,6 +2,8 @@ import time
 
 import rclpy
 from rclpy.action import ActionServer
+from rclpy.callback_groups import MutuallyExclusiveCallbackGroup, ReentrantCallbackGroup
+from rclpy.executors import MultiThreadedExecutor
 from rclpy.node import Node
 from user_interface.action import ArithmeticChecker
 from user_interface.msg import ArithmeticArgument
@@ -16,6 +18,7 @@ class Calculator(Node):
         self.argument_formula = ''
         self.argument_result = 0.0
         self.argument_operator = '+'
+        self.reentrant_group = MutuallyExclusiveCallbackGroup()
 
         self.create_subscription(
             ArithmeticArgument,
@@ -25,13 +28,15 @@ class Calculator(Node):
         self.service_server = self.create_service(
             ArithmeticOperator,
             "arithmetic_operator",
-            self.service_callback
+            self.service_callback,
+            callback_group=self.reentrant_group
             )
         self.action_server = ActionServer(
             self,
             ArithmeticChecker,
             'arithmetic_checker',
-            self.execute_callback)
+            self.execute_callback,
+            callback_group=self.reentrant_group)
 
     def sub_callback(self, msg: ArithmeticArgument):
         self.argument_a = msg.argument_a
@@ -91,11 +96,14 @@ class Calculator(Node):
 
 def main():
     rclpy.init()
-    node = Calculator()
     try:
-        rclpy.spin(node)
+        node = Calculator()
+        executor = MultiThreadedExecutor(num_threads=4)
+        executor.add_node(node)
+        executor.spin()
     except KeyboardInterrupt:
         node.destroy_node()
+        executor.shutdown()
 
 if __name__ == "__main__":
     main()
