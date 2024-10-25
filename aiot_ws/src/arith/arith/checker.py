@@ -1,5 +1,4 @@
 import argparse
-import sys
 
 import rclpy
 from action_msgs.msg import GoalStatus
