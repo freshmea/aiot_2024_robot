@@ -17,9 +17,13 @@ include_directories(indluce)
 add_executable(argument src/arithmetic/argument.cpp)
 ament_target_dependencies(argument rclcpp user_interface)
 
+add_executable(calculator src/calculator/main.cpp src/calculator/calculator.cpp)
+ament_target_dependencies(calculator rclcpp user_interface)
+
 # install
 install(TARGETS
   argument
+  calculator
   DESTINATION lib/${PROJECT_NAME})
 
 # install directories
