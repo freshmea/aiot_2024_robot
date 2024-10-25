@@ -1,4 +1,5 @@
 #ifndef __HELLO_PUB_CLASS_HPP__
+#define __HELLO_PUB_CLASS_HPP__
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
