@@ -13,8 +13,8 @@ class ListVerb(VerbExtension):
         parser.add_argument('-a', '--all', action ="store_true", help='display')
 
     def main(self, *, args):
-        message = None
-        if args.ros_env:
-            message = get_ros_env_list()
+        # message = None
+        # if args.all:
+        message = get_ros_env_list()
         print(message)
 
