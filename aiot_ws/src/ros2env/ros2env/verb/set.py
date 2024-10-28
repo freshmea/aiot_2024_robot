@@ -11,5 +11,7 @@ class SetVerb(VerbExtension):
     def main(self, *, args):
         if args.env_name or args.value:
             print('test')
+            print(args.env_name)
+            print(args.value)
             os.environ[args.env_name] = args.value
             print(os.getenv(args.env_name))
