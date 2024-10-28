@@ -25,7 +25,17 @@ class Logger_usage(Node):
         #function
         if self.debug_function_to_evaluate():
             self.get_logger().debug("Count divides into 12")
+
+        #expression
+        if not (self.count % 2):
+            self.get_logger().debug("Count is even !!")
+
         self.count += 1
+
+        if self.count > 15:
+            self.get_logger().warn("Resetting count to 0")
+            self.count = 0
+
 
     def debug_function_to_evaluate(self):
         return is_divide_of_twelve(self.count, self.get_logger())
@@ -34,7 +44,7 @@ def is_divide_of_twelve(val, logger):
     if val == 0:
         logger.error("Module divisor cannot be 0")
         return False
-    return (12 % val)  == 0
+    return (12 % val) == 0
 
 def main():
     rclpy.init()
