@@ -23,8 +23,8 @@ class Argument(Node):
         msg.stamp = self.get_clock().now().to_msg()
         msg.argument_a = float(random.randint(self.min, self.max))
         msg.argument_b = float(random.randint(self.min, self.max))
-        self.get_logger().info(f"Argument_a : {msg.argument_a}")
-        self.get_logger().info(f"Argument_b : {msg.argument_b}")
+        self.get_logger().warn(f"Argument_a : {msg.argument_a}")
+        self.get_logger().warn(f"Argument_b : {msg.argument_b}")
         self.pub_o.publish(msg)
 
     def update_parameter(self, params: list[Parameter]):
