@@ -122,11 +122,11 @@ private:
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr pub_;
     std::thread thread_;
     std::atomic<bool> canceled_;
-    int device_;
 
     /// whether or not to add a watermark to the image showing process id and
     /// pointer location
     bool watermark_;
+    int device_;
 
     cv::VideoCapture cap_;
     cv::Mat frame_;
