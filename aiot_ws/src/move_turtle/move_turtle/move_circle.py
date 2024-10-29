@@ -1,9 +1,12 @@
+import math
+
 import rclpy
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from sensor_msgs.msg import BatteryState, Imu, LaserScan
+from tf_transformations import euler_from_quaternion
 
 MAX_VEL = 0.21
 MAX_ANGLE = 2.8 # radian/sec
@@ -25,6 +28,7 @@ class Move_turtle(Node):
         self.odom = Odometry()
         self.imu = Imu()
         self.battery = BatteryState()
+        self.theta = 0.0 # raian
         self.phase = 0
 
     def twist_pub(self):
@@ -37,7 +41,8 @@ class Move_turtle(Node):
 
     def odom_callback(self, msg: Odometry):
         self.odom = msg
-        self.get_logger().info(f"odom : {msg.pose.pose.position.x}")
+        _, _, self.theta = euler_from_quaternion(msg.pose.pose.orientation)
+        self.get_logger().info(f"odom yaw(theta): {self.theta}")
 
     def imu_callback(self, msg: Imu):
         self.imu = msg
@@ -51,8 +56,52 @@ class Move_turtle(Node):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
         # self.twist.linear.x += 0.001
         # self.twist.angular.z = 1.0
-        self.twist.linear.x = 0.05
-        self.twist.angular.z = 1.0
+        if self.phase == 0:
+            if self.odom.pose.pose.position.x < 0.3 and -0.1 < self.theta < 0.1:
+                self.twist.linear.x = 0.1  # Move forward
+            elif self.odom.pose.pose.position.x < 0.3 and self.theta < -0.1:
+                self.twist.angular.z = 0.3  # Adjust rotation
+            elif self.odom.pose.pose.position.x < 0.3 and self.theta > 0.1:
+                self.twist.angular.z = -0.3  # Adjust rotation
+            elif self.theta < math.pi / 2:
+                self.twist.angular.z = 0.3  # Turn 90 degrees
+            else:
+                self.phase += 1
+        if self.phase == 1:
+            if self.odom.pose.pose.position.y < 0.3 and 1.47 < self.theta < 1.67:
+                self.twist.linear.x = 0.1
+            elif self.odom.pose.pose.position.y < 0.3 and self.theta < 1.47:
+                self.twist.angular.z = 0.3
+            elif self.odom.pose.pose.position.y < 0.3 and self.theta > 1.67:
+                self.twist.angular.z = -0.3
+            elif 0 < self.theta < math.pi:
+                self.twist.angular.z = 0.3
+            else:
+                self.theta += 1
+        if self.phase == 2:
+            if self.odom.pose.pose.position.x > 0 and self.theta > 3.04:
+                self.twist.linear.x = 0.1
+            elif self.odom.pose.pose.position.x > 0 and self.theta < -3.04:
+                self.twist.linear.x = 0.1
+            elif self.odom.pose.pose.position.x > 0 and self.theta < 3.04:
+                self.twist.angular.z = 0.3
+            elif self.odom.pose.pose.position.x > 0 and self.theta > -3.04:
+                self.twist.angular.z = -0.3
+            elif self.theta < -1.57:
+                self.twist.angular.z = 0.3
+            else:
+                self.phase += 1
+        if self.phase == 3:
+            if self.odom.pose.pose.position.y > 0 and -1.67 < self.theta < -1.47:
+                self.twist.linear.x = 0.1
+            elif self.odom.pose.pose.position.y > 0 and self.theta < -1.67:
+                self.twist.angular.z = 0.3
+            elif self.odom.pose.pose.position.y > 0 and self.theta > -1.47:
+                self.twist.angular.z = -0.3
+            elif self.theta < 0:
+                self.twist.angular.z = 0.3
+            else:
+                self.phase = 0 
 
     def restrain(self):
         self.twist.linear.x = min([self.twist.linear.x , MAX_VEL])
