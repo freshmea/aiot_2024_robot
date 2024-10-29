@@ -29,6 +29,7 @@
 
 /// Node which captures images from a camera using OpenCV and publishes them.
 /// Images are annotated with this process's id as well as the message's ptr.
+using namespace std::chrono_literals;
 class CameraNode final : public rclcpp::Node
 {
 public:
@@ -50,6 +51,7 @@ public:
         {
             cv::String folder = "/home/aa/aiot_2024_robot/OpenCV/cppTest/data/";
             cap_.open(folder + "vtest.avi");
+            RCLCPP_INFO(get_logger(), "open video");
         }
         else
         {
@@ -109,6 +111,7 @@ public:
             msg->step = static_cast<sensor_msgs::msg::Image::_step_type>(frame_.step);
             msg->data.assign(frame_.datastart, frame_.dataend);
             pub_->publish(std::move(msg)); // Publish.
+            rclcpp::sleep_for(100ms);
         }
     }
 
