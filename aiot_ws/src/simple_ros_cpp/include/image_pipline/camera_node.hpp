@@ -46,7 +46,15 @@ public:
           canceled_(false), watermark_(watermark)
     {
         // Initialize OpenCV
-        cap_.open(device);
+        if (device == 99)
+        {
+            cv::String folder = "/home/aa/aiot_2024_robot/OpenCV/cppTest/data/";
+            cap_.open(folder + "vtest.avi");
+        }
+        else
+        {
+            cap_.open(device);
+        }
         cap_.set(cv::CAP_PROP_FRAME_WIDTH, static_cast<double>(width));
         cap_.set(cv::CAP_PROP_FRAME_HEIGHT, static_cast<double>(height));
         if (!cap_.isOpened())

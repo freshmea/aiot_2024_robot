@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     std::shared_ptr<CameraNode> camera_node = nullptr;
     try
     {
-        camera_node = std::make_shared<CameraNode>("image");
+        camera_node = std::make_shared<CameraNode>("image", "camera_node", true, 99);
     }
     catch (const std::exception &e)
     {
