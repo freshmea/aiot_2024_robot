@@ -44,10 +44,10 @@ public:
         const std::string &output, const std::string &node_name = "camera_node",
         bool watermark = true, int device = 0, int width = 320, int height = 240)
         : Node(node_name, rclcpp::NodeOptions().use_intra_process_comms(true)),
-          canceled_(false), watermark_(watermark)
+          canceled_(false), watermark_(watermark), device_(device)
     {
         // Initialize OpenCV
-        if (device == 99)
+        if (device_ == 99)
         {
             cv::String folder = "/home/aa/aiot_2024_robot/OpenCV/cppTest/data/";
             cap_.open(folder + "vtest.avi");
@@ -111,7 +111,10 @@ public:
             msg->step = static_cast<sensor_msgs::msg::Image::_step_type>(frame_.step);
             msg->data.assign(frame_.datastart, frame_.dataend);
             pub_->publish(std::move(msg)); // Publish.
-            rclcpp::sleep_for(100ms);
+            if (device_ == 99)
+            {
+                rclcpp::sleep_for(100ms);
+            }
         }
     }
 
@@ -119,6 +122,7 @@ private:
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr pub_;
     std::thread thread_;
     std::atomic<bool> canceled_;
+    int device_;
 
     /// whether or not to add a watermark to the image showing process id and
     /// pointer location
