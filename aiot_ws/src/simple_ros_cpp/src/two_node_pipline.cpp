@@ -24,9 +24,9 @@ public:
             {
                 return;
             }
-            auto msg = std_msgs::msg::Int32();
             static int32_t count = 0;
-            msg.data = count++;
+            std_msgs::msg::Int32::UniquePtr msg(new std_msgs::msg::Int32());
+            msg->data = count++;
             printf("Pub msg : %d address : 0x%" PRIXPTR "\n", msg->data, reinterpret_cast<std::uintptr_t>(msg.get()));
             pub_ptr->publish(std::move(msg));
         };
