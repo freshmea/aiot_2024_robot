@@ -335,14 +335,21 @@ aiot robot
   - 파라미터 추가 설명 : 런치에서 여러노드의 파라미터 관리
   - action_server python 작성 (fibonacci)
 - 3교시
-  - 인터페이스 작성 fibonacci.action
-  - action_client python 작성
-  - 런치 파일 작성
+  - cpp 파라미터 노드 작성
+  - turtlesim 을 이용한 파라미터 노드 작성
+  - 런치에서 파라미터 파일 적용하기
+  - 코드, 런치, 실행문에서 파라미터 적용의 순서
 - 4교시
-  - 
+  - namespace 설명
+  - namespace 를 적용해서 turtlesim 노드 제어(2개의 터틀 제어)
+  - 인터페이스 작성 fibonacci.action
 - 5교시
+  - 런치 파일 작성
+  - action_client python 작성
 - 6교시
+  - cpp 런치 파일 작성 (python action_server, cpp action_client)
 - 7교시
+  - action_client cpp 작성 (fibonacci)
 
 ---
 
@@ -400,3 +407,25 @@ aiot robot
     - 터틀봇3 wifi 설정, ros2 domain 설정
 - 7교시
   - 터틀봇3 제어 체크[실습]
+
+---
+
+## 2024_10_29
+
+---
+
+- 1교시
+  - IPC 설명
+- 6교시
+  - cpp 노드 작성 two node pipeline.cpp
+- 2교시
+  - cpp 노드 작성 cyclic pipeline.cpp
+- 3교시
+  - cpp 노드 작성 image pipeline.cpp - 동영상 파일로 작동할 수 있게 수정
+- 4교시
+  - QOS 설정 ( qos_profile, history, depth, reliability, durability) 복습
+  - deadline 예제 코드 deadline.py
+- 5교시
+  - deadline 예제 코드
+- 6교시
+- 7교시
