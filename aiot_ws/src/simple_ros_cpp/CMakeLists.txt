@@ -64,6 +64,9 @@ ament_target_dependencies(logging_example rclcpp std_msgs)
 add_executable(two_node_pipline src/two_node_pipline.cpp)
 ament_target_dependencies(two_node_pipline rclcpp std_msgs)
 
+add_executable(cyclic_pipline src/cyclic_pipline.cpp)
+ament_target_dependencies(cyclic_pipline rclcpp std_msgs)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -79,6 +82,7 @@ install(TARGETS
   action_client
   logging_example
   two_node_pipline
+  cyclic_pipline
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
