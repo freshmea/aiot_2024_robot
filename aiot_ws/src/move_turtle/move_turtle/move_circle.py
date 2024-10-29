@@ -66,6 +66,8 @@ def main():
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
+        for _ in range(10):
+            node.pub.publish(Twist())
         node.destroy_node()
 
 if __name__ == "__main__":
