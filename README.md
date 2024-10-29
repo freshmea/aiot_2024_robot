@@ -333,9 +333,13 @@ aiot robot
   - simple_parameter2 노드에서 simple_parameter 노드 의 파라미터 변경하기 (service 코드)
 - 2교시
   - 파라미터 추가 설명 : 런치에서 여러노드의 파라미터 관리
-  - action_server cpp 작성
+  - action_server python 작성 (fibonacci)
 - 3교시
+  - 인터페이스 작성 fibonacci.action
+  - action_client python 작성
+  - 런치 파일 작성
 - 4교시
+  - 
 - 5교시
 - 6교시
 - 7교시
@@ -348,12 +352,25 @@ aiot robot
 
 - arithmetic 패키지 작성
 - 1교시
+  - 패키지 생성 arith
+  - python 노드 작성 argument
+  - python 노드 작성 calculator
 - 2교시
+  - calculator 노드 에 서비스 서버 추가
+  - operator 노드 작성 ( 서비스 클라이언트)
 - 3교시
+  - calculator 노드 에 액션 서버 추가
+  - checker 노드 작성 ( 액션 클라이언트)
 - 4교시
+  - calculator 노드에 멀티쓰레드 설정 추가
+  - 런치 작성
 - 5교시
+  - cpp 패키지 생성 arith_cpp
+  - cpp 노드 작성 argument
 - 6교시
+  - cpp 노드 작성 calculator
 - 7교시
+  - 런치 파일 작성
 
 ---
 

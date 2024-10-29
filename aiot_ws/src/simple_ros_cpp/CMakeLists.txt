@@ -61,6 +61,9 @@ ament_target_dependencies(action_client rclcpp user_interface rclcpp_action)
 add_executable(logging_example src/logging_example.cpp)
 ament_target_dependencies(logging_example rclcpp std_msgs)
 
+add_executable(two_node_pipline src/two_node_pipline.cpp)
+ament_target_dependencies(two_node_pipline rclcpp std_msgs)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -75,6 +78,7 @@ install(TARGETS
   action_server
   action_client
   logging_example
+  two_node_pipline
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
