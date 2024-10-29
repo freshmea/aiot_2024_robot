@@ -33,19 +33,19 @@ class Move_turtle(Node):
 
     def laser_callback(self, msg: LaserScan):
         self.laserscan = msg
-        self.get_logger().info(f"{msg.ranges[0]}")
+        self.get_logger().info(f"laserscan : {msg.ranges[0]}")
 
     def odom_callback(self, msg: Odometry):
         self.odom = msg
-        self.get_logger().info(f"{msg.pose.pose.position.x}")
+        self.get_logger().info(f"odom : {msg.pose.pose.position.x}")
 
     def imu_callback(self, msg: Imu):
         self.imu = msg
-        self.get_logger().info(f"{msg.orientation.x}")
+        self.get_logger().info(f"IMU : {msg.orientation.x}")
 
     def battery_callback(self, msg: BatteryState):
         self.battery = msg
-        self.get_logger().info(f"{msg.percentage}")
+        self.get_logger().info(f"battery : {msg.percentage}")
 
     def update(self):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
