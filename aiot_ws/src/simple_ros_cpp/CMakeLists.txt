@@ -9,7 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(OpenCV REQUIRED)
+find_package(OpenCV REQUIRED COMPONENTS core highgui imgproc videoio)
 find_package(geometry_msgs REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(std_srvs REQUIRED)
@@ -67,6 +67,15 @@ ament_target_dependencies(two_node_pipline rclcpp std_msgs)
 add_executable(cyclic_pipline src/cyclic_pipline.cpp)
 ament_target_dependencies(cyclic_pipline rclcpp std_msgs)
 
+add_executable(image_pipeline_all_in_one
+  src/image_pipeline_all_in_one.cpp)
+target_link_libraries(image_pipeline_all_in_one
+  rclcpp::rclcpp
+  ${builtin_interfaces_TARGETS}
+  ${sensor_msgs_TARGETS}
+  opencv_core
+  opencv_highgui)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -83,6 +92,7 @@ install(TARGETS
   logging_example
   two_node_pipline
   cyclic_pipline
+  image_pipeline_all_in_one
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
