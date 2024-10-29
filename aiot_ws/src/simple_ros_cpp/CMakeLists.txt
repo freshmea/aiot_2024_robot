@@ -16,6 +16,7 @@ find_package(std_srvs REQUIRED)
 find_package(user_interface REQUIRED)
 find_package(rcl_interfaces REQUIRED)
 find_package(rclcpp_action REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 # include directories
 include_directories(include)
