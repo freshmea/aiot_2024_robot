@@ -34,10 +34,6 @@ def main(args=None):
     talker = Talker(topic, qos_profile, event_callbacks=None, publish_count=parsed_args.publish_count)
     subscribe_timer = listener.create_timer(parsed_args.subscribe_after/1000.0, lambda: listener.start_listening())
 
-    publish_for_seconds = parsed_args.publish_for / 1000.0
-    pause_for_seconds = parsed_args.pause_for / 1000.0
-    pause_timer = talker.create_timer(publish_for_seconds, lambda: talker.pause_for(pause_for_seconds))
-
     executor = SingleThreadedExecutor()
     executor.add_node(listener)
     executor.add_node(talker)
