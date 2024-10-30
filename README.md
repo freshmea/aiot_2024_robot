@@ -452,15 +452,20 @@ export SVGA_VGPU10=0
 - 2교시
   - liveliness QoS 설정 노드 작성
 - 3교시
-  - 
+  - component 원리, shared object 설명
+  - component talker 노드 작성
 - 4교시
-  - QOS 설정 ( qos_profile, history, depth, reliability, durability) 복습
-  - deadline 예제 코드 deadline.py
+  - component manager 로 노드 로드 실습
+  - component listener 노드 작성
 - 5교시
-  - deadline 예제 코드
+  - gazebo 설명
+  - gazebo use_sim_time 실습
 - 6교시
-  - 터틀봇 VsCode remote 연결
-  - move_turtle 패키지 생성(foxy python)
+  - gazebo 에 turtlebot3 모델 불러오기.
+  - 패키지 생성(move_turtle : humble)
+  - 원 그리기 노드 적용
 - 7교시
-  - circle 노드 작성 ( 터틀봇 cmd_vel 제어)
-  - retancle 노드 작성 ( 터틀봇 cmd_vel 발행, odom 구독)
+  - 모델을 작동하는데 필요한 state_publisher, tf 설명.
+  - ros2 launch turtlebot3_gazebo empty_world.launch.py 로 실행.
+  - rviz2 실습
+  - 사각형 그리기 노드 디버깅( gazebo 시뮬레이션 이용)
