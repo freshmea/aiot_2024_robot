@@ -416,7 +416,6 @@ aiot robot
 
 - 1교시
   - IPC 설명
-- 6교시
   - cpp 노드 작성 two node pipeline.cpp
 - 2교시
   - cpp 노드 작성 cyclic pipeline.cpp
@@ -428,4 +427,33 @@ aiot robot
 - 5교시
   - deadline 예제 코드
 - 6교시
+  - 터틀봇 VsCode remote 연결
+  - move_turtle 패키지 생성(foxy python)
 - 7교시
+  - circle 노드 작성 ( 터틀봇 cmd_vel 제어)
+  - retancle 노드 작성 ( 터틀봇 cmd_vel 발행, odom 구독)
+
+---
+
+## 2024_10_30
+
+---
+
+- 1교시
+  - 복습
+  - lifespan QoS 설정 노드 작성
+- 2교시
+  - liveliness QoS 설정 노드 작성
+- 3교시
+  - 
+- 4교시
+  - QOS 설정 ( qos_profile, history, depth, reliability, durability) 복습
+  - deadline 예제 코드 deadline.py
+- 5교시
+  - deadline 예제 코드
+- 6교시
+  - 터틀봇 VsCode remote 연결
+  - move_turtle 패키지 생성(foxy python)
+- 7교시
+  - circle 노드 작성 ( 터틀봇 cmd_vel 제어)
+  - retancle 노드 작성 ( 터틀봇 cmd_vel 발행, odom 구독)

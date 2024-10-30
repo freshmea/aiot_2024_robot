@@ -17,10 +17,25 @@ find_package(user_interface REQUIRED)
 find_package(rcl_interfaces REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(rclcpp_components REQUIRED)
+find_package(rcutils REQUIRED)
+
+# library
+add_library(talker_component SHARED src/talker_component.cpp)
+target_compile_definitions(talker_component PRIVATE "COMPOSITION_BUILDING_DLL")
+ament_target_dependencies(talker_component rclcpp std_msgs rclcpp_components)
+rclcpp_components_register_nodes(talker_component "composition::Talker")
+
+install(TARGETS
+  talker_component
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
 
 # include directories
 include_directories(include)
 
+# executable
 add_executable(hello_pub src/hello_pub.cpp)
 ament_target_dependencies(hello_pub rclcpp)
 
