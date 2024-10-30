@@ -10,26 +10,26 @@ from sensor_msgs.msg import BatteryState, Imu, LaserScan
 MAX_VEL = 0.21
 MAX_ANGLE = 2.8 # radian/sec
 def euler_from_quaternion(x, y, z, w):
-        """
-        Convert a quaternion into euler angles (roll, pitch, yaw)
-        roll is rotation around x in radians (counterclockwise)
-        pitch is rotation around y in radians (counterclockwise)
-        yaw is rotation around z in radians (counterclockwise)
-        """
-        t0 = +2.0 * (w * x + y * z)
-        t1 = +1.0 - 2.0 * (x * x + y * y)
-        roll_x = math.atan2(t0, t1)
-     
-        t2 = +2.0 * (w * y - z * x)
-        t2 = +1.0 if t2 > +1.0 else t2
-        t2 = -1.0 if t2 < -1.0 else t2
-        pitch_y = math.asin(t2)
-     
-        t3 = +2.0 * (w * z + x * y)
-        t4 = +1.0 - 2.0 * (y * y + z * z)
-        yaw_z = math.atan2(t3, t4)
-     
-        return roll_x, pitch_y, yaw_z # in radians
+    """
+    Convert a quaternion into euler angles (roll, pitch, yaw)
+    roll is rotation around x in radians (counterclockwise)
+    pitch is rotation around y in radians (counterclockwise)
+    yaw is rotation around z in radians (counterclockwise)
+    """
+    t0 = +2.0 * (w * x + y * z)
+    t1 = +1.0 - 2.0 * (x * x + y * y)
+    roll_x = math.atan2(t0, t1)
+
+    t2 = +2.0 * (w * y - z * x)
+    t2 = +1.0 if t2 > +1.0 else t2
+    t2 = -1.0 if t2 < -1.0 else t2
+    pitch_y = math.asin(t2)
+
+    t3 = +2.0 * (w * z + x * y)
+    t4 = +1.0 - 2.0 * (y * y + z * z)
+    yaw_z = math.atan2(t3, t4)
+
+    return roll_x, pitch_y, yaw_z # in radians
 
 class Move_turtle(Node):
     def __init__(self):
@@ -77,54 +77,54 @@ class Move_turtle(Node):
 
     def update(self):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
-        # self.twist.linear.x += 0.001
-        # self.twist.angular.z = 1.0
-        if self.phase == 0:
-            if self.odom.pose.pose.position.x < 0.3 and -0.1 < self.theta < 0.1:
-                self.twist.linear.x = 0.1  # Move forward
-            elif self.odom.pose.pose.position.x < 0.3 and self.theta < -0.1:
-                self.twist.angular.z = 0.3  # Adjust rotation
-            elif self.odom.pose.pose.position.x < 0.3 and self.theta > 0.1:
-                self.twist.angular.z = -0.3  # Adjust rotation
-            elif self.theta < math.pi / 2:
-                self.twist.angular.z = 0.3  # Turn 90 degrees
-            else:
-                self.phase += 1
-        if self.phase == 1:
-            if self.odom.pose.pose.position.y < 0.3 and 1.47 < self.theta < 1.67:
-                self.twist.linear.x = 0.1
-            elif self.odom.pose.pose.position.y < 0.3 and self.theta < 1.47:
-                self.twist.angular.z = 0.3
-            elif self.odom.pose.pose.position.y < 0.3 and self.theta > 1.67:
-                self.twist.angular.z = -0.3
-            elif 0 < self.theta < math.pi:
-                self.twist.angular.z = 0.3
-            else:
-                self.theta += 1
-        if self.phase == 2:
-            if self.odom.pose.pose.position.x > 0 and self.theta > 3.04:
-                self.twist.linear.x = 0.1
-            elif self.odom.pose.pose.position.x > 0 and self.theta < -3.04:
-                self.twist.linear.x = 0.1
-            elif self.odom.pose.pose.position.x > 0 and self.theta < 3.04:
-                self.twist.angular.z = 0.3
-            elif self.odom.pose.pose.position.x > 0 and self.theta > -3.04:
-                self.twist.angular.z = -0.3
-            elif self.theta < -1.57:
-                self.twist.angular.z = 0.3
-            else:
-                self.phase += 1
-        if self.phase == 3:
-            if self.odom.pose.pose.position.y > 0 and -1.67 < self.theta < -1.47:
-                self.twist.linear.x = 0.1
-            elif self.odom.pose.pose.position.y > 0 and self.theta < -1.67:
-                self.twist.angular.z = 0.3
-            elif self.odom.pose.pose.position.y > 0 and self.theta > -1.47:
-                self.twist.angular.z = -0.3
-            elif self.theta < 0:
-                self.twist.angular.z = 0.3
-            else:
-                self.phase = 0 
+        self.twist.linear.x += 0.10
+        self.twist.angular.z = 1.0
+        # if self.phase == 0:aiot_ws/src/move_turtle_t/move_turtle/move_circle.py
+        #     if self.odom.pose.pose.position.x < 0.3 and -0.1 < self.theta < 0.1:
+        #         self.twist.linear.x = 0.1  # Move forward
+        #     elif self.odom.pose.pose.position.x < 0.3 and self.theta < -0.1:
+        #         self.twist.angular.z = 0.3  # Adjust rotation
+        #     elif self.odom.pose.pose.position.x < 0.3 and self.theta > 0.1:
+        #         self.twist.angular.z = -0.3  # Adjust rotation
+        #     elif self.theta < math.pi / 2:
+        #         self.twist.angular.z = 0.3  # Turn 90 degrees
+        #     else:
+        #         self.phase += 1
+        # if self.phase == 1:
+        #     if self.odom.pose.pose.position.y < 0.3 and 1.47 < self.theta < 1.67:
+        #         self.twist.linear.x = 0.1
+        #     elif self.odom.pose.pose.position.y < 0.3 and self.theta < 1.47:
+        #         self.twist.angular.z = 0.3
+        #     elif self.odom.pose.pose.position.y < 0.3 and self.theta > 1.67:
+        #         self.twist.angular.z = -0.3
+        #     elif 0 < self.theta < math.pi:
+        #         self.twist.angular.z = 0.3
+        #     else:
+        #         self.theta += 1
+        # if self.phase == 2:
+        #     if self.odom.pose.pose.position.x > 0 and self.theta > 3.04:
+        #         self.twist.linear.x = 0.1
+        #     elif self.odom.pose.pose.position.x > 0 and self.theta < -3.04:
+        #         self.twist.linear.x = 0.1
+        #     elif self.odom.pose.pose.position.x > 0 and self.theta < 3.04:
+        #         self.twist.angular.z = 0.3
+        #     elif self.odom.pose.pose.position.x > 0 and self.theta > -3.04:
+        #         self.twist.angular.z = -0.3
+        #     elif self.theta < -1.57:
+        #         self.twist.angular.z = 0.3
+        #     else:
+        #         self.phase += 1
+        # if self.phase == 3:
+        #     if self.odom.pose.pose.position.y > 0 and -1.67 < self.theta < -1.47:
+        #         self.twist.linear.x = 0.1
+        #     elif self.odom.pose.pose.position.y > 0 and self.theta < -1.67:
+        #         self.twist.angular.z = 0.3
+        #     elif self.odom.pose.pose.position.y > 0 and self.theta > -1.47:
+        #         self.twist.angular.z = -0.3
+        #     elif self.theta < 0:
+        #         self.twist.angular.z = 0.3
+        #     else:
+        #         self.phase = 0 
 
     def restrain(self):
         self.twist.linear.x = min([self.twist.linear.x , MAX_VEL])
