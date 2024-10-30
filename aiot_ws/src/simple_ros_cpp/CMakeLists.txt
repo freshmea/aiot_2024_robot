@@ -26,8 +26,14 @@ target_compile_definitions(talker_component PRIVATE "COMPOSITION_BUILDING_DLL")
 ament_target_dependencies(talker_component rclcpp std_msgs rclcpp_components)
 rclcpp_components_register_nodes(talker_component "composition::Talker")
 
+add_library(listener_component SHARED src/listener_component.cpp)
+target_compile_definitions(listener_component PRIVATE "COMPOSITION_BUILDING_DLL")
+ament_target_dependencies(listener_component rclcpp std_msgs rclcpp_components)
+rclcpp_components_register_nodes(listener_component "composition::Listener")
+
 install(TARGETS
   talker_component
+  listener_component
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
