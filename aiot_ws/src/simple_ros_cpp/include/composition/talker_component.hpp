@@ -1,6 +1,7 @@
 #ifndef COMPOSITION__TALKER_COMPONENT_HPP_
 #define COMPOSITION__TALKER_COMPONENT_HPP_
 
+#include "composition/visibility_control.h"
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
@@ -10,7 +11,7 @@ namespace composition
     class Talker : public rclcpp::Node
     {
     public:
-        COMPOSITION_PUBLIC
+        COMPOSITION_PUBLIC;
 
     private:
     }
