@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "move_circle = move_turtle.move_circle:main"
+            "move_circle = move_turtle.move_circle:main",
+            "move_rect = move_turtle.move_rect:main"
         ],
     },
 )

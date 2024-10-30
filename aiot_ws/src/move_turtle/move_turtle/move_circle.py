@@ -50,7 +50,7 @@ class Move_turtle(Node):
         self.theta = 0.0 # raian
         self.phase = 0
 
-    def twist_pub(self):
+    def twist_pub(self):aiot_ws/src/move_turtle_t/move_turtle/move_circle.py
         self.restrain()
         self.pub.publish(self.twist)
 
