@@ -27,6 +27,7 @@ class Time_pub(Node):
         msg = Header()
         msg.frame_id = "time"
         msg.stamp = self.clock.now().to_msg()
+        # msg.stamp = self.get_clock().now().to_msg()
         print(f"sec: {msg.stamp.sec}, nano sec : {msg.stamp.nanosec}")
         self.pub.publish(msg)
 

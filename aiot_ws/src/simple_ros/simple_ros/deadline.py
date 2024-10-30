@@ -32,23 +32,29 @@ class Talker(Node):
         if self.stop_at_count > 0 and self.publish_count >= self.stop_at_count:
             self.pub_timer.cancel()
         self.publisher.publish(msg)
-    
+
     def pause_for(self, seconds):
         if self.pause_timer:
             return
         self.pub_timer.cancel()
         self.pause_timer = self.create_timer(seconds, self._pause_expired)
-    
+
     def _pause_expired(self):
         self.publish()
         self.pub_timer.reset()
         self.destroy_timer(self.pause_timer) #type: ignore
         self.pause_timer = None
 
+    def stop(self):
+        if self.assert_topic_timer:
+            self.assert_topic_timer.cancel()
+        self.pub_timer.cancel()
+        self.assert_topic_timer = None
+
 class Listener(Node):
     def __init__(self, topic_name, qos_profile, event_callbacks, defer_subscribe=False):
         super().__init__('qos_listener')
-        self.subscriptoin = None
+        self.subscription = None
         self.topic_name = topic_name
         self.qos_profile = qos_profile
         self.event_callbacks = event_callbacks
@@ -56,7 +62,7 @@ class Listener(Node):
             self.start_listening()
 
     def start_listening(self):
-        if not self.subscriptoin:
+        if not self.subscription:
             self.sub = self.create_subscription(
                 String, self.topic_name, self._message_callback,
                 self.qos_profile,
