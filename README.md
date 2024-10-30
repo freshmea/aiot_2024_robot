@@ -6,6 +6,13 @@ aiot robot
 
 [클릭](https://docs.google.com/presentation/d/1LHXvZnWKbSJLpbeop8mL-gTkLUKbxCPuk6moOfNLY-s/edit#slide=id.p)
 
+## gazebo 환경 변수
+
+```bash
+export SVGA_VGPU10=0
+```
+
+
 ---
 
 ## 2024_9_19
