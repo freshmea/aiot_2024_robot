@@ -12,7 +12,6 @@ aiot robot
 export SVGA_VGPU10=0
 ```
 
-
 ---
 
 ## 2024_9_19
@@ -485,6 +484,14 @@ export SVGA_VGPU10=0
   - 보통 컴포넌트는 헤더 파일이 없음
   - Launch 에서 컴포넌트 매니저 사용 실습 (composition_demo.launch.py)
 - 3교시
+  - 플러그인 rqt 실습
+  - rqt_example 작성 (rqt_example_widget 과 rqt_example ui 는 복사 해서 사용)
 - 4교시
+  - 빌드 및 rqt 플러그인 설치 실행
+  - 인식 오류가 있어서 ~/.config/ros.org/rqt_gui.ini 파일을 수정
+  - 파이썬 파일 강제 실행 python3 /scripts/rqt_example --force-discover
 - 5교시
+  - rqt 플러그인 설정 및 실습
 - 6교시
+  - 시뮬레이션으로 터틀봇3 사각형 그리기 실습
+  - 터틀봇3 사각형 그리기 완성
