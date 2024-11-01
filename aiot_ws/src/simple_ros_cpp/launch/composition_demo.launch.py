@@ -7,7 +7,8 @@ def generate_launch_description():
     container = ComposableNodeContainer(
         name='mycontainer',
         namespace='',
-        package='simple_ros_cpp',
+        package='rclcpp_components',
+        executable='component_container',
         composable_node_descriptions=[
             ComposableNode(
                 package='simple_ros_cpp',
@@ -16,7 +17,15 @@ def generate_launch_description():
             ComposableNode(
                 package='simple_ros_cpp',
                 plugin='composition::Listener',
-                name='listener')
+                name='listener'),
+            ComposableNode(
+                package='composition',
+                plugin='composition::Server',
+                name='server'),
+            ComposableNode(
+                package='composition',
+                plugin='composition::Client',
+                name='client')
         ],
         output='screen',
         )
