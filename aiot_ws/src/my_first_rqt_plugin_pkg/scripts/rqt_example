@@ -1,0 +1,8 @@
+import sys
+
+from rqt_example.examples import Examples
+from rqt_gui.main import Main
+
+plugin = 'rqt_example.examples.Examples'
+main = Main(filename=plugin)
+sys.exit(main.main(standalone=plugin))
