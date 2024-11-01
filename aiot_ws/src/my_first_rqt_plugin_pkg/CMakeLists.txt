@@ -9,13 +9,13 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
 
-find_package(rclpy REQUIRED)
-find_package(rqt_gui REQUIRED)
-find_package(rqt_gui_py REQUIRED)
-find_package(python_qt_binding REQUIRED)
+# find_package(rclpy REQUIRED)
+# find_package(rqt_gui REQUIRED)
+# find_package(rqt_gui_py REQUIRED)
+# find_package(python_qt_binding REQUIRED)
 
 # install
-ament_python_install_package(${PROJECT_NAME} PACKAGE_DIR src/${PROJECT_NAME})
+ament_python_install_package(rqt_example PACKAGE_DIR src/rqt_example)
 
 install(FILES
   plugin.xml
@@ -23,7 +23,7 @@ install(FILES
 
 install(DIRECTORY
   resource
-  launch
+  # launch
   DESTINATION share/${PROJECT_NAME})
 
 install(PROGRAMS
