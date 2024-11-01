@@ -19,6 +19,7 @@ find_package(rclcpp_action REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(rcutils REQUIRED)
+find_package(composition REQUIRED)
 
 # library
 add_library(talker_component SHARED src/talker_component.cpp)
@@ -97,6 +98,16 @@ target_link_libraries(image_pipeline_all_in_one
   ${sensor_msgs_TARGETS}
   opencv_core
   opencv_highgui)
+
+add_executable(manual_composition src/manual_composition.cpp)
+target_link_libraries(manual_composition
+  talker_component
+  listener_component
+  server_component
+  client_component)
+ament_target_dependencies(manual_composition rclcpp)
+target_link_directories(manual_composition PUBLIC ${composition_LIB_DIR})
+
 
 install(TARGETS
   hello_pub

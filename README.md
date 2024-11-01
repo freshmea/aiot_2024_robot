@@ -469,3 +469,14 @@ export SVGA_VGPU10=0
   - ros2 launch turtlebot3_gazebo empty_world.launch.py 로 실행.
   - rviz2 실습
   - 사각형 그리기 노드 디버깅( gazebo 시뮬레이션 이용)
+
+---
+
+## 2024_11_01
+
+---
+
+- 1교시
+  - 복습
+  - gazebo 설명
+  - 원 그리기 노드 적용
