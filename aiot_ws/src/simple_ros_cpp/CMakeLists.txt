@@ -122,6 +122,7 @@ install(TARGETS
   two_node_pipline
   cyclic_pipline
   image_pipeline_all_in_one
+  manual_composition
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
