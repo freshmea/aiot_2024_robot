@@ -478,5 +478,13 @@ export SVGA_VGPU10=0
 
 - 1교시
   - 복습
-  - gazebo 설명
-  - 원 그리기 노드 적용
+  - gazebo tf 와 turtlebot3_gazebo launch 파일 분석
+  - component manager 설명
+- 2교시
+  - Custom Executable 실습[제한 사항: 헤더 파일이 없으면 불가능]
+  - 보통 컴포넌트는 헤더 파일이 없음
+  - Launch 에서 컴포넌트 매니저 사용 실습 (composition_demo.launch.py)
+- 3교시
+- 4교시
+- 5교시
+- 6교시
