@@ -41,7 +41,7 @@ class ExamplesWidget(QWidget):
 
         pkg_name = 'rqt_example'
         ui_filename = 'rqt_example.ui'
-        topic_name = 'cmd_vel'
+        topic_name = 'turtle1/cmd_vel'
         service_name = 'led_control'
 
         _, package_path = get_resource('packages', pkg_name)
@@ -167,8 +167,8 @@ class ExamplesWidget(QWidget):
         self.publisher.publish(twist)
 
     def update_indicators(self):
-        self.slider_x.setValue(self.sub_velocity.linear.x * self.CMD_VEL_X_FACTOR)
-        self.dial_yaw.setValue(self.sub_velocity.angular.z * self.CMD_VEL_YAW_FACTOR)
+        self.slider_x.setValue(int(self.sub_velocity.linear.x * self.CMD_VEL_X_FACTOR))
+        self.dial_yaw.setValue(int(self.sub_velocity.angular.z * self.CMD_VEL_YAW_FACTOR))
         self.lcd_number_x.display(self.sub_velocity.linear.x)
         self.lcd_number_yaw.display(self.sub_velocity.angular.z)
 

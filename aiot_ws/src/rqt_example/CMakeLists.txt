@@ -24,6 +24,8 @@ install(DIRECTORY
 install(PROGRAMS
   scripts/rqt_example
   DESTINATION lib/${PROJECT_NAME})
+
+
 if(BUILD_TESTING)
 
   find_package(ament_lint_auto REQUIRED)
