@@ -2,7 +2,7 @@
 
 namespace composition
 {
-    explicit Listener::Listener(const rclcpp::NodeOptions &options)
+    Listener::Listener(const rclcpp::NodeOptions &options)
         : Node("listener", options)
     {
         auto callback = [this](std_msgs::msg::String::ConstSharedPtr msg) -> void
