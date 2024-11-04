@@ -154,6 +154,15 @@ ament_target_dependencies(dynamic_tf
   turtlesim
 )
 
+add_executable(follow_turtle_tf src/follow_turtle_tf.cpp)
+ament_target_dependencies(follow_turtle_tf
+  rclcpp
+  tf2
+  tf2_ros
+  geometry_msgs
+  turtlesim
+)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -178,6 +187,7 @@ install(TARGETS
   lifecycle_service_client_thread
   static_tf
   dynamic_tf
+  follow_turtle_tf
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
