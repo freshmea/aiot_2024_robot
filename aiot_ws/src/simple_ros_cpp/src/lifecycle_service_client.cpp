@@ -44,6 +44,10 @@ private:
     {
         auto response = future.get();
         RCLCPP_INFO(get_logger(), "%s", response->success ? "true" : "false");
+        auto _request = std::make_shared<lifecycle_msgs::srv::ChangeState::Request>();
+        auto transition = lifecycle_msgs::msg::Transition::TRANSITION_ACTIVATE;
+        _request->transition.id = transition;
+        auto future = _client->async_send_request(_request);
     }
 };
 
