@@ -6,6 +6,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include <chrono>
 #include <iostream>
+#include <thread>
 
 using namespace std;
 using namespace std::chrono_literals;
@@ -30,6 +31,11 @@ private:
     rclcpp::TimerBase::SharedPtr _send_timer;
     void send_request()
     {
+        std::thread t(&LifecycleServiceClient::thread_send_request, this);
+        t.detach();
+    }
+    void thread_send_request()
+    {
         _send_timer->cancel();
         auto _request = std::make_shared<lifecycle_msgs::srv::ChangeState::Request>();
         auto transition = lifecycle_msgs::msg::Transition::TRANSITION_CONFIGURE;
@@ -38,16 +44,32 @@ private:
                                                   std::bind(&LifecycleServiceClient::done_callback,
                                                             this,
                                                             std::placeholders::_1));
+        future.wait();
+        if (future.get()->success)
+        {
+            RCLCPP_INFO(get_logger(), "Configure seccessful");
+            transition = lifecycle_msgs::msg::Transition::TRANSITION_ACTIVATE;
+            _request->transition.id = transition;
+            auto future = _client->async_send_request(_request,
+                                                      std::bind(&LifecycleServiceClient::done_callback,
+                                                                this,
+                                                                std::placeholders::_1));
+            future.wait();
+            if (future.get()->success)
+            {
+                RCLCPP_INFO(get_logger(), "Activate seccessful");
+            }
+        }
+        else
+        {
+            RCLCPP_INFO(get_logger(), "configure error");
+        }
     }
 
     void done_callback(rclcpp::Client<lifecycle_msgs::srv::ChangeState>::SharedFuture future)
     {
         auto response = future.get();
         RCLCPP_INFO(get_logger(), "%s", response->success ? "true" : "false");
-        auto _request = std::make_shared<lifecycle_msgs::srv::ChangeState::Request>();
-        auto transition = lifecycle_msgs::msg::Transition::TRANSITION_ACTIVATE;
-        _request->transition.id = transition;
-        auto future1 = _client->async_send_request(_request);
     }
 };
 
