@@ -145,6 +145,15 @@ ament_target_dependencies(static_tf
   geometry_msgs
 )
 
+add_executable(dynamic_tf src/dynamic_tf.cpp)
+ament_target_dependencies(dynamic_tf
+  rclcpp
+  tf2
+  tf2_ros
+  geometry_msgs
+  turtlesim
+)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -168,6 +177,7 @@ install(TARGETS
   lifecycle_service_client
   lifecycle_service_client_thread
   static_tf
+  dynamic_tf
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})

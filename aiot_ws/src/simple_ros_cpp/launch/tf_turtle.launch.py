@@ -32,5 +32,4 @@ def generate_launch_description():
         # ros2 run tf2_ros static_transform_publisher --x 1 --y 1 --z 1 --yaw 0 --pitch 0 --roll 0 --frame-id static_tf2_turtle --child-frame-id static_tf_4
         Node(package="tf2_ros", executable="static_transform_publisher",
              arguments=['--x', '1', '--y', '1', '--z', '1', '--yaw', '0', '--pitch', '0', '--roll', '0', '--frame-id', 'static_tf2_turtle', '--child-frame-id', 'static_tf_4']),
-        
         ])
