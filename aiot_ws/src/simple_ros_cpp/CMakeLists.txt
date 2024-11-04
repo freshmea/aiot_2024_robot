@@ -113,6 +113,13 @@ ament_target_dependencies(lifecycle_talker
   std_msgs
 )
 
+add_executable(lifecycle_listener src/lifecycle_listener.cpp)
+ament_target_dependencies(lifecycle_listener
+  lifecycle_msgs
+  rclcpp_lifecycle
+  std_msgs
+)
+
 
 install(TARGETS
   hello_pub
@@ -133,6 +140,7 @@ install(TARGETS
   image_pipeline_all_in_one
   manual_composition
   lifecycle_talker
+  lifecycle_listener
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})

@@ -495,3 +495,21 @@ export SVGA_VGPU10=0
 - 6교시
   - 시뮬레이션으로 터틀봇3 사각형 그리기 실습
   - 터틀봇3 사각형 그리기 완성
+
+---
+
+## 2024_11_04
+
+---
+
+- 1교시
+  - 복습
+  - lifecycle 설명
+  - lifecycle talker 노드 작성
+- 2교시
+  - lifecycle talker 노드 작성
+  - ros2 lifecycle list, get, set, transition 명령어 사용
+- 3교시
+  - error 상황에서 노드 재시작 설정 (launch)
+  - lifecycle listener 노드 작성
+- 4교시
