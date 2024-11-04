@@ -12,11 +12,11 @@ def generate_launch_description():
     bringup_dir = get_package_share_directory('turtle_tf2_py')
     launch_dir = os.path.join(bringup_dir, 'launch')
     return LaunchDescription([
-        
+
         # ros2 launch turtle_tf2_py turtle_tf2_demo.launch.py
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(os.path.join(launch_dir, 'turtle_tf2_demo.launch.py'))),
-        
+
         # ros2 run simple_ros_cpp static_tf static_tf2_turtle 0 0 1 0 0 0
         Node(package="simple_ros_cpp",
              executable="static_tf",
