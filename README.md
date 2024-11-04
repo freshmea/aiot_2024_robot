@@ -513,3 +513,14 @@ export SVGA_VGPU10=0
   - error 상황에서 노드 재시작 설정 (launch)
   - lifecycle listener 노드 작성
 - 4교시
+  - tf2 설명
+  - turtle_tf_py 노드 설치 및 실행
+  - static_tf2_broadcaster 노드 작성
+  - cli 명령어로 ros2 run tf2_ros static_tf2_broadcaster 실행
+- 5교시
+  - tf2 launch 파일 작성 ( 외부 런치 파일 실행(rviz2, turtle_tf_py, etc node))
+- 6교시
+  - dynamic tf2 broadcaster 노드 작성
+  - turtle1을 움직여서 rviz로 확인
+- 7교시
+  - tf2 listener 노드 작성
