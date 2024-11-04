@@ -120,7 +120,7 @@ ament_target_dependencies(lifecycle_listener
   std_msgs
 )
 
-add_executable(lilistenerfecycle_service_client src/lifecycle_service_client.cpp)
+add_executable(lifecycle_service_client src/lifecycle_service_client.cpp)
 ament_target_dependencies(lifecycle_service_client
   lifecycle_msgs
   rclcpp_lifecycle
