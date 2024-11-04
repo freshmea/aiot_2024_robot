@@ -19,6 +19,8 @@ find_package(rclcpp_action REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(rcutils REQUIRED)
+find_package(rclcpp_lifecycle  REQUIRED)
+find_package(lifecycle_msgs REQUIRED)
 
 # library
 add_library(talker_component SHARED src/talker_component.cpp)
@@ -104,6 +106,13 @@ target_link_libraries(manual_composition
   listener_component)
 ament_target_dependencies(manual_composition rclcpp)
 
+add_executable(lifecycle_talker src/lifecycle_talker.cpp)
+ament_target_dependencies(lifecycle_talker
+  lifecycle_msgs
+  rclcpp_lifecycle
+  std_msgs
+)
+
 
 install(TARGETS
   hello_pub
@@ -123,6 +132,7 @@ install(TARGETS
   cyclic_pipline
   image_pipeline_all_in_one
   manual_composition
+  lifecycle_talker
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
