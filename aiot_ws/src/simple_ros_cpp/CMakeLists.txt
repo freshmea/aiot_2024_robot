@@ -21,6 +21,9 @@ find_package(rclcpp_components REQUIRED)
 find_package(rcutils REQUIRED)
 find_package(rclcpp_lifecycle  REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+
 
 # library
 add_library(talker_component SHARED src/talker_component.cpp)
@@ -134,6 +137,14 @@ ament_target_dependencies(lifecycle_service_client_thread
   std_msgs
 )
 
+add_executable(static_tf src/static_tf.cpp)
+ament_target_dependencies(static_tf
+  rclcpp
+  tf2
+  tf2_ros
+  geometry_msgs
+)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -156,6 +167,7 @@ install(TARGETS
   lifecycle_listener
   lifecycle_service_client
   lifecycle_service_client_thread
+  static_tf
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
