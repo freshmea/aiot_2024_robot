@@ -120,6 +120,13 @@ ament_target_dependencies(lifecycle_listener
   std_msgs
 )
 
+add_executable(lilistenerfecycle_service_client src/lifecycle_service_client.cpp)
+ament_target_dependencies(lifecycle_service_client
+  lifecycle_msgs
+  rclcpp_lifecycle
+  std_msgs
+)
+
 
 install(TARGETS
   hello_pub
@@ -141,6 +148,7 @@ install(TARGETS
   manual_composition
   lifecycle_talker
   lifecycle_listener
+  lifecycle_service_client
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
