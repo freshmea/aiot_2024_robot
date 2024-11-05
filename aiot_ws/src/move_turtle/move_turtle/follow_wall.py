@@ -49,7 +49,7 @@ class Move_turtle(Node):
         self.battery = BatteryState()
         self.theta = 0.0 # raian
         self.phase = 0
-        self.laserscan_degree = [0.0 for i in range(360)]
+        self.laserscan_degree = [3.5 for i in range(360)]
         self.find_wall = False
 
     def twist_pub(self):

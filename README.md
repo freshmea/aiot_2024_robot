@@ -541,4 +541,10 @@ export SVGA_VGPU10=0
   - turtlebot3 의 tf 발행 robotis 깃허브 분석
   - tf 발행 위치 확인 urdf, turtlebot3_node
 - 4교시
-
+  - gazebo 설정
+- 5교시
+  - laserscan 데이터 분석 및 내부 데이터 업데이트 형식 설정 (라이다 센서)
+- 6교시
+  - move_turtle 의 follow_wall 노드 작성 (라이다 센서 활용)
+- 7교시
+  - follow_wall 노드 실습
