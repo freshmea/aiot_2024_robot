@@ -95,8 +95,18 @@ class Move_turtle(Node):
             if self.laserscan_degree[0] < 0.4:
                 self.find_wall = True
         else:
+            # 너무 멀 때
             if self.laserscan_degree[45]+self.laserscan_degree[135] > 1.00:
+                self.twist.linear.x = MAX_VEL/4
+                if self.laserscan_degree[45] > self.laserscan_degree[135]:
+                    self.twist.angular.z = MAX_ANGLE / 8
+                else:
+                    self.twist.angular.z = -MAX_ANGLE / 8
+            # 너무 가까울 때
+            elif self.laserscan_degree[45]+self.laserscan_degree[135] < 0.8:
+                self.twist.linear.x = MAX_VEL/4
                 self.twist.angular.z = -MAX_ANGLE / 8
+            # 적당한 거리 일 때
             else:
                 if self.laserscan_degree[45] > self.laserscan_degree[135]:
                     self.twist.linear.x = MAX_VEL/2
