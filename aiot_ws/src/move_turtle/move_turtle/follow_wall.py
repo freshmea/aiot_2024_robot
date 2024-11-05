@@ -50,6 +50,7 @@ class Move_turtle(Node):
         self.theta = 0.0 # raian
         self.phase = 0
         self.laserscan_degree = [0.0 for i in range(360)]
+        self.find_wall = False
 
     def twist_pub(self):
         self.restrain()
@@ -88,8 +89,21 @@ class Move_turtle(Node):
 
     def update(self):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
-        # self.twist.linear.x += 0.10
-        # self.twist.angular.z = 0.5
+        if not self.find_wall:
+            self.twist.linear.x = MAX_VEL/2
+            self.twist.angular.z = 0.0
+            if self.laserscan_degree[0] < 0.4:
+                self.find_wall = True
+        else:
+            if self.laserscan_degree[45]+self.laserscan_degree[135] > 100:
+                self.twist.angular.z = -MAX_ANGLE / 8
+            else:
+                if self.laserscan_degree[45] > self.laserscan_degree[135]:
+                    self.twist.linear.x = MAX_VEL/2
+                    self.twist.angular.z = MAX_ANGLE / 8
+                else:
+                    self.twist.linear.x = MAX_VEL/2
+                    self.twist.angular.z = -MAX_ANGLE / 8
 
     def restrain(self):
         self.twist.linear.x = min([self.twist.linear.x , MAX_VEL])
