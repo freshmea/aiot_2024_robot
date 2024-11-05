@@ -95,7 +95,7 @@ class Move_turtle(Node):
             if self.laserscan_degree[0] < 0.4:
                 self.find_wall = True
         else:
-            if self.laserscan_degree[45]+self.laserscan_degree[135] > 100:
+            if self.laserscan_degree[45]+self.laserscan_degree[135] > 1.00:
                 self.twist.angular.z = -MAX_ANGLE / 8
             else:
                 if self.laserscan_degree[45] > self.laserscan_degree[135]:
