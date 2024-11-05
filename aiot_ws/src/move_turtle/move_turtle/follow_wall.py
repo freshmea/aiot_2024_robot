@@ -49,6 +49,7 @@ class Move_turtle(Node):
         self.battery = BatteryState()
         self.theta = 0.0 # raian
         self.phase = 0
+        self.laserscan_degree = [0.0 for i in range(360)]
 
     def twist_pub(self):
         self.restrain()
@@ -56,7 +57,17 @@ class Move_turtle(Node):
 
     def laser_callback(self, msg: LaserScan):
         self.laserscan = msg
-        self.get_logger().info(f"laserscan : {msg.ranges[0]}")
+        count = 0
+        for s_radian in self.laserscan.ranges:
+            radian_index = msg.angle_min+msg.angle_increment*count
+            degree_index = int(radian_index/3.141592*180)
+            if s_radian == float('inf'):
+                s_radian = msg.range_max
+            # if degree_index >= 360:
+            #     degree_index = 359
+            self.laserscan_degree[degree_index] = s_radian
+            count +=1
+
 
     def odom_callback(self, msg: Odometry):
         self.odom = msg
@@ -65,20 +76,20 @@ class Move_turtle(Node):
         z = msg.pose.pose.orientation.z
         w = msg.pose.pose.orientation.w
         _, _, self.theta = euler_from_quaternion(x, y, z, w)
-        self.get_logger().info(f"odom yaw(theta): {self.theta}")
+        # self.get_logger().info(f"odom yaw(theta): {self.theta}")
 
     def imu_callback(self, msg: Imu):
         self.imu = msg
-        self.get_logger().info(f"IMU : {msg.orientation.x}")
+        # self.get_logger().info(f"IMU : {msg.orientation.x}")
 
     def battery_callback(self, msg: BatteryState):
         self.battery = msg
-        self.get_logger().info(f"battery : {msg.percentage}")
+        # self.get_logger().info(f"battery : {msg.percentage}")
 
     def update(self):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
-        self.twist.linear.x += 0.10
-        self.twist.angular.z = 0.5
+        # self.twist.linear.x += 0.10
+        # self.twist.angular.z = 0.5
 
     def restrain(self):
         self.twist.linear.x = min([self.twist.linear.x , MAX_VEL])

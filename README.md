@@ -524,3 +524,21 @@ export SVGA_VGPU10=0
   - turtle1을 움직여서 rviz로 확인
 - 7교시
   - tf2 listener 노드 작성
+
+---
+
+## 2024_11_05
+
+---
+
+- 1교시
+  - 복습
+  - sros2 설명, ros2 security create_key key_box
+- 2교시
+  - sros2 key 생성 및 사용
+  - sros2 변수 적용시 ros2 가 실행 안되는 현상이 있어서 서치후 다시 시도하기로 함.
+- 3교시
+  - turtlebot3 의 tf 발행 robotis 깃허브 분석
+  - tf 발행 위치 확인 urdf, turtlebot3_node
+- 4교시
+
