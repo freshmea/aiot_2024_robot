@@ -31,7 +31,7 @@ def generate_launch_description():
         rviz_arg,
         IncludeLaunchDescription(
             PathJoinSubstitution([
-                FindPackageShare('urdf_launch'),
+                FindPackageShare('move_turtle'),
                 'launch',
                 'display.launch.py']),
             launch_arguments={
