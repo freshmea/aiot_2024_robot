@@ -25,6 +25,7 @@
             <origin rpy="0 1.57 0" xyz="0 0 -0.3"/>
         </visual>
     </link>
+
     <link name="left_leg">
         <visual>
             <geometry>
@@ -42,7 +43,7 @@
     </joint>
     <joint name="base_to_left_leg" type="fixed">
         <parent link="base_link"/>
-        <child link="right_leg"/>
+        <child link="left_leg"/>
         <origin xyz="0 0.22 0.25"/>
     </joint>
 
