@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros-org/wiki/xacro" name="myfirst">
+  <xacro:property name="width" value="0.2"/>
+  <xacro:property name="bodylen" value="0.6"/>
+  <xacro:macro name="default_inertial" params="mass *shape">
+    <geometry>
+        <xacro:insert_block name="shape"/>
+    </geometry>
+    <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="1e-3" ixy="0.0" ixz="0.0" iyy="1e-3" iyz="0.0" izz="1e-3" />
+        <xacro:insert_block name="shape"/>
+    </inertial>
+  </xacro:macro>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="${bodylen}" radius="${width}"/>
+      </geometry>
+    </visual>
+    <xacro:default_inertial mass="10">
+        <cylinder radius="0.42" length="0.01"/>
+    </xacro:default_inertial>
+  </link>
+  <link name="half_base">
+    <visual>
+      <geometry>
+        <cylinder length="${bodylen + 1}" radius="${width / 2}"/>
+      </geometry>
+    </visual>
+    <xacro:default_inertial mass="10">
+        <cylinder radius="0.42" length="0.01"/>
+    </xacro:default_inertial>
+  </link>
+</robot>

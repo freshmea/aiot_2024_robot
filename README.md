@@ -571,3 +571,4 @@ export SVGA_VGPU10=0
 - 5교시
   - flexible.urdf 작성 (type continuous, revolute, prismatic 추가)
   - mesh 파일 추가
+  - [gazebo plugin link](https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#AddingaModelPlugin)
