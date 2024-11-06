@@ -7,7 +7,7 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     default_rviz_config_path = PathJoinSubstitution([
                 FindPackageShare('move_turtle'),
-                'urdf',
+                'rviz',
                 'urdf.rviz'])
     default_model_path = PathJoinSubstitution([
                 'urdf',
