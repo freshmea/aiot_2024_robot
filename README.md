@@ -561,7 +561,7 @@ export SVGA_VGPU10=0
 - 2교시
   - urdf_launch 패키지 설치 (sudo apt install ros-humble-urdf-launch)
   - move_turtle 에 display.launch.py 작성
-  - rviz config 파일 작성
+  - rviz config 파일 작성 ( urdf.rviz )
 - 3교시
   - multipleshapes.urdf 작성 (link 여러개 추가)
   - origins.urdf 작성 origin 설정( 왼발 오른발 추가)
