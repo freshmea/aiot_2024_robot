@@ -548,3 +548,26 @@ export SVGA_VGPU10=0
   - move_turtle 의 follow_wall 노드 작성 (라이다 센서 활용)
 - 7교시
   - follow_wall 노드 실습
+
+---
+
+## 2024_11_06
+
+---
+
+- 1교시
+  - 복습
+  - urdf 파일 작성 myfirtst.urdf
+- 2교시
+  - urdf_launch 패키지 설치 (sudo apt install ros-humble-urdf-launch)
+  - move_turtle 에 display.launch.py 작성
+  - rviz config 파일 작성
+- 3교시
+  - multipleshapes.urdf 작성 (link 여러개 추가)
+  - origins.urdf 작성 origin 설정( 왼발 오른발 추가)
+- 4교시
+  - materials.urdf 작성 (색상 추가)
+  - visual.urdf 작성 (얼굴, 그리퍼 추가)
+- 5교시
+  - flexible.urdf 작성 (type continuous, revolute, prismatic 추가)
+  - mesh 파일 추가
