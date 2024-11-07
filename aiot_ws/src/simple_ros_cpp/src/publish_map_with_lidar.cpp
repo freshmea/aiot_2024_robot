@@ -66,18 +66,40 @@ private:
         _msg.header.frame_id = "odom";
         _msg.header.stamp = get_clock()->now();
 
-        _msg.data[0 + _count + (_msg.info.width * _row)] = 100;
-        _count++;
-        if (_count >= _msg.info.width)
+        // turtlebot pose info
+        auto turtle_x = _odom.pose.pose.position.x;
+        auto turtle_y = _odom.pose.pose.position.y;
+        auto turtle_yaw = atan2(
+            2 * (_odom.pose.pose.orientation.w * _odom.pose.pose.orientation.z +
+                 _odom.pose.pose.orientation.x * _odom.pose.pose.orientation.y),
+            1 - 2 * (_odom.pose.pose.orientation.y * _odom.pose.pose.orientation.y +
+                     _odom.pose.pose.orientation.z * _odom.pose.pose.orientation.z));
+
+        // laser scan info
+        int iter = 0;
+        for (auto &scan_radian : _laser.ranges)
         {
-            _count = 0;
-            _row++;
+            if (scan_radian == INFINITY || scan_radian == 0.0)
+            {
+                scan_radian = _laser.range_max;
+            }
+            auto scan_theta = _laser.angle_min + _laser.angle_increment * iter;
+            auto scan_x = turtle_x + scan_radian * cos(turtle_yaw + scan_theta);
+            auto scan_y = turtle_y + scan_radian * sin(turtle_yaw + scan_theta);
+            iter++;
+            // center of the map
+            auto center = _msg.info.origin.position.x + _msg.info.origin.position.y * _msg.info.width;
+            auto index = -center + int(scan_x * 10) + int(scan_y * 10) * _msg.info.width;
+            if (index >= 0 && index < _msg.data.size())
+            {
+                _msg.data[index] = 100;
+            }
+            else
+            {
+                RCLCPP_INFO(get_logger(), "index out of range");
+            }
         }
-        if (_row >= _msg.info.height)
-        {
-            _row = 0;
-            value++;
-        }
+
         _pub->publish(_msg);
     }
 };
