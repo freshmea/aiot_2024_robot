@@ -580,3 +580,25 @@ export SVGA_VGPU10=0
 - 7교시
   - xacro 설명, 기본 문법
   - xacro 예제 (xacroed.urdf.xacro 작성)
+
+---
+
+## 2024_11_07
+
+---
+
+- 1교시
+  - 복습
+  - turtlesim_turtle_tf 실습(simple_ros_cpp)
+  - dynamic_tf2 작성
+- 2교시
+  - turtlesim, dynamic_tf, dynamic_tf2, follow_turtle_tf 노드 실행
+- 3교시
+  - move_turtle 에 follow_wall 노드 수정
+  - follow_point tf 발행 후, follow_point 추적 하여 움직이는 노드 작성
+  - gazebo 로 작동 확인
+- 4교시
+  - 터틀봇3 기체 적용
+- 5교시
+- 6교시
+- 7교시

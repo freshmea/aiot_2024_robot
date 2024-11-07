@@ -145,6 +145,7 @@ class Move_turtle(Node):
                 if self.laserscan_degree[0] < 0.4:
                     self.find_wall = True
             else:
+                print("follow tf")
                 follow_tf = buffer.lookup_transform("base_footprint", "follow_point", tf2_ros.Time())
                 self.twist.angular.z = math.atan2(
                     follow_tf.transform.translation.y,
@@ -160,6 +161,7 @@ class Move_turtle(Node):
                     self.find_wall = True
             else:
                 # 코너에서
+                print("no follow tf point")
                 if self.laserscan_degree[45] > 1.00:
                     self.twist.linear.x = MAX_VEL/4
                     self.twist.angular.z = MAX_ANGLE / 8
