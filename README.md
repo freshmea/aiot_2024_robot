@@ -572,3 +572,11 @@ export SVGA_VGPU10=0
   - flexible.urdf 작성 (type continuous, revolute, prismatic 추가)
   - mesh 파일 추가
   - [gazebo plugin link](https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#AddingaModelPlugin)
+- 6교시
+  - inertial 설명 ( collision, mass, inertia, origin 추가)
+  - physics.urdf 작성
+  - gazebo plugin 설명
+  - gazebo plugin 작성 예시(turtlebot3_simulation 분석)
+- 7교시
+  - xacro 설명, 기본 문법
+  - xacro 예제 (xacroed.urdf.xacro 작성)
