@@ -52,6 +52,7 @@ class Move_turtle(Node):
         self.phase = 0
         self.laserscan_degree = [3.5 for i in range(360)]
         self.find_wall = False
+        self.tf_broadcaster = TransformBroadcaster(self)
 
     def twist_pub(self):
         self.restrain()
@@ -108,7 +109,7 @@ class Move_turtle(Node):
         t.transform.rotation.y = 0.0
         t.transform.rotation.z = 0.0
         t.transform.rotation.w = 1.0
-        self.tf_broadcaster = TransformBroadcaster(self)
+        self.tf_broadcaster.sendTransform(t)
 
 
     def odom_callback(self, msg: Odometry):
