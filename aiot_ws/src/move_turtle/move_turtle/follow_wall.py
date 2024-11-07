@@ -1,6 +1,7 @@
 import math
 
 import rclpy
+import tf2_ros
 from geometry_msgs.msg import TransformStamped, Twist
 from nav_msgs.msg import Odometry
 from rclpy.node import Node
@@ -131,35 +132,56 @@ class Move_turtle(Node):
 
     def update(self):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
-        if not self.find_wall:
-            self.twist.linear.x = MAX_VEL/2
-            self.twist.angular.z = 0.0
-            if self.laserscan_degree[0] < 0.4:
-                self.find_wall = True
-        else:
-            # 코너에서
-            if self.laserscan_degree[45] > 1.00:
-                self.twist.linear.x = MAX_VEL/4
-                self.twist.angular.z = MAX_ANGLE / 8
-            # 너무 멀 때
-            elif self.laserscan_degree[45]+self.laserscan_degree[135] > 1.00:
-                self.twist.linear.x = MAX_VEL/4
-                if self.laserscan_degree[45] > self.laserscan_degree[135]:
-                    self.twist.angular.z = MAX_ANGLE / 8
-                else:
-                    self.twist.angular.z = -MAX_ANGLE / 8
-            # 너무 가까울 때
-            elif self.laserscan_degree[45]+self.laserscan_degree[135] < 0.8:
-                self.twist.linear.x = MAX_VEL/4
-                self.twist.angular.z = -MAX_ANGLE / 8
-            # 적당한 거리 일 때
+        
+        # 두 개의 tf base_foot_print, follow_point 를 이용하여 벽을 따라가는 알고리즘
+        # buffer 로 lookup_transform 을 이용하여 base_foot_print 와 follow_point 의 거리를 구한다.
+        # 거리가 0.4m 이상이면 벽을 따라가는 알고리즘을 실행한다.
+        # timepointzero 적용
+        buffer = Buffer()
+        try:
+            if not self.find_wall:
+                self.twist.linear.x = MAX_VEL/2
+                self.twist.angular.z = 0.0
+                if self.laserscan_degree[0] < 0.4:
+                    self.find_wall = True
             else:
-                if self.laserscan_degree[45] > self.laserscan_degree[135]:
-                    self.twist.linear.x = MAX_VEL/2
+                follow_tf = buffer.lookup_transform("base_footprint", "follow_point", tf2_ros.Time())
+                self.twist.angular.z = math.atan2(
+                    follow_tf.transform.translation.y,
+                    follow_tf.transform.translation.x)
+                self.twist.angular.x = math.sqrt(
+                    follow_tf.transform.translation.x**2 +
+                    follow_tf.transform.translation.y**2)
+        except Exception :
+            if not self.find_wall:
+                self.twist.linear.x = MAX_VEL/2
+                self.twist.angular.z = 0.0
+                if self.laserscan_degree[0] < 0.4:
+                    self.find_wall = True
+            else:
+                # 코너에서
+                if self.laserscan_degree[45] > 1.00:
+                    self.twist.linear.x = MAX_VEL/4
                     self.twist.angular.z = MAX_ANGLE / 8
-                else:
-                    self.twist.linear.x = MAX_VEL/2
+                # 너무 멀 때
+                elif self.laserscan_degree[45]+self.laserscan_degree[135] > 1.00:
+                    self.twist.linear.x = MAX_VEL/4
+                    if self.laserscan_degree[45] > self.laserscan_degree[135]:
+                        self.twist.angular.z = MAX_ANGLE / 8
+                    else:
+                        self.twist.angular.z = -MAX_ANGLE / 8
+                # 너무 가까울 때
+                elif self.laserscan_degree[45]+self.laserscan_degree[135] < 0.8:
+                    self.twist.linear.x = MAX_VEL/4
                     self.twist.angular.z = -MAX_ANGLE / 8
+                # 적당한 거리 일 때
+                else:
+                    if self.laserscan_degree[45] > self.laserscan_degree[135]:
+                        self.twist.linear.x = MAX_VEL/2
+                        self.twist.angular.z = MAX_ANGLE / 8
+                    else:
+                        self.twist.linear.x = MAX_VEL/2
+                        self.twist.angular.z = -MAX_ANGLE / 8
 
     def restrain(self):
         self.twist.linear.x = min([self.twist.linear.x , MAX_VEL])
