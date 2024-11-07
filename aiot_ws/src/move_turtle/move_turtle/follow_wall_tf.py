@@ -140,6 +140,7 @@ class Move_turtle(Node):
         # 거리가 0.4m 이상이면 벽을 따라가는 알고리즘을 실행한다.
         # timepointzero 적용
         buffer = Buffer()
+        self.tf_listener = TransformListener(buffer, self)
         try:
             if not self.find_wall:
                 self.twist.linear.x = MAX_VEL/2
@@ -152,7 +153,7 @@ class Move_turtle(Node):
                 self.twist.angular.z = math.atan2(
                     follow_tf.transform.translation.y,
                     follow_tf.transform.translation.x)
-                self.twist.angular.x = math.sqrt(
+                self.twist.linear.x = math.sqrt(
                     follow_tf.transform.translation.x**2 +
                     follow_tf.transform.translation.y**2)
         except Exception :
