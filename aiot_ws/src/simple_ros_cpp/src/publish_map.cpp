@@ -9,18 +9,20 @@ class PublishMap : public rclcpp::Node
 {
 public:
     explicit PublishMap()
-        : Node("publish_map"), _count(0)
+        : Node("publish_map"), _count(0), _row(0)
     {
         _pub = create_publisher<nav_msgs::msg::OccupancyGrid>("map", 10);
-        _timer = create_wall_timer(1s, std::bind(&PublishMap::pub_callback, this));
+        _timer = create_wall_timer(100ms, std::bind(&PublishMap::pub_callback, this));
     }
 
 private:
     int _count;
+    int _row;
     rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr _pub;
     rclcpp::TimerBase::SharedPtr _timer;
     void pub_callback()
     {
+        static int value = 0;
         auto msg = nav_msgs::msg::OccupancyGrid();
         msg.header.frame_id = "odom";
         msg.header.stamp = get_clock()->now();
@@ -43,6 +45,18 @@ private:
             i = -1;
         }
 
+        msg.data[0 + _count + (msg.info.width * _row)] = 0;
+        _count++;
+        if (_count > msg.info.width)
+        {
+            _count = value;
+            _row++;
+        }
+        if (_row > msg.info.height)
+        {
+            _row = 0;
+            value++;
+        }
         _pub->publish(msg);
     }
 };
