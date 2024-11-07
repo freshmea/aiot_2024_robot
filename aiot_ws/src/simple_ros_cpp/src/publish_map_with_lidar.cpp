@@ -1,5 +1,7 @@
 #include "nav_msgs/msg/occupancy_grid.hpp"
+#include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/rclcpp.hpp"
+#include "sensor_msgs/msg/laser_scan.hpp"
 #include <chrono>
 
 using namespace std;
@@ -9,9 +11,25 @@ class PublishMap : public rclcpp::Node
 {
 public:
     explicit PublishMap()
-        : Node("publish_map"), _count(0), _row(0)
+        : Node("publish_map_with_lidar"), _count(0), _row(0)
     {
         _pub = create_publisher<nav_msgs::msg::OccupancyGrid>("map", 10);
+        _odom_sub = create_subscription<nav_msgs::msg::Odometry>(
+            "odom",
+            10,
+            [this](const nav_msgs::msg::Odometry::SharedPtr msg)
+            {
+                _odom = *msg;
+            });
+        // sensor qos
+        rclcpp::QoS rmw_qos_profile_sensor_data = rclcpp::SensorDataQoS();
+        _laser_sub = create_subscription<sensor_msgs::msg::LaserScan>(
+            "scan",
+            rmw_qos_profile_sensor_data,
+            [this](const sensor_msgs::msg::LaserScan::SharedPtr msg)
+            {
+                _laser = *msg;
+            });
         _timer = create_wall_timer(1ms, std::bind(&PublishMap::pub_callback, this));
         // map info
         _msg.info.resolution = 0.1f;
@@ -35,9 +53,13 @@ public:
 private:
     int _count;
     int _row;
-    nav_msgs::msg::OccupancyGrid _msg = nav_msgs::msg::OccupancyGrid();
     rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr _pub;
+    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr _odom_sub;
+    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr _laser_sub;
     rclcpp::TimerBase::SharedPtr _timer;
+    nav_msgs::msg::OccupancyGrid _msg = nav_msgs::msg::OccupancyGrid();
+    nav_msgs::msg::Odometry _odom = nav_msgs::msg::Odometry();
+    sensor_msgs::msg::LaserScan _laser = sensor_msgs::msg::LaserScan();
     void pub_callback()
     {
         static int value = 0;

@@ -179,6 +179,13 @@ ament_target_dependencies(publish_map
   nav_msgs
 )
 
+add_executable(publish_map_with_lidar src/publish_map_with_lidar.cpp)
+ament_target_dependencies(publish_map_with_lidar
+  rclcpp
+  nav_msgs
+  sensor_msgs
+)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -206,6 +213,7 @@ install(TARGETS
   dynamic_tf2
   follow_turtle_tf
   publish_map
+  publish_map_with_lidar
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
