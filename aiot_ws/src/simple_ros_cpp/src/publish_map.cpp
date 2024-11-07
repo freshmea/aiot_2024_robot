@@ -22,7 +22,7 @@ private:
     void pub_callback()
     {
         auto msg = nav_msgs::msg::OccupancyGrid();
-        msg.header.frame_id = "world";
+        msg.header.frame_id = "odom";
         msg.header.stamp = get_clock()->now();
 
         // map info
@@ -38,7 +38,7 @@ private:
         msg.info.origin.orientation.w = 1;
 
         msg.data.resize(msg.info.width * msg.info.height);
-        for (auto i : msg.data)
+        for (auto &i : msg.data)
         {
             i = -1;
         }
