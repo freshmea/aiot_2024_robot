@@ -154,6 +154,15 @@ ament_target_dependencies(dynamic_tf
   turtlesim
 )
 
+add_executable(dynamic_tf2 src/dynamic_tf2.cpp)
+ament_target_dependencies(dynamic_tf2
+  rclcpp
+  tf2
+  tf2_ros
+  geometry_msgs
+  turtlesim
+)
+
 add_executable(follow_turtle_tf src/follow_turtle_tf.cpp)
 ament_target_dependencies(follow_turtle_tf
   rclcpp
@@ -187,6 +196,7 @@ install(TARGETS
   lifecycle_service_client_thread
   static_tf
   dynamic_tf
+  dynamic_tf2
   follow_turtle_tf
   DESTINATION lib/${PROJECT_NAME})
 
