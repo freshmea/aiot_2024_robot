@@ -23,6 +23,7 @@ find_package(rclcpp_lifecycle  REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(nav_msgs REQUIRED)
 
 
 # library
@@ -172,6 +173,12 @@ ament_target_dependencies(follow_turtle_tf
   turtlesim
 )
 
+add_executable(publish_map src/publish_map.cpp)
+ament_target_dependencies(publish_map
+  rclcpp
+  nav_msgs
+)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
@@ -198,6 +205,7 @@ install(TARGETS
   dynamic_tf
   dynamic_tf2
   follow_turtle_tf
+  publish_map
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})

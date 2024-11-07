@@ -4,6 +4,9 @@ import rclpy
 import tf2_ros
 from geometry_msgs.msg import TransformStamped, Twist
 from nav_msgs.msg import Odometry
+
+# Duration
+from rclpy.duration import Duration
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from sensor_msgs.msg import BatteryState, Imu, LaserScan
@@ -150,13 +153,15 @@ class Move_turtle(Node):
             else:
                 print("follow tf")
                 follow_tf = buffer.lookup_transform("base_footprint", "follow_point", tf2_ros.Time())
+                follow_tf = buffer.lookup_transform("base_footprint", "follow_point", self.get_clock().now(), timeout = Duration(seconds=0, nanoseconds=100_000_000))
                 self.twist.angular.z = math.atan2(
                     follow_tf.transform.translation.y,
                     follow_tf.transform.translation.x)
                 self.twist.linear.x = math.sqrt(
                     follow_tf.transform.translation.x**2 +
                     follow_tf.transform.translation.y**2)
-        except Exception :
+        except Exception as e:
+            print(e)
             if not self.find_wall:
                 self.twist.linear.x = MAX_VEL/2
                 self.twist.angular.z = 0.0
