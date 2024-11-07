@@ -63,10 +63,11 @@ class Move_turtle(Node):
         self.laserscan = msg
         count = 0
         self.get_logger().info(f"self.laserscan_degree:{self.laserscan_degree}")
+        self.get_logger().info(f"self.angle_index :{self.laserscan.ranges}")
         for s_radian in self.laserscan.ranges:
             radian_index = msg.angle_min+msg.angle_increment*count
             degree_index = int(radian_index/3.141592*180)
-            if s_radian == float('inf'):
+            if s_radian == float('inf') or s_radian == 0.0:
                 s_radian = msg.range_max
             # if degree_index >= 360:
             #     degree_index = 359
