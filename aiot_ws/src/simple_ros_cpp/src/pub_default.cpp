@@ -9,30 +9,26 @@ using namespace std::chrono_literals;
 class HellowPublisher : public rclcpp::Node
 {
 public:
-    HellowPublisher();
+    explicit HellowPublisher()
+        : Node("hello"), _count(0)
+    {
+        _pub = create_publisher<std_msgs::msg::String>("message", 10);
+        _timer = create_wall_timer(1s, std::bind(&HellowPublisher::printHello, this));
+    }
 
 private:
     int _count;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _pub;
     rclcpp::TimerBase::SharedPtr _timer;
-    void printHello();
+    void printHello()
+    {
+        auto msg = std_msgs::msg::String();
+        msg.data = "Hello, World!!!!! " + to_string(_count);
+        _pub->publish(msg);
+        RCLCPP_INFO(get_logger(), msg.data.c_str());
+        _count++;
+    }
 };
-
-HellowPublisher::HellowPublisher()
-    : Node("hello"), _count(0)
-{
-    _pub = create_publisher<std_msgs::msg::String>("message", 10);
-    _timer = create_wall_timer(1s, std::bind(&HellowPublisher::printHello, this));
-}
-
-void HellowPublisher::printHello()
-{
-    auto msg = std_msgs::msg::String();
-    msg.data = "Hello, World!!!!! " + to_string(_count);
-    _pub->publish(msg);
-    RCLCPP_INFO(get_logger(), msg.data.c_str());
-    _count++;
-}
 
 int main()
 {
