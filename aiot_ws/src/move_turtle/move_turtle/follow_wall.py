@@ -1,11 +1,12 @@
 import math
 
 import rclpy
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import TransformStamped, Twist
 from nav_msgs.msg import Odometry
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from sensor_msgs.msg import BatteryState, Imu, LaserScan
+from tf2_ros import Buffer, TransformBroadcaster, TransformListener
 
 MAX_VEL = 0.21
 MAX_ANGLE = 2.8 # radian/sec
@@ -68,6 +69,46 @@ class Move_turtle(Node):
             #     degree_index = 359
             self.laserscan_degree[degree_index] = s_radian
             count +=1
+        self.wall_45_collision_point_function()
+    
+    def wall_45_collision_point_function(self):
+        # turtlebot 현재 위치
+        x = self.odom.pose.pose.position.x
+        y = self.odom.pose.pose.position.y
+        theta = self.theta
+        # 45도 방향의 레이저 거리
+        laser_45 = self.laserscan_degree[45]
+        # 90도 방향의 레이저 거리
+        laser_90 = self.laserscan_degree[90]
+        # 벽과의 충돌점 45도
+        wall_45_collision_point = (
+            x + laser_45*math.cos(theta+math.pi/4),
+            y + laser_45*math.sin(theta+math.pi/4))
+        # 벽과의 충돌점 90도
+        wall_90_collision_point = (
+            x + laser_90*math.cos(theta+math.pi/2),
+            y + laser_90*math.sin(theta+math.pi/2))
+        # 45도 충돌점과 90도 충돌점과의 기울기
+        slope = math.atan2(wall_45_collision_point[1]-wall_90_collision_point[1],wall_45_collision_point[0]-wall_90_collision_point[0])
+        # 기울기의 직각 방향 기울기
+        slope_90 = slope - math.pi/2
+        # 45도 충돌점에서 90 방향으로 0.4m 떨어진 지점 구하기
+        wall_45_collision_point_0_4 = (
+            wall_45_collision_point[0] + 0.4*math.cos(slope_90),
+            wall_45_collision_point[1] + 0.4*math.sin(slope_90))
+        # tf2로 구현
+        t = TransformStamped()
+        t.header.stamp = self.get_clock().now().to_msg()
+        t.header.frame_id = "odom"
+        t.child_frame_id = "follow_point"
+        t.transform.translation.x = wall_45_collision_point_0_4[0]
+        t.transform.translation.y = wall_45_collision_point_0_4[1]
+        t.transform.translation.z = 0.0
+        t.transform.rotation.x = 0.0
+        t.transform.rotation.y = 0.0
+        t.transform.rotation.z = 0.0
+        t.transform.rotation.w = 1.0
+        self.tf_broadcaster = TransformBroadcaster(self)
 
 
     def odom_callback(self, msg: Odometry):
