@@ -21,7 +21,7 @@ private:
     {
         geometry_msgs::msg::TransformStamped t;
         t.header.stamp = get_clock()->now();
-        t.header.frame_id = "world";
+        t.header.frame_id = "odom";
         t.child_frame_id = transformation[1];
 
         t.transform.translation.x = atof(transformation[2]);

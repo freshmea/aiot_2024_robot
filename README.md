@@ -601,5 +601,41 @@ export SVGA_VGPU10=0
   - lidar 센서에서 0.0 인 경우 처리
   - 터틀봇3 기체 적용
 - 5교시
+  - /map 토픽 OccupiedGridMap 메시지 분석
+  - publish_map 노드 작성
 - 6교시
+  - /map 토픽의 msg.data 분석
+  - data -1: unknown, 0: free, 100: occupied
 - 7교시
+  - /map 토픽 lidar 데이터로 맵 업데이트 (publish_map_with_lidar 노드 작성)
+  - cartographer 실습
+
+---
+
+## 2024_11_08
+
+---
+
+- 1교시
+  - cartographer 실습 및 패키지 설명
+  - tunning 작업 ( imu enable, etc)
+- 2교시
+  - 맵 파일로 저장
+  - navigation2 실습
+- 3교시
+  - navigation2 과 cartographer 연동 실습
+  - turtlebot3 기체로 navigation2 실습
+- 4교시
+  - cartographer 없이 map_server 로 저장된 맵 파일로 navigation2 실습
+  - **에러 해결** :
+    - odom 과 map 사이의 static_tf 발행:
+    - map_server lifecycle activate:
+  - navigation 실습
+
+```bash
+ros2 run tf2_ros static_transform_publisher --x -2.0 --y -0.5 --z 0 --yaw 0 --pitch 0 --roll 0 --frame-id odom --child-frame-id map use_sim_time:=true
+ros2 lifecycle set /map_server activate
+```
+
+- 5교시
+- 6교시
