@@ -88,8 +88,9 @@ private:
             auto scan_y = turtle_y + scan_radian * sin(turtle_yaw + scan_theta);
             iter++;
             // center of the map
-            auto center = _msg.info.origin.position.x + _msg.info.origin.position.y * _msg.info.width;
-            auto index = -center + int(scan_x * 10) + int(scan_y * 10) * _msg.info.width;
+            // auto center = _msg.info.origin.position.x + _msg.info.origin.position.y * _msg.info.width;
+            auto center = _msg.info.width / 2 + _msg.info.height / 2 * _msg.info.width;
+            u_int32_t index = center + int(scan_x * 10) + int(scan_y * 10) * _msg.info.width;
             if (index >= 0 && index < _msg.data.size())
             {
                 _msg.data[index] = 100;
