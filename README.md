@@ -633,7 +633,7 @@ export SVGA_VGPU10=0
   - navigation 실습
 
 ```bash
-ros2 run tf2_ros static_transform_publisher --x -2.0 --y -0.5 --z 0 --yaw 0 --pitch 0 --roll 0 --frame-id odom --child-frame-id map use_sim_time:=true
+ros2 run tf2_ros static_transform_publisher --x -2.0 --y -0.5 --z 0 --yaw 0 --pitch 0 --roll 0 --frame-id odom --child-frame-id map --ros-args -p use_sim_time:=true
 ros2 lifecycle set /map_server activate
 ```
 
