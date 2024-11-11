@@ -28,8 +28,20 @@ private:
     rclcpp::Subscription<sensor_msgs::msg::CompressedImage>::SharedPtr _sub;
     void sub_callback(const sensor_msgs::msg::CompressedImage::SharedPtr msg)
     {
-
-        imshow("img", _img);
+        cv_bridge::CvImagePtr cv_ptr;
+        try
+        {
+            cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+        }
+        catch (cv_bridge::Exception &e)
+        {
+            RCLCPP_ERROR(get_logger(), "cv_bridge exception: %s", e.what());
+            return;
+        }
+        _img = cv_ptr->image;
+        cv::Mat canny;
+        cv::Canny(_img, canny, 100, 200);
+        imshow("img", canny);
         waitKey(30);
     }
 };

@@ -17,7 +17,7 @@ add_executable(canny src/canny.cpp)
 ament_target_dependencies(canny rclcpp sensor_msgs OpenCV cv_bridge)
 
 # install
-install(TARGET
+install(TARGETS
   canny
   DESTINATION lib/${PROJECT_NAME})
 
