@@ -638,4 +638,26 @@ ros2 lifecycle set /map_server activate
 ```
 
 - 5교시
+  - navigation2 설명
 - 6교시
+  - navigation2 action 코드 작성(follow_waypoints)
+  - patrol 노드 작성(follow_waypoints_loop)
+
+---
+
+## 2024_11_11
+
+---
+
+- 1교시
+  - 카메라 설정
+- 2교시
+  - 터틀봇3 카메라 설정
+- 3교시
+  - 터틀봇3 런치 파일 작성( robot.launch.py + raspicam.launch.py)
+- 4교시
+  - canny 노드 작성( CompressedImage 토픽 구독)
+- 5교시
+  - 
+- 6교시
+- 7교시
