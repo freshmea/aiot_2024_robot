@@ -658,6 +658,8 @@ ros2 lifecycle set /map_server activate
 - 4교시
   - canny 노드 작성( CompressedImage 토픽 구독)
 - 5교시
-  - 
+  - r2d2 urdf 에 카메라 노드 추가
 - 6교시
+  - turtlebot3의 gazebo sdf 파일 작성 ( 기존의 turtlebot_bruger/model.sdf 변경)
 - 7교시
+  - camera simulation
