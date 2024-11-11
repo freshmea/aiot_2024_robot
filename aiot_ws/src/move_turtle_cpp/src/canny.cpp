@@ -17,7 +17,8 @@ public:
         : Node("canny_camera"), _img(240, 320, CV_8UC3, Scalar(255, 255, 255))
     {
         _sub = create_subscription<sensor_msgs::msg::CompressedImage>(
-            "/camera/image/compressed",
+            // "/camera/image/compressed",
+            "/camera/image_raw/compressed",
             10,
             std::bind(&CannyCamera::sub_callback, this, std::placeholders::_1));
     }

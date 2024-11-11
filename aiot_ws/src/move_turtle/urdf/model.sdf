@@ -42,9 +42,9 @@
 
     <link name="camera_link">
        <sensor name="camera" type="camera">
-        <camera name="camera">
-          <pose>0.032 0. 0. 0 0 0 </pose>
-          <update_rate>30.0</update_rate>
+        <pose>0.06 0 0.14 0 0 0</pose>
+        <update_rate>30.0</update_rate>
+        <camera name="head">
           <horizontal_fov>0.93</horizontal_fov>
           <image>
             <width>320</width>
@@ -56,18 +56,18 @@
             <far>8.0</far>
           </clip>
         </camera>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+            <frame_name>camera_link_optical</frame_name>
+            <cameraName>camera</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        </plugin>
       </sensor>
-      <noise>
-        <type>gaussian</type>
-        <mean>0.0</mean>
-        <stddev>0.007</stddev>
-      </noise>
-      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-          <frame_name>camera_link_optical</frame_name>
-          <cameraName>camera</cameraName>
-          <imageTopicName>image_raw</imageTopicName>
-          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-      </plugin>
       <visual name="camera_visual">
         <pose>0.05 0 0.14 0 0 0</pose>
         <geometry>
