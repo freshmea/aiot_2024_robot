@@ -27,18 +27,17 @@ Version: 10/26/2020
 
 """
 
+import cv2
+import numpy as np
 import rclpy
 import rclpy.node
-from rclpy.qos import qos_profile_sensor_data
-from cv_bridge import CvBridge
-import numpy as np
-import cv2
 import tf_transformations
-from sensor_msgs.msg import CameraInfo
-from sensor_msgs.msg import Image
-from geometry_msgs.msg import PoseArray, Pose
-from ros2_aruco_interfaces.msg import ArucoMarkers
+from cv_bridge import CvBridge
+from geometry_msgs.msg import Pose, PoseArray
 from rcl_interfaces.msg import ParameterDescriptor, ParameterType
+from rclpy.qos import qos_profile_sensor_data
+from ros2_aruco_interfaces.msg import ArucoMarkers
+from sensor_msgs.msg import CameraInfo, Image
 
 
 class ArucoNode(rclpy.node.Node):
@@ -145,8 +144,10 @@ class ArucoNode(rclpy.node.Node):
         self.intrinsic_mat = None
         self.distortion = None
 
-        self.aruco_dictionary = cv2.aruco.Dictionary_get(dictionary_id)
-        self.aruco_parameters = cv2.aruco.DetectorParameters_create()
+        # self.aruco_dictionary = cv2.aruco.Dictionary_get(dictionary_id)
+        self.aruco_dictionary = cv2.aruco.getPredefinedDictionary(dictionary_id)
+        # self.aruco_parameters = cv2.aruco.DetectorParameters_create()
+        self.aruco_parameters = cv2.aruco.DetectorParameters()
         self.bridge = CvBridge()
 
     def info_callback(self, info_msg):
