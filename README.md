@@ -679,4 +679,4 @@ ros2 lifecycle set /map_server activate
   - aruco 코드 수정
   - numpy 버전 에러 2.대에서 1.26으로 다운 그레이드
 - 3교시
-  - aruco 노드 분석4
+  - aruco 런치 파일 작성
