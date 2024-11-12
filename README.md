@@ -663,3 +663,20 @@ ros2 lifecycle set /map_server activate
   - turtlebot3의 gazebo sdf 파일 작성 ( 기존의 turtlebot_bruger/model.sdf 변경)
 - 7교시
   - camera simulation
+
+---
+
+## 2024_11_12
+
+---
+
+- 1교시
+  - 복습
+  - aruco 노드 패키지 다운로드 및 실행
+  - aruco marker 생성
+- 2교시
+  - sudo apt install ros-humble-tf-transformations 설치
+  - aruco 코드 수정
+  - numpy 버전 에러 2.대에서 1.26으로 다운 그레이드
+- 3교시
+  - aruco 노드 분석4
