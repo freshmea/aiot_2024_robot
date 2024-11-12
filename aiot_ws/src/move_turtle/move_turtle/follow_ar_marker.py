@@ -36,6 +36,7 @@ class Move_turtle(Node):
         self.imu = Imu()
         self.battery = BatteryState()
         self.aruco_markers = ArucoMarkers()
+        self.follow_tf_optical = Pose()
         self.follow_tf = Pose()
         self.theta = 0.0 # raian
         self.phase = 0
@@ -62,7 +63,7 @@ class Move_turtle(Node):
         self.aruco_markers = msg
         for marker_id_ele in msg.marker_ids:
             if marker_id_ele == 1:
-                self.follow_tf = msg.poses[msg.marker_ids.index(marker_id_ele)]
+                self.follow_tf_optical = msg.poses[msg.marker_ids.index(marker_id_ele)]
                 msg.poses[0]
         self.aruco_tf_publish_function()
 
@@ -72,6 +73,7 @@ class Move_turtle(Node):
         t.header.stamp = self.get_clock().now().to_msg()
         t.header.frame_id = "base_footprint"
         t.child_frame_id = "follow_point"
+        self.follow_tf = self.follow_tf_optical
         t.transform.translation.x = self.follow_tf.position.z
         t.transform.translation.y = self.follow_tf.position.x
         t.transform.translation.z = self.follow_tf.position.y
@@ -101,16 +103,16 @@ class Move_turtle(Node):
 
     def update(self):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
-        # buffer = Buffer()
-        # self.tf_listener = TransformListener(buffer, self)
-        # print("follow tf")
-        # follow_tf = buffer.lookup_transform("base_footprint", "follow_point", self.get_clock().now(), timeout = Duration(seconds=0, nanoseconds=100_000_000))
-        # self.twist.angular.z = math.atan2(
-        #     follow_tf.transform.translation.y,
-        #     follow_tf.transform.translation.x)
-        # self.twist.linear.x = math.sqrt(
-        #     follow_tf.transform.translation.x**2 +
-        #     follow_tf.transform.translation.y**2)
+        buffer = Buffer()
+        self.tf_listener = TransformListener(buffer, self)
+        print("follow tf")
+        follow_tf = buffer.lookup_transform("base_footprint", "follow_point", self.get_clock().now(), timeout = Duration(seconds=0, nanoseconds=100_000_000))
+        self.twist.angular.z = math.atan2(
+            follow_tf.transform.translation.y,
+            follow_tf.transform.translation.x)
+        self.twist.linear.x = math.sqrt(
+            follow_tf.transform.translation.x**2 +
+            follow_tf.transform.translation.y**2)
 
     def restrain(self):
         self.twist.linear.x = min([self.twist.linear.x , MAX_VEL])
