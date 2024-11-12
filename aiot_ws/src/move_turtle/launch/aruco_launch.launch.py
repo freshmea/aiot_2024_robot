@@ -15,7 +15,7 @@ def generate_launch_description():
     in_compressed = LaunchConfiguration('in_compressed',
                                         default='/camera/image/compressed')
     return LaunchDescription([
-        DeclareLaunchArgument('info_toppic',
+        DeclareLaunchArgument('info_topic',
                               default_value=info_topic,
                               description="info_topic"),
         DeclareLaunchArgument('size',
@@ -32,10 +32,10 @@ def generate_launch_description():
              parameters=[{'camera_info_topic': info_topic,
                           'marker_size': size,
                           'aruco_dictionary_id': dictionary}]),
-        Node(package="image_trsnsport",
+        Node(package="image_transport",
              executable="republish",
              arguments=['compressed', 'raw'],
              remappings=[
                  ('in/compressed', in_compressed),
                  ('out', '/camera/image_raw')]),
-        ]),
+        ])
