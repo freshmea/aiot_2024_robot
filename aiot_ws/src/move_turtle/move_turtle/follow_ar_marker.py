@@ -69,7 +69,7 @@ class Move_turtle(Node):
     def aruco_tf_publish_function(self):
         # tf2로 구현
         t = TransformStamped()
-        t.header.stamp = self.get_clock().now().to_msg()
+        # t.header.stamp = self.get_clock().now().to_msg()
         t.header.frame_id = "camera_link_optical"
         t.child_frame_id = "follow_point"
         t.transform.translation.x = self.follow_tf.position.x
@@ -104,7 +104,7 @@ class Move_turtle(Node):
         buffer = Buffer()
         self.tf_listener = TransformListener(buffer, self)
         try:
-            self.follow_tf2 = buffer.lookup_transform("base_link", "base_footprint", tf2_ros.Time())
+            self.follow_tf2 = buffer.lookup_transform("camera_link", "follow_point", tf2_ros.Time())
             self.get_logger().info(f"follow_tf : {self.follow_tf2}")
             self.twist.angular.z = math.atan2(
                 self.follow_tf2.transform.translation.y,
