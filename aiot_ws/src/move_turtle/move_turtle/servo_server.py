@@ -5,8 +5,6 @@ import RPi.GPIO as gpio
 from rclpy.node import Node
 from tb_interface.srv import ServoAngle
 
-from aiot_ws.servo_test import set_servo_angle
-
 
 class ServoServer(Node):
     def __init__(self):
