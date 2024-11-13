@@ -715,5 +715,18 @@ ros2 lifecycle set /map_server activate
 - 4교시
   - servo cpp 노드 작성
 - 5교시
+  - servo cpp 노드 작성 (wiringPi 사용)
+  - wiringpi.h가 안 찾아 지는 문제 -> sudo apt install libwiringpi-dev 설치 해결
 - 6교시
+  - servo_test.cpp 작성 -> 모터 동작 확인
+  - ros2 run simple_ros_cpp servo_cpp 실행 -> 권한 설정 문제
+  - sudo chown root:root install/move_turtle_cpp/lib/move_turtle_cpp/servo_sub
+  - sudo chmod +s install/move_turtle_cpp/lib/move_turtle_cpp/servo_sub
+    - librcl_yaml_param_parser.so: cannot open shared object file 에러 발생 ??
+    - sudo 설정시 PATH 문제로 발생 한거 같음.
 - 7교시
+  - 권한 설정 문제가 없는 pigpio 라이브러리 사용
+    - https://github.com/botamochi6277/ros2_pigpio?tab=readme-ov-file 참조
+    - 소스 받아서 빌드 후 사용 -> so 파일 못 찾음. -> path 설정 문제 해결하고 넘어가야 할듯.
+  - arduino linux 설정
+  - arduino 확장 설치
