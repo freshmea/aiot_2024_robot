@@ -78,5 +78,6 @@
         "variant": "cpp",
         "*.ipp": "cpp",
         "bitset": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "/home/aa/aiot_2024_robot/aiot_ws/build/user_interface/user_interface__py"
 }
