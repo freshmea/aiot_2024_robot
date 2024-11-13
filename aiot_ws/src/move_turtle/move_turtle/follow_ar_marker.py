@@ -36,8 +36,8 @@ class Move_turtle(Node):
         self.imu = Imu()
         self.battery = BatteryState()
         self.aruco_markers = ArucoMarkers()
-        self.follow_tf_optical = Pose()
         self.follow_tf = Pose()
+        self.follow_tf2 = TransformStamped()
         self.theta = 0.0 # raian
         self.phase = 0
         self.laserscan_degree = [3.5 for i in range(360)]
@@ -63,20 +63,18 @@ class Move_turtle(Node):
         self.aruco_markers = msg
         for marker_id_ele in msg.marker_ids:
             if marker_id_ele == 1:
-                self.follow_tf_optical = msg.poses[msg.marker_ids.index(marker_id_ele)]
-                msg.poses[0]
+                self.follow_tf = msg.poses[msg.marker_ids.index(marker_id_ele)]
         self.aruco_tf_publish_function()
 
     def aruco_tf_publish_function(self):
         # tf2로 구현
         t = TransformStamped()
         t.header.stamp = self.get_clock().now().to_msg()
-        t.header.frame_id = "base_footprint"
+        t.header.frame_id = "camera_link_optical"
         t.child_frame_id = "follow_point"
-        self.follow_tf = self.follow_tf_optical
-        t.transform.translation.x = self.follow_tf.position.z
-        t.transform.translation.y = self.follow_tf.position.x
-        t.transform.translation.z = self.follow_tf.position.y
+        t.transform.translation.x = self.follow_tf.position.x
+        t.transform.translation.y = self.follow_tf.position.y
+        t.transform.translation.z = self.follow_tf.position.z
         t.transform.rotation.x = self.follow_tf.orientation.x
         t.transform.rotation.y = self.follow_tf.orientation.y
         t.transform.rotation.z = self.follow_tf.orientation.z
@@ -105,14 +103,23 @@ class Move_turtle(Node):
         """ self.twist, self.pose, self.color 을 이용한 알고리즘"""
         buffer = Buffer()
         self.tf_listener = TransformListener(buffer, self)
-        print("follow tf")
-        follow_tf = buffer.lookup_transform("base_footprint", "follow_point", self.get_clock().now(), timeout = Duration(seconds=0, nanoseconds=100_000_000))
-        self.twist.angular.z = math.atan2(
-            follow_tf.transform.translation.y,
-            follow_tf.transform.translation.x)
-        self.twist.linear.x = math.sqrt(
-            follow_tf.transform.translation.x**2 +
-            follow_tf.transform.translation.y**2)
+        try:
+            self.follow_tf2 = buffer.lookup_transform("base_link", "base_footprint", tf2_ros.Time())
+            self.get_logger().info(f"follow_tf : {self.follow_tf2}")
+            self.twist.angular.z = math.atan2(
+                self.follow_tf2.transform.translation.y,
+                self.follow_tf2.transform.translation.x)
+            self.twist.linear.x = math.sqrt(
+                self.follow_tf2.transform.translation.x**2 +
+                self.follow_tf2.transform.translation.y**2)
+        except Exception as e:
+            self.get_logger().info(f"Exception : {e}")
+            self.twist.angular.z = math.atan2(
+                self.follow_tf2.transform.translation.y,
+                self.follow_tf2.transform.translation.x)
+            self.twist.linear.x = math.sqrt(
+                self.follow_tf2.transform.translation.x**2 +
+                self.follow_tf2.transform.translation.y**2)
 
     def restrain(self):
         self.twist.linear.x = min([self.twist.linear.x , MAX_VEL])

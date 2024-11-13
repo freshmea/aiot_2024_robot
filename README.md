@@ -679,4 +679,19 @@ ros2 lifecycle set /map_server activate
   - aruco 코드 수정
   - numpy 버전 에러 2.대에서 1.26으로 다운 그레이드
 - 3교시
+  - generate_aruco_marker.py 실행 후 파일 프린트
+  - image_transport republish 노드로 image 토픽 변환
   - aruco 런치 파일 작성
+- 4교시
+  - ar 마커 카메라에 확인 후 aruco_markers 토픽 확인.
+  - 시뮬레이션에 ar marker 추가
+- 5교시
+  - 시뮬레이션에 aruco 마커 추가 - autorace 표지판에 추가
+  - aruco 마커에 tf 추가 후 aruco 마커 따라가기 (gazebo 시뮬레이션)
+  - TODO: aruco 마커의 tf frame 이 optical 인거 같음.
+  - TODO: turtlebot3_burger.urdf 파일은 변경하지 않아서 tf tree 가 완성 안됨.
+- 6교시
+  - led_test.py 작성
+  - led_server 서비스 노드 작성
+- 7교시
+  - servo_test.py 작성
