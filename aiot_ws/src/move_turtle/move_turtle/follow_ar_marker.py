@@ -69,7 +69,7 @@ class Move_turtle(Node):
     def aruco_tf_publish_function(self):
         # tf2로 구현
         t = TransformStamped()
-        # t.header.stamp = self.get_clock().now().to_msg()
+        t.header.stamp = self.get_clock().now().to_msg()
         t.header.frame_id = "camera_link_optical"
         t.child_frame_id = "follow_point"
         t.transform.translation.x = self.follow_tf.position.x
