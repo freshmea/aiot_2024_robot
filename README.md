@@ -695,3 +695,25 @@ ros2 lifecycle set /map_server activate
   - led_server 서비스 노드 작성
 - 7교시
   - servo_test.py 작성
+
+---
+
+## 2024_11_13
+
+---
+
+- 1교시
+  - 복습
+  - aruco 마커 따라가기 코드 수정
+  - turtlebot3_gazebo 패키지의 turtlebot3_burger.urdf 수정 ( camera_link_optical 추가)
+- 2교시
+  - servo_server 노드 작성
+  - 노트북에서 rqt 로 servo_server 제어
+- 3교시
+  - servo_sub 노드 작성
+  - 노트북에서 rqt 로 servo_sub 제어
+- 4교시
+  - servo cpp 노드 작성
+- 5교시
+- 6교시
+- 7교시
