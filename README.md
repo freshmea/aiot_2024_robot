@@ -739,15 +739,18 @@ ros2 lifecycle set /map_server activate
 
 - 1교시
   - wiringpi 에러 해결
-    - a
+    - sudo -E bash -c '...' 로 권한 문제 해결
   - pigpio 에러 해결
+    - ldconfig 로 so 파일 path 해결
 - 2교시
-  - b
+  - led.ino 파일 작성
 - 3교시
   - arduino_led.py 노드 작성 (아두이노 시리얼 통신 노드)
 - 4교시
   - 터틀봇3에 아두이노 연결 토픽 확인
 - 5교시
-  - 
+  - 아두이노 switch.ino 파일 작성 falling edge rising edge
 - 6교시
+  - 스위치 작성 arduino_switch 노드 작성
 - 7교시
+  - a
