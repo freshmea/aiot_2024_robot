@@ -9,7 +9,7 @@ void setup()
 
 void loop()
 {
-    String buffer;
+    static String buffer;
     if (Serial.available() > 0)
     {
         buffer = Serial.readStringUntil('\n');
