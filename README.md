@@ -730,3 +730,24 @@ ros2 lifecycle set /map_server activate
     - 소스 받아서 빌드 후 사용 -> so 파일 못 찾음. -> path 설정 문제 해결하고 넘어가야 할듯.
   - arduino linux 설정
   - arduino 확장 설치
+
+---
+
+## 2024_11_14
+
+---
+
+- 1교시
+  - wiringpi 에러 해결
+    - a
+  - pigpio 에러 해결
+- 2교시
+  - b
+- 3교시
+  - arduino_led.py 노드 작성 (아두이노 시리얼 통신 노드)
+- 4교시
+  - 터틀봇3에 아두이노 연결 토픽 확인
+- 5교시
+  - 
+- 6교시
+- 7교시
