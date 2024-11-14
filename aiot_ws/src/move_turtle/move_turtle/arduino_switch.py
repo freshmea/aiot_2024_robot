@@ -13,7 +13,7 @@ class Arduino_switch(Node):
 
     def pub_callback(self):
         msg = String()
-        msg.data = str(self.ser.read_until(b'\n'))
+        msg.data = self.ser.read_until(b'\n').decode('utf-8').replace('\r', '').replace('\n', '')
         self.ser.flush()
         self.get_logger().info(msg.data)
         self.pub.publish(msg)
