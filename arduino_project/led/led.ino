@@ -20,7 +20,7 @@ void loop()
         Serial.print("Echo : ");
         Serial.println(buffer);
     }
-    delay(100);
+    delay(10);
     // delay(1000);
     // digitalWrite(13, LOW);
     // delay(1000);

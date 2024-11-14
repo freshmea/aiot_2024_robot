@@ -11,7 +11,7 @@ class Arduino_led(Node):
         self.ser = serial.Serial('/dev/ttyACM0', 115200)
 
     def sub_callback(self, msg: String):
-        byte_msg = msg.data.encode('utf-8')
+        byte_msg = (msg.data+'\n').encode('utf-8')
         self.ser.write(byte_msg)
         self.get_logger().info(msg.data)
 
