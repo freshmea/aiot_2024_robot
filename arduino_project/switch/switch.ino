@@ -1,5 +1,6 @@
-const int buttonPin = 2;
+const int buttonPin = 7;
 int buttonState = 0;
+bool flag = false;
 
 void setup()
 {
@@ -9,13 +10,21 @@ void setup()
 
 void loop()
 {
+    static unsigned long prev_time = millis();
     buttonState = digitalRead(buttonPin);
     if (buttonState == LOW)
     {
-        Serial.println("Button Pressed!!");
+        if (!flag && (millis() - prev_time) > 100)
+        {
+            prev_time = millis();
+            Serial.println("Button Pressed!!");
+            flag = true;
+        }
     }
-    else
+    else if (flag)
     {
-        Serial.println("Button Released!!");
+        flag = false;
+        Serial.println("Button Reales!!");
+        prev_time = millis();
     }
 }
