@@ -17,14 +17,14 @@ void loop()
         if (!flag && (millis() - prev_time) > 100)
         {
             prev_time = millis();
-            Serial.println("Button Pressed!!");
+            Serial.println("button_on");
             flag = true;
         }
     }
     else if (flag)
     {
         flag = false;
-        Serial.println("Button Reales!!");
+        Serial.println("button_off");
         prev_time = millis();
     }
 }
