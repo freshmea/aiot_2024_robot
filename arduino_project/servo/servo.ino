@@ -4,13 +4,13 @@
 
 Servo myServo;
 int angle = 0;
-int SERVO_PIN = 5;
+int SERVO_PIN = 9;
 
 void setup()
 {
     myServo.attach(SERVO_PIN);
 
-    Serial.begin(115200);
+    // Serial.begin(115200);
 }
 
 void loop()
@@ -26,12 +26,12 @@ void loop()
     //     }
     //     Serial.flush();
     // }
-    for (angle = 0; angle < 180; angle++)
+    for (angle = 0; angle < 18; angle++)
     {
         myServo.write(angle);
         delay(15);
     }
-    for (angle = 180; angle > 0; angle--)
+    for (angle = 18; angle > 0; angle--)
     {
         myServo.write(angle);
         delay(15);
