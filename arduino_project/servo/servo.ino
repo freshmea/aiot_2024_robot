@@ -4,28 +4,36 @@
 
 Servo myServo;
 int angle = 0;
-int SERVO_PIN = 6;
+int SERVO_PIN = 5;
 
 void setup()
 {
     myServo.attach(SERVO_PIN);
+
     Serial.begin(115200);
 }
 
 void loop()
 {
-    static String buffer;
-    if (Serial.available() > 0)
+    // static String buffer;
+    // if (Serial.available() > 0)
+    // {
+    //     buffer = Serial.readStringUntil('\n');
+    //     if (buffer.substring(0, 4) == "move")
+    //     {
+    //         int pos = buffer.substring(4, 7).toInt();
+    //         myServo.write(pos);
+    //     }
+    //     Serial.flush();
+    // }
+    for (angle = 0; angle < 180; angle++)
     {
-        buffer = Serial.readStringUntil('\n');
-        Serial.print("Echo : ");
-        Serial.print(buffer.substring(0, 4));
-        Serial.print(buffer.substring(4, 7));
-        if (buffer.substring(0, 4) == "move")
-        {
-            Serial.print("move command received");
-            int pos = buffer.substring(4, 7).toInt();
-            myServo.write(pos);
-        }
+        myServo.write(angle);
+        delay(15);
+    }
+    for (angle = 180; angle > 0; angle--)
+    {
+        myServo.write(angle);
+        delay(15);
     }
 }
