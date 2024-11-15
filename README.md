@@ -726,7 +726,7 @@ ros2 lifecycle set /map_server activate
     - sudo 설정시 PATH 문제로 발생 한거 같음.
 - 7교시
   - 권한 설정 문제가 없는 pigpio 라이브러리 사용
-    - https://github.com/botamochi6277/ros2_pigpio?tab=readme-ov-file 참조
+    - [링크](https://github.com/botamochi6277/ros2_pigpio?tab=readme-ov-file) 참조
     - 소스 받아서 빌드 후 사용 -> so 파일 못 찾음. -> path 설정 문제 해결하고 넘어가야 할듯.
   - arduino linux 설정
   - arduino 확장 설치
@@ -754,4 +754,29 @@ ros2 lifecycle set /map_server activate
   - 스위치 작성 arduino_switch 노드 작성
 - 7교시
   - servo.ino 작성 ( 서보 모터 동작 확인)
-  - 
+
+---
+
+## 2024_11_15
+
+---
+
+- 1교시
+  - 복습
+  - arduino 외부 라이브러리 활용
+  - switch class 작성 (스위치 여러개 쓰기)
+- 2교시
+  - ros2 노드 arduino_servo 작성
+- 3교시
+  - urdf 를 이용해서 터틀봇에 서보 모터 추가(깃발)
+- 4교시
+  - arduino_servo 에서 tf 를 발행하는 코드 추가( 서보의 동작과 동시에 tf 발행)
+- 5교시
+  - namespace 설명
+  - turtlebot3 로봇의 bringup robot.launch.py 에서 수정 해야 할 부분 설명
+  - move_turtle 의 launch 폴더에 myrobot1.launch.py 등을 작성
+  - burger.yaml 을 namespace 전용으로 작성
+- 6교시
+  - /scan topic namespace 변경 -> 따로 launch 파일 작성
+  - 두 개의 turtlebot3 namepace 적용 실습
+  - TODO: tf 의 이름 바꾸는 실습 진행 안 함
