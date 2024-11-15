@@ -753,4 +753,5 @@ ros2 lifecycle set /map_server activate
 - 6교시
   - 스위치 작성 arduino_switch 노드 작성
 - 7교시
-  - a
+  - servo.ino 작성 ( 서보 모터 동작 확인)
+  - 
