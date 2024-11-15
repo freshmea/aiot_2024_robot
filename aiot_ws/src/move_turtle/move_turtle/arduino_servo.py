@@ -22,10 +22,10 @@ class Arduino_servo(Node):
         servo_tf.header.frame_id = "base_link"
         servo_tf.child_frame_id = "flag"
         theta = int(msg.data[4:7])
-        q = tf_transformations.quaternion_from_euler(0, theta/180*math.pi, 0)
-        servo_tf.transform.translation.x = 0.0
-        servo_tf.transform.translation.y = 0.0
-        servo_tf.transform.translation.z = 0.0
+        q = tf_transformations.quaternion_from_euler(0, -theta/180*math.pi, 0)
+        servo_tf.transform.translation.x = 0.025  
+        servo_tf.transform.translation.y = -0.05
+        servo_tf.transform.translation.z = 0.14
         servo_tf.transform.rotation.x = q[0]
         servo_tf.transform.rotation.y = q[1]
         servo_tf.transform.rotation.z = q[2]
