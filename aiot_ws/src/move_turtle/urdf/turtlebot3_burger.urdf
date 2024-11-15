@@ -104,7 +104,7 @@
 
   <link name="camera_link">
     <visual>
-      <origin xyz="0.05 0 0.14" rpy="0 0 0" />
+      <origin xyz="0.0 0 0.0" rpy="0 0 0" />
       <geometry>
         <box size="0.017 0.03 0.03" />
       </geometry>
@@ -121,7 +121,7 @@
   <joint name="camera_joint" type="fixed">
     <parent link="base_link" />
     <child link="camera_link" />
-    <origin xyz="0.025 0.0 0.05" rpy="0 0 0" />
+    <origin xyz="0.05 0.0 0.14" rpy="0 0 0" />
   </joint>
 
   <joint name="camera_optical_joint" type="fixed">
