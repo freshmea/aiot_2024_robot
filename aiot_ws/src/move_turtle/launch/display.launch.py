@@ -39,6 +39,7 @@ def generate_launch_description():
                 'urdf_package': 'move_turtle',
                 'urdf_package_path': LaunchConfiguration('model'),
                 'rviz_config': LaunchConfiguration('rvizconfig'),
-                'jsp_gui': LaunchConfiguration('gui')
+                'jsp_gui': LaunchConfiguration('gui'),
+                'remappings': "[('/tf', '/robot1/tf'), ('/tf_static', '/robot1/tf_static')]"
             }.items()
             )])
