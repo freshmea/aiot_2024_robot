@@ -30,32 +30,32 @@ class Patrol_manipulator(Node):
     def update(self):
         if self.prev_time + Duration(seconds=3) > self.get_clock().now():
             # first move
-            self.joint_angles = [0.0, 0.0, 0.0, 0.0]
+            self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 0:
                 self.send_request()
                 self.stage += 1
         elif self.prev_time + Duration(seconds=5) > self.get_clock().now():
             # second move
-            self.joint_angles = [0.0, 0.0, 0.0, 0.0]
+            self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 1:
                 self.send_request()
                 self.stage += 1
         elif self.prev_time + Duration(seconds=6) > self.get_clock().now():
             # second move
-            self.joint_angles = [0.0, 0.0, 0.0, 0.0]
+            self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 2:
                 self.send_request()
                 self.stage += 1
         elif self.prev_time + Duration(seconds=7) > self.get_clock().now():
             # second move
-            self.joint_angles = [0.0, 0.0, 0.0, 0.0]
+            self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 3:
                 self.send_request()
                 self.stage += 1
 
         elif self.prev_time + Duration(seconds=8) > self.get_clock().now():
             # second move
-            self.joint_angles = [0.0, 0.0, 0.0, 0.0]
+            self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 4:
                 self.send_request()
                 self.stage += 1
