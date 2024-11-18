@@ -780,3 +780,14 @@ ros2 lifecycle set /map_server activate
   - /scan topic namespace 변경 -> 따로 launch 파일 작성
   - 두 개의 turtlebot3 namepace 적용 실습
   - TODO: tf 의 이름 바꾸는 실습 진행 안 함
+
+---
+
+## 2024_11_18
+
+---
+
+- 1교시
+  - 복습
+  - tf 명 변경 ( myrobot1)
+- 2교시
