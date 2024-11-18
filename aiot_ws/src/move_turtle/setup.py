@@ -39,6 +39,7 @@ setup(
             "arduino_led = move_turtle.arduino_led:main",
             "arduino_switch = move_turtle.arduino_switch:main",
             "arduino_servo = move_turtle.arduino_servo:main",
+            "patrol_manipulator = move_turtle.patrol_manipulator:main",
         ],
     },
 )
