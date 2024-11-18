@@ -792,10 +792,14 @@ ros2 lifecycle set /map_server activate
   - tf 명 변경 ( myrobot1)
 - 2교시
   - xacro 로 urdf 작성 실습 namespace property 추가
-  - openmanupulator 기기 조립 (일부 조립 되어 있고 해체 되어 있음)
+  - openmanipulator 기기 조립 (일부 조립 되어 있고 해체 되어 있음)
 - 3교시
-  - openmanupulator 기기 조립
+  - openmanipulator 기기 조립
 - 4교시
+  - open manipulator 실습
 - 5교시
+  - open manipulator teleop 실습
 - 6교시
+  - open_manipulator teleop 움직임 노드 작성
 - 7교시
+  - open_manipulator patrol 코드 작성

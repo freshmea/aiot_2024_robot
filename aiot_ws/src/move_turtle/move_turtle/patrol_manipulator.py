@@ -17,9 +17,10 @@ class Patrol_manipulator(Node):
         self.prev_time = self.get_clock().now()
         self.stage = 0
 
-    def send_request(self):
+    def send_request(self, path_time=0.5):
         self.request.joint_position.joint_name = ['joint1', 'joint2', 'joint3', 'joint4']
         self.request.joint_position.position = self.joint_angles
+        self.request.path_time = path_time
         self.future = self.client.call_async(self.request)
         self.future.add_done_callback(self.done_callback)
 
@@ -32,32 +33,32 @@ class Patrol_manipulator(Node):
             # first move
             self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 0:
-                self.send_request()
+                self.send_request(3.0)
                 self.stage += 1
         elif self.prev_time + Duration(seconds=5) > self.get_clock().now():
             # second move
             self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 1:
-                self.send_request()
+                self.send_request(2.0)
                 self.stage += 1
         elif self.prev_time + Duration(seconds=6) > self.get_clock().now():
             # second move
             self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 2:
-                self.send_request()
+                self.send_request(1.0)
                 self.stage += 1
         elif self.prev_time + Duration(seconds=7) > self.get_clock().now():
             # second move
             self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 3:
-                self.send_request()
+                self.send_request(1.0)
                 self.stage += 1
 
         elif self.prev_time + Duration(seconds=8) > self.get_clock().now():
             # second move
             self.joint_angles = [0.0, 0.0, 0.0, 0.0, 0.0]
             if self.stage == 4:
-                self.send_request()
+                self.send_request(1.0)
                 self.stage += 1
         elif self.prev_time + Duration(seconds=10) > self.get_clock().now():
             self.prev_time = self.get_clock().now()
