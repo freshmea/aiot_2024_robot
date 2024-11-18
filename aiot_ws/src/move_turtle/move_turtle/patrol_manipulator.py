@@ -34,33 +34,32 @@ class Patrol_manipulator(Node):
             if not self.task_done:
                 self.send_request()
                 self.task_done = True
-        if self.prev_time + Duration(seconds=5) < self.get_clock().now():
+        elif self.prev_time + Duration(seconds=5) < self.get_clock().now():
             # second move
             self.joint_angles = [0, 0, 0, 0]
             if not self.task_done:
                 self.send_request()
                 self.task_done = True
-        if self.prev_time + Duration(seconds=6) < self.get_clock().now():
+        elif self.prev_time + Duration(seconds=6) < self.get_clock().now():
+            # second move
+            self.joint_angles = [0, 0, 0, 0]
+            if not self.task_done:
+                self.send_request()
+                self.task_done = True
+        elif self.prev_time + Duration(seconds=7) < self.get_clock().now():
             # second move
             self.joint_angles = [0, 0, 0, 0]
             if not self.task_done:
                 self.send_request()
                 self.task_done = True
 
-        if self.prev_time + Duration(seconds=7) < self.get_clock().now():
+        elif self.prev_time + Duration(seconds=8) < self.get_clock().now():
             # second move
             self.joint_angles = [0, 0, 0, 0]
             if not self.task_done:
                 self.send_request()
                 self.task_done = True
-
-        if self.prev_time + Duration(seconds=8) < self.get_clock().now():
-            # second move
-            self.joint_angles = [0, 0, 0, 0]
-            if not self.task_done:
-                self.send_request()
-                self.task_done = True
-        if self.prev_time + Duration(seconds=10) < self.get_clock().now():
+        elif self.prev_time + Duration(seconds=10) < self.get_clock().now():
             self.prev_time = self.get_clock().now()
 
 def main():
