@@ -1,5 +1,6 @@
 import rclpy
 from open_manipulator_msgs.srv import SetJointPosition
+from rclpy.clock import Duration
 from rclpy.node import Node
 
 
@@ -12,6 +13,8 @@ class Patrol_manipulator(Node):
         self.request = SetJointPosition.Request()
         self.create_timer(1/60, self.update)
         self.joint_angles = self.request.joint_position.position
+        self.prev_time = self.get_clock().now()
+        self.task_done = False
 
     def send_request(self):
         self.request.joint_position.joint_name = ['joint1', 'joint2', 'joint3', 'joint4']
@@ -21,14 +24,44 @@ class Patrol_manipulator(Node):
 
     def done_callback(self, future):
         response : SetJointPosition.Response = future.result()
-        self.get_logger().info(f"{response.success}")
-        self.get_logger().info(response.message)
+        self.task_done = False
+        self.get_logger().info(f"{response.is_planned}")
 
     def update(self):
-        self.joint_angles[0]
-        self.joint_angles[1]
-        self.joint_angles[2]
-        self.joint_angles[3]
+        if self.prev_time + Duration(seconds=3) < self.get_clock().now():
+            # first move
+            self.joint_angles = [0, 0, 0, 0]
+            if not self.task_done:
+                self.send_request()
+                self.task_done = True
+        if self.prev_time + Duration(seconds=5) < self.get_clock().now():
+            # second move
+            self.joint_angles = [0, 0, 0, 0]
+            if not self.task_done:
+                self.send_request()
+                self.task_done = True
+        if self.prev_time + Duration(seconds=6) < self.get_clock().now():
+            # second move
+            self.joint_angles = [0, 0, 0, 0]
+            if not self.task_done:
+                self.send_request()
+                self.task_done = True
+
+        if self.prev_time + Duration(seconds=7) < self.get_clock().now():
+            # second move
+            self.joint_angles = [0, 0, 0, 0]
+            if not self.task_done:
+                self.send_request()
+                self.task_done = True
+
+        if self.prev_time + Duration(seconds=8) < self.get_clock().now():
+            # second move
+            self.joint_angles = [0, 0, 0, 0]
+            if not self.task_done:
+                self.send_request()
+                self.task_done = True
+        if self.prev_time + Duration(seconds=10) < self.get_clock().now():
+            self.prev_time = self.get_clock().now()
 
 def main():
     rclpy.init()
