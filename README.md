@@ -803,3 +803,8 @@ ros2 lifecycle set /map_server activate
   - open_manipulator teleop 움직임 노드 작성
 - 7교시
   - open_manipulator patrol 코드 작성
+
+
+- 1교시
+  - moveit2 설치
+  - colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
