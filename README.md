@@ -812,6 +812,7 @@ ros2 lifecycle set /map_server activate
 
 - 1교시
   - moveit2 설치
+
 ```bash
 sudo apt install python3-rosdep
 sudo rosdep init
