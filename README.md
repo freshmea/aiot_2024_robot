@@ -843,4 +843,7 @@ colcon build --mixin release
 - 5교시
   - moveit2 rviz2 실습
 - 6교시
+  - cpp 코드로  moveit2 실습 (move_turtle / hello_moveit)
 - 7교시
+  - mtc example 설명
+  - 터틀봇3 manipulation 설명
