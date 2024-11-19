@@ -831,3 +831,16 @@ sudo apt update && rosdep install -r --from-paths . --ignore-src --rosdistro hum
 cd ~/ws_moveit
 colcon build --mixin release
 ```
+
+- 2교시
+  - moveit2 설치
+- 3교시
+  - moveit2 설치
+  - 라즈베리파이 피코 납땜
+- 4교시
+  - moveit2 설치
+  - 라즈베리파이 피코 납땜
+- 5교시
+  - moveit2 rviz2 실습
+- 6교시
+- 7교시

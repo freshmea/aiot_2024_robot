@@ -11,7 +11,8 @@
                 "/usr/include/opencv4",
                 "/opt/ros/humble/include/**",
                 "/home/aa/aiot_2024_robot/aiot_ws/src/simple_ros_cpp/include/",
-                "/home/aa/aiot_2024_robot/aiot_ws/install/**"
+                "/home/aa/aiot_2024_robot/aiot_ws/install/**",
+                "/home/aa/aiot_2024_robot/ws_moveit/install/**"
             ],
             "forcedInclude": [],
             "cStandard": "c17",
