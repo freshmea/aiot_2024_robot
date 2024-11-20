@@ -848,3 +848,29 @@ colcon build --mixin release
 - 7교시
   - mtc example 설명
   - 터틀봇3 manipulation 설명
+
+---
+
+## 2024_11_20
+
+---
+
+- 1교시
+  - 복습
+  - micro-ros 설치
+- 2교시
+  - 라즈베리파이 피코 보드 설명
+- 3교시
+  - 라즈베리파이 피코 보드 - 마이크로 로스 연결
+  - led 예제 (마이크로 로스 publisher 실습)
+- 4교시
+  - 마이크로 로스 Subscription 실습
+- 5교시
+  - 마이크로 로스 서보 모터 제어 실습 (외부 라이브러리 사용 예제)
+  - [참조](https://github.com/irishpatrick/pico-servo.git)
+  - libpico_servo.a, libfixmath.a 를 사용하기 위해 /usr/bin 에 복사
+- 6교시
+  - 프로젝터 교체 (30분 휴식)
+- 7교시
+  - dc 모터 제어 ( 모터 드라이버 사용)
+  - dc 모터 제어 노드 작성 ( rclc 코드 )
