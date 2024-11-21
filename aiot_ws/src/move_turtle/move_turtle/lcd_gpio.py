@@ -21,14 +21,14 @@ class LcdServer(Node):
         str = f"{request.data}"
         if str[0:3] == "lcd":
             if str[3] == "0":
-                lcd.setCursor(0,0)
+                self.lcd.setCursor(0,0)
             if str[3] == "1":
-                lcd.setCursor(0,1)
+                self.lcd.setCursor(0,1)
             if str[3] == "2":
-                lcd.setCursor(0,2)
+                self.lcd.setCursor(0,2)
             if str[3] == "3":
-                lcd.setCursor(0,3)
-            lcd.print(f"request {request.data[4:]}")
+                self.lcd.setCursor(0,3)
+            self.lcd.print(f"request {str[4:]}")
         
         response.success = True
         return response
@@ -39,7 +39,6 @@ def main():
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        gpio.cleanup()
         node.destroy_node()
 
 if __name__ == "__main__":
