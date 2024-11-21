@@ -29,7 +29,7 @@ class LcdServer(Node):
             if str[3] == "3":
                 self.lcd.setCursor(0,3)
             self.lcd.print(f"{str[4:]}")
-        
+
         response.success = True
         return response
 

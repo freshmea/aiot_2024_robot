@@ -892,5 +892,11 @@ colcon build --mixin release
 - 4교시
   - lcd 제어 노드 작성 (ros2 desktop)
 - 5교시
+  - 터틀봇3에 아두이노-lcd 추가
+  - lcd 제어 노드 작성 (터틀봇3 move_turtle lcd_server)
 - 6교시
+  - 터틀봇3에 gpio - lcd 연결(logicl level converter 사용)
 - 7교시
+  - 피코 보드에 lcd 연결 (i2c 통신), micro-ros 로 service 생성 및 lcd 제어
+  - [참고 lcd c library](https://github.com/extremq/lcd1602_i2c/blob/main/lcd1602_i2c.c)
+  - [참고]
