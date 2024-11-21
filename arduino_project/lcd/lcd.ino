@@ -28,10 +28,25 @@ void loop()
     {
         buffer = Serial.readStringUntil('\n');
         Serial.print(buffer.substring(0, 4));
-        if (buffer.substring(0, 4) == "Alcd")
+        if (buffer.substring(0, 4) == "lcd0")
         {
             lcd.setCursor(0, 0);
-            lcd.print(buffer.substring(4, 17));
+            lcd.print(buffer.substring(4, 21));
+        }
+        if (buffer.substring(0, 4) == "lcd1")
+        {
+            lcd.setCursor(0, 1);
+            lcd.print(buffer.substring(4, 21));
+        }
+        if (buffer.substring(0, 4) == "lcd2")
+        {
+            lcd.setCursor(0, 2);
+            lcd.print(buffer.substring(4, 21));
+        }
+        if (buffer.substring(0, 4) == "lcd3")
+        {
+            lcd.setCursor(0, 3);
+            lcd.print(buffer.substring(4, 21));
         }
         Serial.flush();
     }
