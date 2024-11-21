@@ -2,7 +2,7 @@ import time
 from time import *
 
 import rclpy
-import RPi_I2C_driver
+from move_turtle import RPi_I2C_driver
 from rclpy.node import Node
 from tb_interface.srv import LcdDisplay
 
@@ -28,7 +28,7 @@ class LcdServer(Node):
                 self.lcd.setCursor(0,2)
             if str[3] == "3":
                 self.lcd.setCursor(0,3)
-            self.lcd.print(f"request {str[4:]}")
+            self.lcd.print(f"{str[4:]}")
         
         response.success = True
         return response
