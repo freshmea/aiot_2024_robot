@@ -874,3 +874,23 @@ colcon build --mixin release
 - 7교시
   - dc 모터 제어 ( 모터 드라이버 사용)
   - dc 모터 제어 노드 작성 ( rclc 코드 )
+
+---
+
+## 2024_11_21
+
+---
+
+- 1교시
+  - 복습
+  - dc 모터 pwm 제어 노드 작성 (micro-ros pico)
+- 2교시
+  - service led 제어 노드 작성 (micro-ros pico)
+- 3교시
+  - ic2 통신 설명
+  - lcd arduino 코드 작성 (i2c 통신)
+- 4교시
+  - lcd 제어 노드 작성 (ros2 desktop)
+- 5교시
+- 6교시
+- 7교시
