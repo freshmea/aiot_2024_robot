@@ -27,6 +27,7 @@ private:
         auto msg = std_msgs::msg::String();
         msg.data = "Synchronously publishing: Hello, World!!!!! " + to_string(_count);
         _pub_sync->publish(msg);
+        RCLCPP_INFO(get_logger(), msg.data.c_str());
         msg.data = "Asynchronously publishing: Hello, World!!!!! " + to_string(_count);
         _pub_async->publish(msg);
         RCLCPP_INFO(get_logger(), msg.data.c_str());
