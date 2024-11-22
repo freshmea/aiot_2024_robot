@@ -900,3 +900,26 @@ colcon build --mixin release
   - 피코 보드에 lcd 연결 (i2c 통신), micro-ros 로 service 생성 및 lcd 제어
   - [참고 lcd c library](https://github.com/extremq/lcd1602_i2c/blob/main/lcd1602_i2c.c)
   - [참고]
+
+---
+
+## 2024_11_22
+
+---
+
+- 1교시
+  - dds 설정 ( discovery server 생성)
+- 2교시
+  - discovery backup server 설정
+  - super_client_configuration_file.xml 설정
+- 3교시
+  - topic syn/async 설정 (dds)
+  - qos 설정 (dds)
+- 4교시
+  - 3D 프린터 설명 (bambu lab carbon x1 printer)
+- 5교시
+  - ros2 학습 체크 리스트 작성
+  - 3D 프린터 이름표 실습(tinker cad)
+- 6교시
+  - 프로젝트 안내
+  - 주변 정리

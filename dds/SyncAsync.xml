@@ -7,7 +7,7 @@
         <historyMemoryPolicy>DYNAMIC</historyMemoryPolicy>
     </subscriber>
     <publisher profile_name="/sync_topic">
-        <historyMemoryPolicy>DYMANIC</historyMemoryPolicy>
+        <historyMemoryPolicy>DYNAMIC</historyMemoryPolicy>
         <qos>
             <publishMode>
                 <kind>SYNCHRONOUS</kind>
@@ -15,7 +15,7 @@
         </qos>
     </publisher>
     <publisher profile_name="/async_topic">
-        <historyMemoryPolicy>DYMANIC</historyMemoryPolicy>
+        <historyMemoryPolicy>DYNAMIC</historyMemoryPolicy>
         <qos>
             <publishMode>
                 <kind>ASYNCHRONOUS</kind>

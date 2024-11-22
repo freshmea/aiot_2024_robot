@@ -6,9 +6,9 @@ using namespace std;
 using namespace std::chrono_literals;
 void printHello();
 
-int main()
+int main(int argc, char *argv[])
 {
-    rclcpp::init(0, nullptr);
+    rclcpp::init(argc, argv);
     // node = Node("hello")
     auto node = std::make_shared<rclcpp::Node>("hello");
     auto timer = node->create_wall_timer(1s, printHello);

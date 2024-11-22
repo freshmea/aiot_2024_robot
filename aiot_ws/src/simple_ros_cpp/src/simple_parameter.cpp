@@ -39,9 +39,9 @@ private:
     }
 };
 
-int main()
+int main(int argc, char *argv[])
 {
-    rclcpp::init(0, nullptr);
+    rclcpp::init(argc, argv);
     auto node = std::make_shared<SimpleParameter>();
     rclcpp::spin(node);
     rclcpp::shutdown();
