@@ -934,5 +934,12 @@ colcon build --mixin release
 - 안내
   - 팀 github repository 생성 및 운용
     - README.md 작성(팀장이 오전 오후 개발 로그 작성)
-  - 오천 9시에는 모두 모여서 출석 확인
+  - 오전 9시에는 모두 모여서 출석 확인
   - 11/28 오후 4시 계획발표 (ppt)
+
+<!-- TODO : VsCode 확장 세팅 -->
+<!-- TODO : SROS 활성화 및 작동 확인 -->
+<!-- TODO : 파라미터 Declare 및 get, set, event 에 의한 변경 함수 고안 -->
+<!-- TODO : 인터페이스 교재 및 교안 작성 -->
+<!-- TODO : DDS discovery server 를 활용한 클라우드 ROS2 구현 실습 -->
+<!-- TODO : micro-ros 에서 SROS 나 보안 강화를 위한 방법이 있는지 검색 -->
