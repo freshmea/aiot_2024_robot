@@ -943,3 +943,5 @@ colcon build --mixin release
 <!-- TODO : 인터페이스 교재 및 교안 작성 -->
 <!-- TODO : DDS discovery server 를 활용한 클라우드 ROS2 구현 실습 -->
 <!-- TODO : micro-ros 에서 SROS 나 보안 강화를 위한 방법이 있는지 검색 -->
+- enclave 설정 완료
+- 
