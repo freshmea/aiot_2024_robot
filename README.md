@@ -980,3 +980,4 @@ colcon build --mixin release
 ```
 
 - export FASTRTPS_DEFAULT_PROFILES_FILE=super_client_configuration_file.xml
+- export ROS_DISCOVERY_SERVER=ec2-54-180-113-6.ap-northeast-2.compute.amazonaws.com:11811
