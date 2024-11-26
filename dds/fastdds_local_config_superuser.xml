@@ -1,0 +1,25 @@
+<profiles>
+    <participant profile_name="super_client_participant" is_default_profile="true">
+        <rtps>
+            <builtin>
+                <discovery_config>
+                    <discoveryProtocol>SUPER_CLIENT</discoveryProtocol>
+                    <ignoreParticipantFlags>NO_FILTER</ignoreParticipantFlags>
+                    <discoveryServersList>
+                        <RemoteServer>
+                            <guidPrefix>44.53.01.5f.45.50.52.4f.53.49.4d.41</guidPrefix>
+                            <metatrafficUnicastLocatorList>
+                                <locator>
+                                    <udpv4>
+                                        <address>ec2-54-180-113-6.ap-northeast-2.compute.amazonaws.com</address>
+                                        <port>11811</port>
+                                    </udpv4>
+                                </locator>
+                            </metatrafficUnicastLocatorList>
+                        </RemoteServer>
+                    </discoveryServersList>
+                </discovery_config>
+            </builtin>
+        </rtps>
+    </participant>
+</profiles>

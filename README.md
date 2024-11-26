@@ -979,3 +979,4 @@ colcon build --mixin release
 </profiles>
 ```
 
+- export FASTRTPS_DEFAULT_PROFILES_FILE=super_client_configuration_file.xml
