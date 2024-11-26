@@ -1,0 +1,20 @@
+<profiles>
+    <participant profile_name="default_participant" is_default_profile="true">
+        <rtps>
+            <builtin>
+                <discovery_config>
+                    <discoveryProtocol>CLIENT</discoveryProtocol>
+                    <ignoreParticipantFlags>NO_FILTER</ignoreParticipantFlags>
+                </discovery_config>
+                <metatrafficUnicastLocatorList>
+                    <locator>
+                        <udpv4>
+                            <address>ec2-54-180-113-6.ap-northeast-2.compute.amazonaws.com</address>
+                            <port>11811</port>
+                        </udpv4>
+                    </locator>
+                </metatrafficUnicastLocatorList>
+            </builtin>
+        </rtps>
+    </participant>
+</profiles>

@@ -939,9 +939,43 @@ colcon build --mixin release
 
 <!-- TODO : VsCode 확장 세팅 -->
 <!-- TODO : SROS 활성화 및 작동 확인 -->
+<!-- TODO : 메뉴퓰레이터 그리퍼 문제 -->
 <!-- TODO : 파라미터 Declare 및 get, set, event 에 의한 변경 함수 고안 -->
 <!-- TODO : 인터페이스 교재 및 교안 작성 -->
 <!-- TODO : DDS discovery server 를 활용한 클라우드 ROS2 구현 실습 -->
 <!-- TODO : micro-ros 에서 SROS 나 보안 강화를 위한 방법이 있는지 검색 -->
 - enclave 설정 완료  -> 환경 변수에 오타가 있었음 keystone -> keystore
-- 
+- 메뉴퓰레이터 그리퍼 안 움직이던 것 -> 그리퍼 코드가 안 들어 있음 -> 코드 수정 후 올림
+
+- cloud test
+  - fastdds discovery -i 1 -l 127.0.0.1 -p 11811
+  - fastdds discovery -i 1 -l <AWS_PUBLIC_IP> -p 11811
+  - fastdds discovery -i 1 -l 0.0.0.0 -p 11811
+
+  - ros2 deamon stop
+  - ros2 deamon start
+  - 파일 생성
+
+```xml
+<profiles>
+    <participant profile_name="participant_profile" is_default_profile="true">
+        <rtps>
+            <builtin>
+                <discovery_config>
+                    <discovery_protocol>SERVER</discovery_protocol>
+                    <static_edp>true</static_edp>
+                    <ignoreParticipantFlags>0</ignoreParticipantFlags>
+                    <metatraffic_unicast_locator_list>
+                        <locator>
+                            <kind>1</kind>
+                            <address><AWS_PUBLIC_IP></address>
+                            <port>11811</port>
+                        </locator>
+                    </metatraffic_unicast_locator_list>
+                </discovery_config>
+            </builtin>
+        </rtps>
+    </participant>
+</profiles>
+```
+
