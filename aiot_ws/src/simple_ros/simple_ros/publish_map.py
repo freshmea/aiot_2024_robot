@@ -1,5 +1,3 @@
-import math
-
 import rclpy
 from nav_msgs.msg import OccupancyGrid
 from rclpy.node import Node
