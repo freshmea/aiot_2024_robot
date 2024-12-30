@@ -1,5 +1,3 @@
-import sys
-
 import rclpy
 from action_msgs.msg import GoalStatus
 from geometry_msgs.msg import PoseStamped
@@ -44,8 +42,8 @@ class WaypointsFollower(Node):
         pose.pose.orientation.z = 0.0
         pose.pose.orientation.w = 1.0
 
-        goal_msg.poses.append(pose)
-        
+        goal_msg.poses.append(pose) # type: ignore
+
         while(not self.action_client.wait_for_server(timeout_sec=1)):
             self.get_logger().info("fibonacci server is not available!!")
         self.future : Future= self.action_client.send_goal_async(goal_msg, feedback_callback=self.feedback_callback)

@@ -20,7 +20,7 @@ class WaypointsFollower(Node):
 
     def send_goal(self, x: str, y: str):
         goal_msg : FollowWaypoints.Goal = FollowWaypoints.Goal()
-        
+
         # pose setting.
         pose = PoseStamped()
         pose.header.frame_id = "map"
@@ -35,8 +35,8 @@ class WaypointsFollower(Node):
         pose.pose.orientation.z = 0.0
         pose.pose.orientation.w = 1.0
 
-        goal_msg.poses.append(pose)
-        
+        goal_msg.poses.append(pose) # type: ignore
+
         while(not self.action_client.wait_for_server(timeout_sec=1)):
             self.get_logger().info("fibonacci server is not available!!")
         self.future : Future= self.action_client.send_goal_async(goal_msg, feedback_callback=self.feedback_callback)
@@ -58,7 +58,7 @@ class WaypointsFollower(Node):
             self.get_logger().info(f"result: {result.result.missed_waypoints}")
             # shutdown the node
             rclpy.shutdown()
-            
+
         if result.status == GoalStatus.STATUS_ABORTED:
             self.get_logger().info("aborted!!")
 
