@@ -47,7 +47,8 @@ setup(
             "deadline_pub = simple_ros.deadline_pub:main",
             "deadline_sub = simple_ros.deadline_sub:main",
             "lifespan = simple_ros.lifespan:main",
-            "liveliness = simple_ros.liveliness:main"
+            "liveliness = simple_ros.liveliness:main",
+            "publish_map = simple_ros.publish_map:main",
             ],
     },
 )

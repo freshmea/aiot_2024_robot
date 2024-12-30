@@ -948,9 +948,9 @@ colcon build --mixin release
 - 메뉴퓰레이터 그리퍼 안 움직이던 것 -> 그리퍼 코드가 안 들어 있음 -> 코드 수정 후 올림
 
 - cloud test
-  - fastdds discovery -i 1 -l 127.0.0.1 -p 11811
-  - fastdds discovery -i 1 -l <AWS_PUBLIC_IP> -p 11811
-  - fastdds discovery -i 1 -l 0.0.0.0 -p 11811
+  - fastdds discovery -i 0 -l 127.0.0.1 -p 11811
+  - fastdds discovery -i 0 -l <AWS_PUBLIC_IP> -p 11811
+  - fastdds discovery -i 0 -l 0.0.0.0 -p 11811
 
   - ros2 deamon stop
   - ros2 deamon start
