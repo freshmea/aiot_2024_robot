@@ -7,52 +7,49 @@ from std_msgs.msg import Header
 class PublishMap(Node):
     def __init__(self):
         super().__init__('publish_map')
-        self._pub = self.create_publisher(OccupancyGrid, 'map', 1)
-        self._timer = self.create_timer(0.001, self.pub_callback)  # 1ms timer
+        self.pub = self.create_publisher(OccupancyGrid, 'map', 10)
+        self.timer = self.create_timer(0.001, self.pub_callback)  # 1ms timer
 
         # Map info
-        self._msg = OccupancyGrid()
-        self._msg.info.resolution = 0.1
-        self._msg.info.width = 100
-        self._msg.info.height = 100
-        self._msg.info.origin.position.x = -(self._msg.info.width * self._msg.info.resolution) / 2.0
-        self._msg.info.origin.position.y = -(self._msg.info.height * self._msg.info.resolution) / 2.0
-        self._msg.info.origin.position.z = 0.0
-        self._msg.info.origin.orientation.x = 0.0
-        self._msg.info.origin.orientation.y = 0.0
-        self._msg.info.origin.orientation.z = 0.0
-        self._msg.info.origin.orientation.w = 1.0
+        self.msg = OccupancyGrid()
+        self.msg.info.resolution = 0.1
+        self.msg.info.width = 100
+        self.msg.info.height = 100
+        self.msg.info.origin.position.x = -(self.msg.info.width * self.msg.info.resolution) / 2.0
+        self.msg.info.origin.position.y = -(self.msg.info.height * self.msg.info.resolution) / 2.0
+        self.msg.info.origin.position.z = 0.0
+        self.msg.info.origin.orientation.x = 0.0
+        self.msg.info.origin.orientation.y = 0.0
+        self.msg.info.origin.orientation.z = 0.0
+        self.msg.info.origin.orientation.w = 1.0
 
-        self._msg.data = [-1 for _ in range(self._msg.info.width * self._msg.info.height)]
+        self.msg.data = [-1 for _ in range(self.msg.info.width * self.msg.info.height)]
 
-        self._count = 0
-        self._row = 0
+        self.count = 0
+        self.row = 0
 
     def pub_callback(self):
-        self._msg.header = Header()
-        self._msg.header.frame_id = 'odom'
-        self._msg.header.stamp = self.get_clock().now().to_msg()
+        self.msg.header = Header()
+        self.msg.header.frame_id = 'odom'
+        self.msg.header.stamp = self.get_clock().now().to_msg()
 
         # Update map data
-        index = self._count + (self._msg.info.width * self._row)
-        if self._msg.data[index] == -1:
-            self._msg.data[index] = 100
+        index = self.count + (self.msg.info.width * self.row)
+        if self.msg.data[index] == -1:
+            self.msg.data[index] = 100
         else:
-            self._msg.data[index] = -1
+            self.msg.data[index] = -1
 
-        self._count += 1
-        if self._count >= self._msg.info.width:
-            self._count = 0
-            self._row += 1
+        self.count += 1
+        if self.count >= self.msg.info.width:
+            self.count = 0
+            self.row += 1
 
-        if self._row >= self._msg.info.height:
-            self._count = 0
-            self._row = 0
-
+        if self.row >= self.msg.info.height:
+            self.row = 0
 
         # Publish the map
-        self._pub.publish(self._msg)
-
+        self.pub.publish(self.msg)
 
 def main(args=None):
     rclpy.init(args=args)
@@ -63,8 +60,6 @@ def main(args=None):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()
