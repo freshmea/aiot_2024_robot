@@ -11,11 +11,15 @@ int main()
     Mat src = imread(folder + "candies.png");
     Mat emptyM(src.rows, src.cols, CV_8UC1, Scalar(0));
 
-    vector<Mat> bgr, b_planes;
+    vector<Mat> bgr, b_planes, g_planes, r_planes;
     split(src, bgr);
     b_planes = {bgr[0], emptyM, emptyM};
-    Mat bsrc;
+    g_planes = {emptyM, bgr[1], emptyM};
+    r_planes = {emptyM, emptyM, bgr[2]};
+    Mat bsrc, gsrc, rsrc;
     merge(b_planes, bsrc);
+    merge(g_planes, gsrc);
+    merge(r_planes, rsrc);
 
     imshow("src", src);
     int i = 0;
@@ -25,6 +29,8 @@ int main()
         i++;
     }
     imshow("bsrc", bsrc);
+    imshow("gsrc", gsrc);
+    imshow("rsrc", rsrc);
 
     waitKey();
     return 0;
