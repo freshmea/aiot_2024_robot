@@ -33,6 +33,7 @@ def main():
     except KeyboardInterrupt:
         gpio.cleanup()
         node.destroy_node()
+        rclpy.try_shutdown()
 
 if __name__ == "__main__":
     main()

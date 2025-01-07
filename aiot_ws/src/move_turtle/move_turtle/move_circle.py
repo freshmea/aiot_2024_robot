@@ -95,6 +95,7 @@ def main():
         for _ in range(10):
             node.pub.publish(Twist())
         node.destroy_node()
+        rclpy.try_shutdown()
 
 if __name__ == "__main__":
     main()
