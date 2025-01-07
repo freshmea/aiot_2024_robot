@@ -103,6 +103,8 @@ def main(args=None):
     try:
         executor.spin()
     except KeyboardInterrupt:
+        listener.destroy_node()
+        talker.destroy_node()
         rclpy.try_shutdown()
 
 

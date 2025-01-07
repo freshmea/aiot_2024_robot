@@ -50,6 +50,7 @@ setup(
             "lifespan = simple_ros.lifespan:main",
             "liveliness = simple_ros.liveliness:main",
             "publish_map = simple_ros.publish_map:main",
+            "tf_broadcaster = simple_ros.tf_broadcaster:main",
             ],
     },
 )

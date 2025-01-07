@@ -53,6 +53,7 @@ def main():
         rclpy.spin(node)
     except KeyboardInterrupt:
         node.destroy_node()
+        rclpy.try_shutdown()
 
 if __name__ == "__main__":
     main()
