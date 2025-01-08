@@ -31,7 +31,7 @@ class Arduino_servo(Node):
         servo_tf.transform.rotation.z = q[2]
         servo_tf.transform.rotation.w = q[3]
         self.tf_broadcaster.sendTransform(servo_tf)
-        
+
         byte_msg = (msg.data+'\n').encode('utf-8')
         self.ser.write(byte_msg)
         self.get_logger().info(msg.data)

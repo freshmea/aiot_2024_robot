@@ -51,6 +51,7 @@ setup(
             "liveliness = simple_ros.liveliness:main",
             "publish_map = simple_ros.publish_map:main",
             "tf_broadcaster = simple_ros.tf_broadcaster:main",
+            "dynamic_tf_broadcaster = simple_ros.dynamic_tf_broadcaster:main",
             ],
     },
 )
