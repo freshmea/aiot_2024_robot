@@ -41,6 +41,9 @@ setup(
             "arduino_servo = move_turtle.arduino_servo:main",
             "arduino_lcd = move_turtle.arduino_lcd:main",
             "patrol_manipulator = move_turtle.patrol_manipulator:main",
+            "image_sub = move_turtle.image_sub:main",
+            "yellow_line = move_turtle.yellow_line:main",
+            "center_line = move_turtle.center_line:main",
         ],
     },
 )
