@@ -44,6 +44,8 @@ setup(
             "image_sub = move_turtle.image_sub:main",
             "yellow_line = move_turtle.yellow_line:main",
             "center_line = move_turtle.center_line:main",
+            "edge_line = move_turtle.edge_line:main",
+            "camera_floor_mapper = move_turtle.camera_floor_mapper:main",
         ],
     },
 )

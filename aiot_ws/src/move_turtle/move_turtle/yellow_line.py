@@ -14,15 +14,11 @@ class Tb3_image_sub(Node):
         super().__init__("tb3_image_sub")
         self.qos_profile = QoSProfile(depth=10)
         self.create_subscription(
-            Image, "camera1/image_raw", self.sub_message, self.qos_profile
+            Image, "camera/image_raw", self.sub_message, self.qos_profile
         )
         self.pub = self.create_publisher(Twist, "cmd_vel", self.qos_profile)
         self.create_timer(0.1, self.twist_pub)
         self.cb = CvBridge()
-        print(os.getcwd())
-        self.traffic = cv2.imread("traffic_stop.png")
-        # self.orbF = cv2.ORB_create(nfeatures=800)
-        # self.bf = cv2.BFMatcher_create(cv2.NORM_HAMMING, crossCheck=True)
         self.center = 0.0
         self.findline = False
 
@@ -38,21 +34,25 @@ class Tb3_image_sub(Node):
         hsv = cv2.inRange(hsv, lower, upper)
         ret, mask = cv2.threshold(hsv, 100, 255, cv2.THRESH_BINARY)
         dst = cv2.bitwise_and(current_frame, current_frame, mask=mask)
-        line = dst[590, 120:180].copy()
-        lineli = []
-        for i, pixel in enumerate(line):
-            if int(pixel[1]) + int(pixel[2]) > 300:
-                lineli.append(i)
-        if not lineli:
-            self.findline = False
-        else:
-            self.findline = True
-            maxv = max(lineli)
-            minv = min(lineli)
-            self.center = (minv + maxv) / 2
-            print(maxv, minv, self.center)
-        cv2.waitKey(1)  # 이미지 처리 시간 주기.
-        cv2.imshow("camera", dst)
+        # width, height of current_frame
+        width = dst.shape[1]
+        height = dst.shape[0]
+        if ret:
+            line = dst[height-1, :].copy()
+            lineli = []
+            for i, pixel in enumerate(line):
+                if int(pixel[1]) + int(pixel[2]) > 300:
+                    lineli.append(i)
+            if not lineli:
+                self.findline = False
+            else:
+                self.findline = True
+                maxv = max(lineli)
+                minv = min(lineli)
+                self.center = (minv + maxv) / 2
+                print(maxv, minv, self.center)
+            cv2.waitKey(1)  # 이미지 처리 시간 주기.
+            cv2.imshow("camera", dst)
 
     def twist_pub(self):
         msg = Twist()
