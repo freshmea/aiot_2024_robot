@@ -1,0 +1,2 @@
+[console_scripts]
+hi = test_package:main

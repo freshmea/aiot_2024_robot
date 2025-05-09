@@ -1,9 +1,10 @@
-import os
-import sys
-from pathlib import Path
+# import os
+# import sys
+# from pathlib import Path
 
 import cv2
-import numpy as np
+
+# import numpy as np
 import rclpy
 from cv_bridge import CvBridge, CvBridgeError
 from rclpy.node import Node
@@ -16,7 +17,7 @@ class Tb3_image_sub(Node):
         super().__init__("tb3_image_sub")  # type: ignore
         self.qos_profile = QoSProfile(depth=10)
         self.create_subscription(
-            CompressedImage, "/camera/image_raw/compressed", self.sub_message, 10
+            CompressedImage, "/image_raw/compressed", self.sub_message, 10
         )
         self.cb = CvBridge()
         # self.traffic = cv2.imread('traffic_stop.png')

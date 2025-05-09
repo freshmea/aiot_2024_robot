@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+test_package/__init__.py
+test_package/main.py
+test_package/module_a.py
+test_package/module_b.py
+test_package.egg-info/PKG-INFO
+test_package.egg-info/SOURCES.txt
+test_package.egg-info/dependency_links.txt
+test_package.egg-info/entry_points.txt
+test_package.egg-info/top_level.txt

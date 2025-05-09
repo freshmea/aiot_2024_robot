@@ -9,7 +9,9 @@ class Service_server(Node):
         self.create_service(AddAndOdd, "addandodd", self.service_callback)
         self.bool = bool()
 
-    def service_callback(self, request : AddAndOdd.Request, response : AddAndOdd.Response):
+    def service_callback(
+        self, request: AddAndOdd.Request, response: AddAndOdd.Response
+    ):
         response.stamp = self.get_clock().now().to_msg()
         response.sum = request.inta + request.intb
         if response.sum % 2:
@@ -18,6 +20,7 @@ class Service_server(Node):
             response.odd = "two ints sum is not odd"
         return response
 
+
 def main():
     rclpy.init()
     node = Service_server()
@@ -25,7 +28,7 @@ def main():
         rclpy.spin(node)
     except KeyboardInterrupt:
         node.destroy_node()
-        rclpy.try_shutdown()
+
 
 if __name__ == "__main__":
     main()
